@@ -15,6 +15,10 @@ Tokuda &amp; Kondo waste manifest project
   - time_zone
     - set JST
 
+  - Database
+    - make 'database.yml' yourself.  
+      Then reference 'config/database.yml.org'.
+
 * Database creation
 
   ```
@@ -40,8 +44,11 @@ Tokuda &amp; Kondo waste manifest project
 
   - chose language
     - If you want showing views on jap,  
-      set url-params "local=ja"
+      set url-params "local=ja"  
       ex) http://localhost:3000/tests?locale=ja
     - if you showing vies on english,  
-      set url-params "local=en"
+      set url-params "local=en"  
       ex) http://localhost:3000/tests?locale=en
+
+* Known problems
+   - DEPRECATION WARNING: You are using the a deprecated processor interface Less::Rails::ImportProcessor.
