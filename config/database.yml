@@ -16,7 +16,6 @@ default: &default
   username: root
   password:
   socket: /tmp/mysql.sock
-
 development:
   <<: *default
   database: TKwaste_manifest_development
@@ -50,5 +49,5 @@ test:
 production:
   <<: *default
   database: TKwaste_manifest_production
-  username: TKwaste_manifest
-  password: <%= ENV['TKWASTE_MANIFEST_DATABASE_PASSWORD'] %>
+  username: root
+  socket: /var/lib/mysql/mysql.sock
