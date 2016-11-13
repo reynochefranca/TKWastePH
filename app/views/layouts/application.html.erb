@@ -74,7 +74,9 @@
           </div><!--/.well -->
         </div><!--/span-->
       </div><!--/row-->
-
+      <% if user_signed_in? %>
+        <%= link_to "ログアウト", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %>
+      <% end %>
       <footer>
         <p>&copy; Company 2016</p>
       </footer>
