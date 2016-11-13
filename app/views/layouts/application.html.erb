@@ -47,9 +47,7 @@
         <a class="navbar-brand" href="/">TKwasteManifest</a>
         <div class="navbar-collapse collapse navbar-responsive-collapse">
           <ul class="nav navbar-nav">
-            <li><%= link_to "Link1", "/path1"  %></li>
-            <li><%= link_to "Link2", "/path2"  %></li>
-            <li><%= link_to "Link3", "/path3"  %></li>
+            <li><%= link_to Trader.model_name.human.titleize, traders_path  %></li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
         <% if user_signed_in? -%>
@@ -78,7 +76,7 @@
             <h3>Sidebar</h3>
             <ul class="nav nav-list">
               <li class="nav-header">Sidebar</li>
-              <li><%= link_to ,   %></li>
+              <li><%= link_to Trader.model_name.human.titleize, traders_path  %></li>
             </ul>
           </div><!--/.well -->
         </div><!--/span-->
