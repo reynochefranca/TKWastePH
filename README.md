@@ -16,8 +16,12 @@ Tokuda &amp; Kondo waste manifest project
     - set JST
 
   - Database
-    - make 'database.yml' yourself.  
+    - make 'config/database.yml' yourself.  
       Then reference 'config/database.yml.org'.
+
+  - secret_keys
+    - make 'config/secrets.yml' yourself.  
+      Then reference  [this](http://brandonhilkert.com/blog/using-rails-4-dot-1-secrets-for-configuration/).
 
 * Database creation
 
@@ -51,4 +55,6 @@ Tokuda &amp; Kondo waste manifest project
       ex) http://localhost:3000/tests?locale=en
 
 * Known problems
+   - DEPRECATION WARNING: Sprockets method `register_engine` is deprecated.
+
    - DEPRECATION WARNING: You are using the a deprecated processor interface Less::Rails::ImportProcessor.
