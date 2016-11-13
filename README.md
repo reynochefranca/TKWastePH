@@ -25,26 +25,33 @@ Tokuda &amp; Kondo waste manifest project
 
 * Database creation
 
-  ```
+  ```bash
   $ cd [path_to_project]
-  $ rake db:create
+  $ rake db:create # only first time.
+  $ rake db:migrate # every time at the timing of pull.
   ```
 
 * Database initialization
 
-  ```
+  ```bash
   $ cd [path_to_project]
   $ rake db:migrate:reset
   ```
 
 * Services (job queues, cache servers, search engines, etc.)
 
-  ```
+  ```bash
   $ cd [path_to_project]
   $ rails s
   ```
 
 * Deployment instructions
+
+  - create user
+   ```bash
+   $ rails c # enter rails console mode
+   irb(main):001:0> user = User.new({email: 'test@example.com', password: 'password', password_confirmation: 'password'}) # email and password are any string is ok.
+   ```
 
   - chose language
     - If you want showing views on jap,  
