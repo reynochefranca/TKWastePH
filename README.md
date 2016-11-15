@@ -62,6 +62,6 @@ Tokuda &amp; Kondo waste manifest project
       ex) http://localhost:3000/tests?locale=en
 
 * Known problems
-   - DEPRECATION WARNING: Sprockets method `register_engine` is deprecated.
+   - ~~DEPRECATION WARNING: Sprockets method `register_engine` is deprecated.~~
 
-   - DEPRECATION WARNING: You are using the a deprecated processor interface Less::Rails::ImportProcessor.
+   - ~~DEPRECATION WARNING: You are using the a deprecated processor interface Less::Rails::ImportProcessor.~~

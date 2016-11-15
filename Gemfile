@@ -33,7 +33,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # gem 'capistrano-rails', group: :development
 
 gem 'therubyracer'
-gem 'less-rails'
+gem 'less-rails', git: 'https://github.com/MustafaZain/less-rails'
 gem 'twitter-bootstrap-rails'
 gem 'devise'
 
