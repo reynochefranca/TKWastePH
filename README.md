@@ -21,7 +21,7 @@ Tokuda &amp; Kondo waste manifest project
 
   - secret_keys
     - make 'config/secrets.yml' yourself.  
-      Then reference  [this](http://brandonhilkert.com/blog/using-rails-4-dot-1-secrets-for-configuration/).
+      Then reference  [this](http://guides.rubyonrails.org/4_1_release_notes.html).
 
 * Database creation
 
