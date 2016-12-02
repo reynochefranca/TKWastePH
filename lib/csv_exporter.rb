@@ -4,12 +4,100 @@ class CsvExporter
   require 'nkf'
   require 'kconv'
 
-  def export_csv_shift_jis(function_number='0101',resources=nil)
+  def export_csv_shift_jis(function_number='0101',manifest=nil, search_manifest_numbers=[])
 
-    CSV.open("#{Rails.root}/public/#{function_number}.csv", "w",:row_sep => "\r\n", :force_quotes => true, :encoding => "SJIS") do |writer|
+    CSV.open("#{Rails.root}/public/#{function_number}_#{manifest}.csv", "w",:row_sep => "\r\n", :force_quotes => true, :encoding => "SJIS") do |writer|
       writer << self.HD1
       writer << self.HD2
-      writer << self.D01_01(function_number,manifest)
+
+      # D16 マニフェスト情報照会 番号指定 && # D25 マニフェスト情報照会 番号複数指定
+      if function_number == '3100'
+        writter << self.D16(search_manifest_numbers) #header
+        writter << self.D25(search_manifest_numbers) #detail
+      end
+
+      # D17 マニフェスト情報照会(条件検索)
+      if function_number == '3200'
+        writter = self.D17
+      end
+
+      # D21 事業場情報照会
+      if function_number == '3400'
+        writter << self.D21 #header
+        writter << self.D26 #detail
+      end
+
+      # D23 通知情報紹介
+      if function_number == '3000'
+        writter << self.D23
+      end
+
+      #D41 マニフェスト情報登録(Web方式CSVフォーマット対応)
+      if function_number == '0505'
+        writter << self.D41(manifest)
+      end
+
+      # D01-01 マニフェスト情報/予約情報(排出事業者機能)
+      # おそらく使わない。D41 で代用する可能性大
+=begin ここから
+      if function_number == '0101' || function_number == '0401' || function_number == '0501'
+       layout_d01_01 = self.D01(function_number,manifest)
+       writer << layout_d01_01
+       if layout_d01_01[51] > 0
+         writer << self.D02(manifest)
+       end
+       if layout_d01_01[52] > 0
+         writer << self.D03(manifest)
+       end
+       if layout_d01_01[53] > 0
+         writer << self.D04(manifest)
+       end
+       if layout_d01_01[54] > 0
+         writer << self.D05(manifest)
+       end
+       if layout_d01_01[55] > 0
+         writer << self.D06(manifest)
+       end
+      end
+
+      # D01-04 マニフェスト情報/予約情報(処分業者 登録 機能)
+      if function_number == '0102' || function_number == '0402' || function_number == '0502'
+       layout_d01_01 = self.D01(function_number,manifest)
+       writer << layout_d01_01
+       if layout_d01_01[51].to_i > 0
+         layout_d01_01[51].to_i.times do
+           writer << self.D02(manifest)
+         end
+       end
+       if layout_d01_01[52].to_i > 0
+         layout_d01_01[52].to_i.times do
+           writer << self.D03(manifest)
+         end
+       end
+       if layout_d01_01[53].to_i > 0
+         layout_d01_01[53].to_i.times do
+           writer << self.D04(manifest)
+         end
+       end
+       if layout_d01_01[54].to_i > 0
+         layout_d01_01[54].to_i.times do
+           writer << self.D05(manifest)
+         end
+       end
+       if layout_d01_01[55].to_i > 0
+         layout_d01_01[55].to_i.times do
+           writer << self.D06(manifest)
+         end
+       end
+       if layout_d01_01[56].to_i > 0
+         layout_d01_01[56].to_i.times do
+           writer << self.D08(manifest)
+         end
+       end
+      end
+  ここまで
+=end
+
     end
   end
 
@@ -39,7 +127,7 @@ class CsvExporter
     return row
   end
 
-  #D01_01, D01_04
+  #D01_01,D01_04 D41 で代用。
   def D01(function_number='0101', manifest=nil)
       row = []
 
@@ -617,7 +705,7 @@ class CsvExporter
     return row
   end
 
-  def D16(function_number="",manifest=nil)
+  def D16(search_manifest_numbers=nil)
     row = []
 
     row << "D16" #0.レイアウト番号
@@ -669,12 +757,12 @@ class CsvExporter
     return row
   end
 
-  def D17
+  def D17(filter_number="0",from=Date.today, to=Date.today)
     row = []
 
     row << "D17" #0.レイアウト番号
     row << "3200" #1.機能番号
-    row << "" #2.抽出日区分
+    row << "#{filter_number}" #2.抽出日区分
 =begin
     0:指定しない
     1:引渡し日
@@ -713,18 +801,18 @@ class CsvExporter
     return row
   end
 
-  def D21
+  def D21(edi_users=[])
     row = []
 
     row << "D21" #0.レイアウト番号
     row << "3400" #1.機能番号
 
-    row << "" #2.事業場情報照会(事業場複数指定)件数 事業場情報照会(加入者番号 数指定)(D26)の件数を設定
+    row << "#{edi_users.count}" #2.事業場情報照会(事業場複数指定)件数 事業場情報照会(加入者番号 数指定)(D26)の件数を設定
 
     return row
   end
 
-  def D26
+  def D26(edi_user=nil)
     row = []
 
     row << "D21" #0.レイアウト番号
@@ -736,7 +824,7 @@ class CsvExporter
     return row
   end
 
-  def D23
+  def D23(from=Date.today, to=Date.today)
     row = []
 
     row << "D23" #0.レイアウト番号
@@ -744,8 +832,8 @@ class CsvExporter
 
     row << "" #2.照会通知情報 1:照会済み通知情報を含む  2:照会済み通知情報を含まない
     row << "" #3.通知情報ステータス 1:重要, 2:お知らせ, 3:すべて
-    row << "" #4.通知日(FROM)
-    row << "" #5.通知日(TO)
+    row << "#{from}" #4.通知日(FROM)
+    row << "#{to}" #5.通知日(TO)
 
     return row
   end
@@ -849,11 +937,11 @@ class CsvExporter
     row << "" #71.最終処分事業場9(コード)(要基本設定)
     row << "" #72.最終処分事業場10(コード)(要基本設定)
 
-    row << "" #73.備考1
-    row << "" #73.備考2
-    row << "" #73.備考3
-    row << "" #73.備考4
-    row << "" #73.備考5
+    row << "" #74.備考1
+    row << "" #75.備考2
+    row << "" #76.備考3
+    row << "" #77.備考4
+    row << "" #78.備考5
 
     return row
   end
