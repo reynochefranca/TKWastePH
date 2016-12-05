@@ -1,0 +1,29 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  subscriber_number: MyString
+  connection_registration_number: MyString
+  published_confirmation_number: MyString
+  password: MyString
+  registration_user1_name: MyString
+  registration_user1_email: MyString
+  registration_user2_name: MyString
+  registration_user2_email: MyString
+  registration_user3_name: MyString
+  registration_user3_email: MyString
+  created_at: 2016-12-05 07:39:58
+  updated_at: 2016-12-05 07:39:58
+
+two:
+  subscriber_number: MyString
+  connection_registration_number: MyString
+  published_confirmation_number: MyString
+  password: MyString
+  registration_user1_name: MyString
+  registration_user1_email: MyString
+  registration_user2_name: MyString
+  registration_user2_email: MyString
+  registration_user3_name: MyString
+  registration_user3_email: MyString
+  created_at: 2016-12-05 07:39:58
+  updated_at: 2016-12-05 07:39:58

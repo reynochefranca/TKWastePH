@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  trader_id: 
+  permission_type: MyString
+  started_at: 2016-12-05 07:38:20
+  limited_at: 2016-12-05 07:38:20
+  number: MyString
+  pdf: MyString
+  created_at: 2016-12-05 07:38:20
+  updated_at: 2016-12-05 07:38:20
+
+two:
+  trader_id: 
+  permission_type: MyString
+  started_at: 2016-12-05 07:38:20
+  limited_at: 2016-12-05 07:38:20
+  number: MyString
+  pdf: MyString
+  created_at: 2016-12-05 07:38:20
+  updated_at: 2016-12-05 07:38:20
