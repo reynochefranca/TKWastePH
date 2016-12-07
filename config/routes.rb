@@ -21,10 +21,8 @@ Rails.application.routes.draw do
   get 'disposal_methods/index'
   
   get 'home/index'
-
   resources :traders
   get 'home/index'
-  root 'home#index'
 
 #  devise_for :users
 

@@ -38,7 +38,6 @@
   </head>
   <style>
     @charset "UTF-8";
-
   /* 必須部分 */
   .required-text{
   	/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#ff0000+0,bf0000+100 */
@@ -85,12 +84,10 @@
   	font-size: 20px;
   }
     /*! normalize.css v4.1.1 | MIT License | github.com/necolas/normalize.css */
-
     /**
      * 1. Change the default font family in all browsers (opinionated).
      * 2. Prevent adjustments of font size after orientation changes in IE and iOS.
      */
-
     html {
     font-family: sans-serif; /* 1 */
     -ms-text-size-adjust: 100%; /* 2 */
@@ -512,6 +509,7 @@ marginLeft:0},function(){return a.getBoundingClientRect().left}):0))+"px":void 0
 padding:"inner"+a,content:b,"":"outer"+a},function(c,d){n.fn[d]=function(d,e){var f=arguments.length&&(c||"boolean"!=typeof d),g=c||(d===!0||e===!0?"margin":"border");return Y(this,function(b,c,d){var e;return n.isWindow(b)?b.document.documentElement["client"+a]:9===b.nodeType?(e=b.documentElement,Math.max(b.body["scroll"+a],e["scroll"+a],b.body["offset"+a],e["offset"+a],e["client"+a])):void 0===d?n.css(b,c,g):n.style(b,c,d,g)},b,f?d:void 0,f,null)}})}),n.fn.extend({bind:function(a,b,c){return this.on(a,null,b,c)},unbind:function(a,b){return this.off(a,null,b)},delegate:function(a,b,c,d){return this.on(b,a,c,d)},undelegate:function(a,b,c){return 1===arguments.length?this.off(a,"**"):this.off(b,a||"**",c)}}),n.fn.size=function(){return this.length},n.fn.andSelf=n.fn.addBack,"function"==typeof define&&define.amd&&define("jquery",[],function(){return n});var nc=a.jQuery,oc=a.$;return n.noConflict=function(b){return a.$===n&&(a.$=oc),b&&a.jQuery===n&&(a.jQuery=nc),n},b||(a.jQuery=a.$=n),n});
   </script>
   <body>
+
     <div class="navbar navbar-default navbar-static-top">
       <div class="container">
         <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
@@ -525,15 +523,14 @@ padding:"inner"+a,content:b,"":"outer"+a},function(c,d){n.fn[d]=function(d,e){va
             <li><%= link_to "Link1", "waste_types_index_path"  %></li>
             <li><%= link_to "Link2", "/path2"  %></li>
             <li><%= link_to "Link3", "/path3"  %></li>
+            <% if user_signed_in? %>
+              <li><%= link_to "log_out",  destroy_user_session_path, method: :delete  %></li>
+            <% end %>
           </ul>
-          </li>
-        <% else -%>
-          <li><%= link_to t('devise.sessions.new.sign_in'), new_user_session_path %></li>
-        <% end -%>
-        </ul>
         </div>
       </div>
     </div>
+
     <div class="container">
       <div class="row">
         <div class="col-lg-12">
