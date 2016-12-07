@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   get 'waste_types/index'
 
   get 'units/index'
@@ -20,6 +21,18 @@ Rails.application.routes.draw do
   get 'disposal_methods/index'
   
   get 'home/index'
+
+  resources :traders
+  get 'home/index'
+  root 'home#index'
+
+#  devise_for :users
+
+  devise_for :users, :skip => [:registrations]
+  as :user do
+    get 'users/edit' => 'devise/registrations#edit', :as => 'edit_user_registration'
+    put 'users' => 'devise/registrations#update', :as => 'user_registration'
+  end
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

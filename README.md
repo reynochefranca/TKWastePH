@@ -16,31 +16,42 @@ Tokuda &amp; Kondo waste manifest project
     - set JST
 
   - Database
-    - make 'database.yml' yourself.  
+    - make 'config/database.yml' yourself.  
       Then reference 'config/database.yml.org'.
+
+  - secret_keys
+    - make 'config/secrets.yml' yourself.  
+      Then reference  [this](http://guides.rubyonrails.org/4_1_release_notes.html).
 
 * Database creation
 
-  ```
+  ```bash
   $ cd [path_to_project]
-  $ rake db:create
+  $ rake db:create # only first time.
+  $ rake db:migrate # every time at the timing of pull.
   ```
 
 * Database initialization
 
-  ```
+  ```bash
   $ cd [path_to_project]
   $ rake db:migrate:reset
   ```
 
 * Services (job queues, cache servers, search engines, etc.)
 
-  ```
+  ```bash
   $ cd [path_to_project]
   $ rails s
   ```
 
 * Deployment instructions
+
+  - create user
+   ```bash
+   $ rails c # enter rails console mode
+   irb(main):001:0> user = User.new({email: 'test@example.com', password: 'password', password_confirmation: 'password'}) # email and password are any string is ok.
+   ```
 
   - chose language
     - If you want showing views on jap,  
@@ -51,4 +62,6 @@ Tokuda &amp; Kondo waste manifest project
       ex) http://localhost:3000/tests?locale=en
 
 * Known problems
-   - DEPRECATION WARNING: You are using the a deprecated processor interface Less::Rails::ImportProcessor.
+   - ~~DEPRECATION WARNING: Sprockets method `register_engine` is deprecated.~~
+
+   - ~~DEPRECATION WARNING: You are using the a deprecated processor interface Less::Rails::ImportProcessor.~~
