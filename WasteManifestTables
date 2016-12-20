@@ -1,0 +1,15 @@
++ Added Tables
++ Implemented Input and Output Forms
++ Can input Data to Database Tables
++ Can Show Data to Ouput Forms from Database Tables
++ Implemented the User Interface for the following tables:
+  - Disposal Methods
+  - Edi Users
+  - Hazardous Substances
+  - Packages
+  - Permissions
+  - Places
+  - Roles
+  - Shapes
+  - Units
+  - Waste Types
