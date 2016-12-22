@@ -1,0 +1,719 @@
+<%= stylesheet_link_tag "new_discharge_business_reg.css" %>
+<%= javascript_include_tag "jquery-colorbox.min.js" %>
+<script type="text/javascript">
+jQuery(function ($) {
+	'use strict';
+	var limit = 6,	// 上限値
+		allBox = $("input[type=checkbox]");	// 対象のチェックボックス
+
+	// チェック制限用関数
+	function checkMe() {
+		var chkedLen = allBox.filter(":checked").length,
+			noBox = allBox.not(":checked");
+
+		if (chkedLen > limit - 1) {
+			noBox.prop("disabled", true);
+		} else {
+			noBox.prop("disabled", false);
+		}
+	}
+
+	allBox.on("click", checkMe);
+	checkMe();// 初期イベント発動
+});
+</script>
+
+
+<script>
+//テーブルを増やす
+$(function(){
+	//btn_demoAがクリックされた時…
+	$('.new-btn').click(function(){
+		add_gomitable();
+	});
+});
+</script>
+
+<script type="text/javascript">
+function add_gomitable() {
+
+	// カレンダータイトル描画用テーブル作成、コンテントに追加
+	var table_title = $('<table>', {
+		class: 'place-table gomi-table'
+	})
+	.appendTo('.tuika-table');
+
+	// tr作成、テーブルに追加
+	var tr_title = $('<tr>')
+	.appendTo(table_title);
+
+	// td作成、trに追加
+	$('<th>')
+	.html('種類')
+	.appendTo(tr_title);
+
+	$('<th>')
+	.html('形状')
+	.appendTo(tr_title);
+
+	$('<th>')
+	.html('荷姿')
+	.appendTo(tr_title);
+
+	$('<th>')
+	.html('予定量')
+	.appendTo(tr_title);
+
+	$('<th>')
+	.html('単位')
+	.appendTo(tr_title);
+
+	var th_title01 = $('<th>')
+	.html('有害物質名')
+	.appendTo(tr_title);
+
+
+	// tr作成、テーブルに追加
+	var tr_title02 = $('<tr>')
+	.appendTo(table_title);
+
+	var td_title01 = $('<td>')
+	.appendTo(tr_title02);
+
+	// 種類
+	var div_th_title01 = $('<div>', {
+		class: 'kensaku01 cf'
+	})
+	.html('<div><p></p><p></p></div><a class="modal-open choicebtn h-btn02" data-target="con5">選択</a>')		// innerhtml はこれで追加
+	.appendTo(td_title01);
+
+
+	var td_title02 = $('<td>')
+	.appendTo(tr_title02);
+
+	// 形状
+	var div_th_title02 = $('<div>', {
+		class: 'kensaku01 cf'
+	})
+	.html('<div class="kensaku01 cf"><div><p></p></div><a class="modal-open choicebtn" data-target="con7">選択</a></div>')		// innerhtml はこれで追加
+	.appendTo(td_title02);
+
+
+	var td_title03 = $('<td>')
+	.appendTo(tr_title02);
+
+	// 荷姿
+	var div_th_title03 = $('<div>', {
+		class: 'kensaku01 cf'
+	})
+	.html('<div class="kensaku01 cf"><div><p></p></div><a class="modal-open choicebtn" data-target="con8">選択</a></div>')		// innerhtml はこれで追加
+	.appendTo(td_title03);
+
+
+	var td_title04 = $('<td>')
+	.appendTo(tr_title02);
+
+	// 予定量
+	var div_th_title04 = $('<div>', {
+		class: 'kensaku01 cf'
+	})
+	.html('<input type="text" name="" class="inp-text sum-text" placeholder="予定量">')		// innerhtml はこれで追加
+	.appendTo(td_title04);
+
+
+	var td_title05 = $('<td>')
+	.appendTo(tr_title02);
+
+	// 単位
+	var div_th_title05 = $('<div>', {
+		class: 'kensaku01 cf'
+	})
+	.html('<div class="kensaku01 cf"><div><p></p></div><a class="modal-open choicebtn" data-target="con6">選択</a></div>')		// innerhtml はこれで追加
+	.appendTo(td_title05);
+
+
+	var td_title06 = $('<td>')
+	.appendTo(tr_title02);
+
+	// 有害物質
+	var div_th_title06 = $('<div>', {
+		class: 'kensaku01 cf'
+	})
+	.html('<div class="kensaku01 cf"><div><p></p><p></p><p></p><p></p><p></p><p></p></div><a class="modal-open choicebtn" data-target="con9">選択</a></div>')		// innerhtml はこれで追加
+	.appendTo(td_title06);
+
+}
+
+</script>
+
+<script>
+$(function() {
+    $(".ajax").colorbox({
+    maxWidth:"1150px",
+    maxHeight:"80%",
+    opacity: 0.7
+  });
+});
+</script>
+
+<header>
+	<%= render template: 'template/nav' %>
+	<h1 class="title">新規排出事業場登録画面</h1>
+</header>
+
+<div class="container">
+	<form action="" method="post">
+		<!-- ①上部情報 -->
+		<table class="reg-table">
+			<tr>
+				<th colspan="2" class="table-title">排出事業場情報</th>
+			</tr>
+			<tr>
+				<th>排出事業場</th>
+				<td>
+					<div class="kensaku01 cf">
+						<div>
+							<p>モスバーガー水道橋西通り店</p>
+							<p>モスバーガースイドウバシニシドオリテン</p>
+						</div>
+						<a class="modal-open h-btn02 combtn" data-target="con3">会社</a>
+					</div>
+				</td>
+			</tr>
+
+			<tr>
+				<th>排出事業場郵便番号</th>
+				<td>101-0065</td>
+			</tr>
+			<tr>
+				<th>都道府県市区町村</th>
+				<td>東京都千代田区</td>
+			</tr>
+			<tr>
+				<th>町名 番地以下</th>
+				<td>西神田２丁目５-８</td>
+			</tr>
+			<tr>
+				<th>連絡先電話番号1</th>
+				<td>03-0000-0000</td>
+			</tr>
+			<tr>
+				<th>引き渡し担当者</th>
+				<td>城戸 陽介</td>
+			</tr>
+			<tr>
+				<th>メールアドレス</th>
+				<td>kido_yousuke@example.com</td>
+			</tr>
+		</table>
+
+		<div class="about">
+			<table class="place-table gomi-table">
+				<thead>
+					<tr>
+						<th class="table-title" colspan="6">廃棄物登録</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<th>種類</th>
+						<th>形状</th>
+						<th>荷姿</th>
+						<th>予定量</th>
+						<th>単位</th>
+						<th>有害物質名</th>
+					</tr>
+					<tr>
+						<td>
+							<div class="kensaku01 cf">
+								<div>
+									<p>特別管理産</p>
+									<p>21廃石綿等</p>
+								</div>
+								<a class="modal-open choicebtn h-btn02" data-target="con5">選択</a>
+							</div>
+						</td>
+						<td>
+							<div class="kensaku01 cf">
+								<div>
+									<p>2 / 泥状</p>
+								</div>
+								<a class="modal-open choicebtn" data-target="con7">選択</a>
+							</div>
+						</td>
+						<td>
+							<div class="kensaku01 cf">
+								<div>
+									<p>05 / プラスチック容器</p>
+								</div>
+								<a class="modal-open choicebtn" data-target="con8">選択</a>
+							</div>
+						</td>
+						<td>
+							<input type="text" name="" class="inp-text sum-text" placeholder="予定量">
+						</td>
+						<td>
+							<div class="kensaku01 cf">
+								<div>
+									<p>5 / 個・台</p>
+								</div>
+								<a class="modal-open choicebtn" data-target="con6">選択</a>
+							</div>
+						</td>
+						<td>
+							<div class="kensaku01 cf">
+								<div>
+									<p>15&nbsp;/&nbsp;シスー１・２−ジクロロエチレン</p>
+									<p>06&nbsp;/&nbsp;砒素又はその化合物</p>
+									<p>09&nbsp;/&nbsp;トリクロロエチレン</p>
+									<p>12&nbsp;/&nbsp;四塩化炭素</p>
+									<p>18&nbsp;/&nbsp;１・３−ジクロロプロペン（D-D）</p>
+									<p>19&nbsp;/&nbsp;チウラム</p>
+								</div>
+								<a class="modal-open choicebtn" data-target="con9">選択</a>
+							</div>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+			<div class="tuika-table"></div>
+			
+			
+			<a class="new-btn">廃棄物追加</a>
+		</div>
+
+
+		<div class="con-btn-box">
+			<input type="submit" class="con-btn" value="修正登録">
+		</div>
+	</form>
+</div>
+
+<%= render template: 'template/footer' %>
+
+<!-- ポップアップ部分 -->
+<div class="modal-content con3">
+	<div class="batu-btn-box">
+		<a class="modal-close"><%= image_tag('batu.png', :alt => 'ボタン', :class => 'batu-btn') %></a>
+
+	</div>
+	<div class="cf">
+		<a class="tuika-btn ajax" href="company-reg.html">排出事業場追加</a>
+	</div>
+	<form action="" method="post">
+		<table class="mo-kensaku-table">
+			<tr>
+				<th colspan="7" class="table-title">検索キーワード</th>
+			</tr>
+			<tr>
+				<th>排出事業場</th>
+				<td><input type="text" name="" class="sum-text"></td>
+				<th>郵便番号</th>
+				<td><input type="text" name="" class="sum-text"></td>
+				<th>都道府県</th>
+				<td><input type="text" name="" class="sum-text"></td>
+			</tr>
+			<tr>
+				<th>市区町村</th>
+				<td><input type="text" name="" class="sum-text"></td>
+				<th>番地</th>
+				<td><input type="text" name="" class="sum-text"></td>
+				<th>電話番号</th>
+				<td><input type="text" name="" class="sum-text"></td>
+			</tr>
+			<tr>
+				<th>引渡し担当者</th>
+				<td><input type="text" name="" class="sum-text"></td>
+				<th>メールアドレス</th>
+				<td colspan="3"><input type="text" name="" class="inp-text"></td>
+			</tr>
+		</table>
+		<input type="submit" value="検索する">
+
+			<table class="issue-table">
+				<tr>
+					<th colspan="9" class="table-title">排出事業場</th>
+				</tr>
+				<tr>
+					<th></th>
+					<th>排出事業場</th>
+					<th>排出事業場郵便番号</th>
+					<th>都道府県</th>
+					<th>市区町村</th>
+					<th>番地</th>
+					<th>連絡先電話番号</th>
+					<th>引渡し担当者</th>
+					<th>メールアドレス</th>
+				</tr>
+
+				<tr>
+					<td><input type="radio" name=""></td>
+					<td>
+						<p>モスバーガー水道橋西通り店</p>
+						<p>モスバーガースイドウバシニシドオリテン</p>
+					</td>
+					<td>101-0065</td>
+					<td>東京都</td>
+					<td>千代田区</td>
+					<td>西神田２丁目５-８</td>
+					<td>03-0000-0000</td>
+					<td><p>城戸 陽介</p>
+						<p>キド ヨウスケ</p>
+					</td>
+					<td>kido_yousuke@example.com</td>
+				</tr>
+			</table>
+		<input type="submit" value="登録する">
+	</form>
+</div>
+
+<div class="modal-content con5">
+	<div class="batu-btn-box">
+		<a class="modal-close"><%= image_tag('batu.png', :alt => 'ボタン', :class => 'batu-btn') %></a>
+
+	</div>
+	<form action="" method="post">
+		<table class="place-table disposal-table industrial-waste-table">
+			<thead>
+				<tr>
+					<th colspan="3" class="table-title">契約期間 産業廃棄物の種類一覧</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<th colspan="2"></th>
+					<th>契約期間 産業廃棄物の種類</th>
+				</tr>
+				<tr>
+					<td rowspan="8">安定型品目</td>
+					<td class="industrial-radi-box"><input type="radio" name="007"></td>
+					<td>01コンクリートがら</td>
+				</tr>
+				<tr>
+					<td><input type="radio" name="007"></td>
+					<td>02アスコンがら</td>
+				</tr>
+				<tr>
+					<td><input type="radio" name="007"></td>
+					<td>03その他がれき類</td>
+				</tr>
+				<tr>
+					<td><input type="radio" name="007"></td>
+					<td>04ガラス・陶磁器くず</td>
+				</tr>
+				<tr>
+					<td><input type="radio" name="007"></td>
+					<td>05廃プラスチック類</td>
+				</tr>
+				<tr>
+					<td><input type="radio" name="007"></td>
+					<td>06金属くず</td>
+				</tr>
+				<tr>
+					<td><input type="radio" name="007"></td>
+					<td>07混合(安定型のみ)</td>
+				</tr>
+				<tr>
+					<td><input type="radio" name="007"></td>
+					<td>08石綿合有産業廃棄物</td>
+				</tr>
+				<tr>
+					<td rowspan="7">管理型品目</td>
+					<td class="industrial-radi-box"><input type="radio" name="007"></td>
+					<td>11建設汚泥</td>
+				</tr>
+				<tr>
+					<td><input type="radio" name="007"></td>
+					<td>12紙くず</td>
+				</tr>
+				<tr>
+					<td><input type="radio" name="007"></td>
+					<td>13木くず</td>
+				</tr>
+				<tr>
+					<td><input type="radio" name="007"></td>
+					<td>14繊維くず</td>
+				</tr>
+				<tr>
+					<td><input type="radio" name="007"></td>
+					<td>15廃石膏ボード</td>
+				</tr>
+				<tr>
+					<td><input type="radio" name="007"></td>
+					<td>16混合(管理型含む)</td>
+				</tr>
+				<tr>
+					<td><input type="radio" name="007"></td>
+					<td>17石綿合有産業廃棄物</td>
+				</tr>
+				<tr>
+					<td>特別管理産</td>
+					<td class="industrial-radi-box"><input type="radio" name="007"></td>
+					<td>21廃石綿等</td>
+				</tr>
+			</tbody>
+		</table>
+		<input type="submit" value="登録する">
+	</form>
+</div>
+
+
+<div class="modal-content con6">
+	<div class="batu-btn-box">
+		<a class="modal-close"><%= image_tag('batu.png', :alt => 'ボタン', :class => 'batu-btn') %></a>
+
+	</div>
+	<form action="" method="post">
+		<table class="place-table disposal-table mo-table">
+			<thead>
+				<tr>
+					<th colspan="2" class="table-title">単位一覧</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<th></th>
+					<th>コード/単位</th>
+				</tr>
+				<tr>
+					<td><input type="radio" name="005"></td>
+					<td>1&nbsp;/&nbsp;t</td>
+				</tr>
+				<tr>
+					<td><input type="radio" name="005"></td>
+					<td>2&nbsp;/&nbsp;m<sup>3</sup></td>
+				</tr>
+				<tr>
+					<td><input type="radio" name="005"></td>
+					<td>3&nbsp;/&nbsp;kg</td>
+				</tr>
+				<tr>
+					<td><input type="radio" name="005"></td>
+					<td>4&nbsp;/&nbsp;リットル</td>
+				</tr>
+				<tr>
+					<td><input type="radio" name="005"></td>
+					<td>5&nbsp;/&nbsp;個・台</td>
+				</tr>
+			</tbody>
+		</table>
+		<input type="submit" value="登録する">
+	</form>
+</div>
+
+<div class="modal-content con7">
+	<div class="batu-btn-box">
+		<a class="modal-close"><%= image_tag('batu.png', :alt => 'ボタン', :class => 'batu-btn') %></a>
+
+	</div>
+	<form action="" method="post">
+		<table class="place-table disposal-table mo-table">
+			<thead>
+				<tr>
+					<th colspan="2" class="table-title">形状一覧</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<th></th>
+					<th>コード/形状</th>
+				</tr>
+				<tr>
+					<td><input type="radio" name="006"></td>
+					<td>1&nbsp;/&nbsp;固形状</td>
+				</tr>
+				<tr>
+					<td><input type="radio" name="006"></td>
+					<td>2&nbsp;/&nbsp;泥状</td>
+				</tr>
+				<tr>
+					<td><input type="radio" name="006"></td>
+					<td>3&nbsp;/&nbsp;液状</td>
+				</tr>
+			</tbody>
+		</table>
+		<input type="submit" value="登録する">
+	</form>
+</div>
+
+<div class="modal-content con8">
+	<div class="batu-btn-box">
+		<a class="modal-close"><%= image_tag('batu.png', :alt => 'ボタン', :class => 'batu-btn') %></a>
+
+	</div>
+	<form action="" method="post">
+		<table class="place-table disposal-table mo-table">
+			<thead>
+				<tr>
+					<th colspan="2" class="table-title">荷姿一覧</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<th></th>
+					<th>コード/荷姿</th>
+				</tr>
+				<tr>
+					<td><input type="radio" name="006"></td>
+					<td>01&nbsp;/&nbsp;バラ</td>
+				</tr>
+				<tr>
+					<td><input type="radio" name="006"></td>
+					<td>02&nbsp;/&nbsp;コンテナ</td>
+				</tr>
+				<tr>
+					<td><input type="radio" name="006"></td>
+					<td>03&nbsp;/&nbsp;ドラム缶</td>
+				</tr>
+				<tr>
+					<td><input type="radio" name="006"></td>
+					<td>04&nbsp;/&nbsp;石油缶</td>
+				</tr>
+				<tr>
+					<td><input type="radio" name="006"></td>
+					<td>05&nbsp;/&nbsp;プラスチック容器</td>
+				</tr>
+				<tr>
+					<td><input type="radio" name="006"></td>
+					<td>06&nbsp;/&nbsp;袋</td>
+				</tr>
+				<tr>
+					<td><input type="radio" name="006"></td>
+					<td>07&nbsp;/&nbsp;フレコンパック</td>
+				</tr>
+				<tr>
+					<td><input type="radio" name="006"></td>
+					<td>08&nbsp;/&nbsp;ダンボール箱</td>
+				</tr>
+				<tr>
+					<td><input type="radio" name="006"></td>
+					<td>09&nbsp;/&nbsp;その他</td>
+				</tr>
+			</tbody>
+		</table>
+		<input type="submit" value="登録する">
+	</form>
+</div>
+
+<div class="modal-content con9">
+	<div class="batu-btn-box">
+		<a class="modal-close"><%= image_tag('batu.png', :alt => 'ボタン', :class => 'batu-btn') %></a>
+
+	</div>
+	<form action="" method="post">
+		<table class="place-table disposal-table mo-table">
+			<thead>
+				<tr>
+					<th colspan="2" class="table-title">有害物質一覧</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<th></th>
+					<th>コード/有害物質</th>
+				</tr>
+				<tr>
+					<td><input type="checkbox" name="009"></td>
+					<td>01&nbsp;/&nbsp;過ぎん又はその化合物</td>
+				</tr>
+				<tr>
+					<td><input type="checkbox" name="009"></td>
+					<td>02&nbsp;/&nbsp;カドミウム又はその化合物</td>
+				</tr>
+				<tr>
+					<td><input type="checkbox" name="009"></td>
+					<td>03&nbsp;/&nbsp;鉛又はその化合物</td>
+				</tr>
+				<tr>
+					<td><input type="checkbox" name="009"></td>
+					<td>04&nbsp;/&nbsp;有機燐化合物</td>
+				</tr>
+				<tr>
+					<td><input type="checkbox" name="009"></td>
+					<td>05&nbsp;/&nbsp;六価クロム化合物</td>
+				</tr>
+				<tr>
+					<td><input type="checkbox" name="009"></td>
+					<td>06&nbsp;/&nbsp;砒素又はその化合物</td>
+				</tr>
+				<tr>
+					<td><input type="checkbox" name="009"></td>
+					<td>07&nbsp;/&nbsp;シアン化合物</td>
+				</tr>
+				<tr>
+					<td><input type="checkbox" name="009"></td>
+					<td>08&nbsp;/&nbsp;PCB</td>
+				</tr>
+				<tr>
+					<td><input type="checkbox" name="009"></td>
+					<td>09&nbsp;/&nbsp;トリクロロエチレン</td>
+				</tr>
+				<tr>
+					<td><input type="checkbox" name="009"></td>
+					<td>10&nbsp;/&nbsp;テトラクロロエチレン</td>
+				</tr>
+				<tr>
+					<td><input type="checkbox" name="009"></td>
+					<td>11&nbsp;/&nbsp;ジクロロメタン</td>
+				</tr>
+				<tr>
+					<td><input type="checkbox" name="009"></td>
+					<td>12&nbsp;/&nbsp;四塩化炭素</td>
+				</tr>
+				<tr>
+					<td><input type="checkbox" name="009"></td>
+					<td>13&nbsp;/&nbsp;１・２−ジクロロエタン</td>
+				</tr>
+				<tr>
+					<td><input type="checkbox" name="009"></td>
+					<td>14&nbsp;/&nbsp;１・１−ジクロロエチレン</td>
+				</tr>
+				<tr>
+					<td><input type="checkbox" name="009"></td>
+					<td>15&nbsp;/&nbsp;シスー１・２−ジクロロエチレン</td>
+				</tr>
+				<tr>
+					<td><input type="checkbox" name="009"></td>
+					<td>16&nbsp;/&nbsp;１・１・１−トリクロロエタン</td>
+				</tr>
+				<tr>
+					<td><input type="checkbox" name="009"></td>
+					<td>17&nbsp;/&nbsp;１・１・２−トリクロロエタン</td>
+				</tr>
+				<tr>
+					<td><input type="checkbox" name="009"></td>
+					<td>18&nbsp;/&nbsp;１・３−ジクロロプロペン（D-D）</td>
+				</tr>
+				<tr>
+					<td><input type="checkbox" name="009"></td>
+					<td>19&nbsp;/&nbsp;チウラム</td>
+				</tr>
+				<tr>
+					<td><input type="checkbox" name="009"></td>
+					<td>20&nbsp;/&nbsp;シマジン（CAT）</td>
+				</tr>
+				<tr>
+					<td><input type="checkbox" name="009"></td>
+					<td>21&nbsp;/&nbsp;チオペンカルプ（ペンチオカープ）</td>
+				</tr>
+				<tr>
+					<td><input type="checkbox" name="009"></td>
+					<td>22&nbsp;/&nbsp;ベンゼン</td>
+				</tr>
+				<tr>
+					<td><input type="checkbox" name="009"></td>
+					<td>23&nbsp;/&nbsp;セレン又はその化合物</td>
+				</tr>
+				<tr>
+					<td><input type="checkbox" name="009"></td>
+					<td>24&nbsp;/&nbsp;ダイオキシン類（有機塩素化合物）</td>
+				</tr>
+				<tr>
+					<td><input type="checkbox" name="009"></td>
+					<td>33&nbsp;/&nbsp;１，４ージオキサン</td>
+				</tr>
+			</tbody>
+		</table>
+		<input type="submit" value="登録する">
+	</form>
+</div>

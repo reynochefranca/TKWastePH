@@ -1,30 +1,9 @@
 Rails.application.routes.draw do
 
-  get 'waste_types/index'
+  get 'new_discharge_business_registrations/index'
+  get 'new_emission_plant_registrations/index'
 
-  get 'units/index'
-
-  get 'shapes/index'
-
-  get 'roles/index'
-
-  get 'places/index'
-
-  get 'permissions/index'
-
-  get 'packages/index'
-
-  get 'hazardous_substances/index'
-
-  get 'edi_users/index'
-
-  get 'disposal_methods/index'
-  
-  get 'home/index'
-  resources :traders
-  get 'home/index'
-
-#  devise_for :users
+  # devise_for :users
 
   devise_for :users, :skip => [:registrations]
   as :user do
@@ -36,7 +15,7 @@ Rails.application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  root 'home#index'
+  root 'new_discharge_business_registrations#index'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
