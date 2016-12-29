@@ -1,29 +1,23 @@
 Rails.application.routes.draw do
 
-  get 'waste_types/index'
+  get 'nav/index'
 
+  get 'templates/index'
+
+  get 'emission_operator_contracts/index'
+
+  get 'individual_contracts/index'
+
+  get 'home/index'
+  
+  get 'edi_users/index'
+  
   get 'units/index'
-
-  get 'shapes/index'
-
+  
   get 'roles/index'
 
-  get 'places/index'
 
-  get 'permissions/index'
-
-  get 'packages/index'
-
-  get 'hazardous_substances/index'
-
-  get 'edi_users/index'
-
-  get 'disposal_methods/index'
-  
-  get 'home/index'
-  resources :traders
-  get 'home/index'
-
+  resources :units, :emission_operator_contracts, :edi_users, :roles
 #  devise_for :users
 
   devise_for :users, :skip => [:registrations]
@@ -45,7 +39,6 @@ Rails.application.routes.draw do
   #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase
 
   # Example resource route (maps HTTP verbs to controller actions automatically):
-  resources :disposal_methods, :edi_users, :hazardous_substances, :packages, :permissions, :places, :roles, :shapes, :units, :waste_types
 
   # Example resource route with options:
   #   resources :products do

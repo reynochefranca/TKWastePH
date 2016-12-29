@@ -1,0 +1,30 @@
+<div class="navi-area cf">
+	<div class="navi-box cf">
+		<ul id="menu" class="cf">
+			<li class="navi-li"><%= link_to t('devise.sessions.show.HOME'), home_index_path %></li>
+			<li class="navi-li"><a href="">契約</a>
+				<ul class="child">
+					<li><%= link_to t('devise.sessions.show.個別'), individual_contracts_index_path %></li>
+					<li><%= link_to t('devise.sessions.show.基本'), emission_operator_contracts_index_path %></li>
+				</ul>
+			</li>
+			<li class="navi-li"><a href="">マニフェスト</a></li>
+			<li class="navi-li"><a href="">請求</a></li>
+			<li class="navi-li"><a href="">マスタ</a>
+				<ul class="child">
+					<li><a href="#">マスタ一覧</a></li>
+					<li><a href="#">会社関連</a></li>
+					<li><a href="#">人物関連</a></li>
+					<li><a href="#">許可関連</a></li>
+				</ul>
+			</li>
+			<li class="navi-li"><a href="">ユーザー</a>
+				<ul class="child">
+					<li><a href="#">ロール選択</a></li>
+					<li><a href="#">ユーザー編集</a></li>
+					<li><%= link_to t('devise.sessions.destroy.ログアウト'), destroy_user_session_path, method: :delete %></a></li>
+				</ul>
+			</li>
+		</ul>
+	</div>
+</div>

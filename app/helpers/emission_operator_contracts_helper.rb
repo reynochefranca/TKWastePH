@@ -1,0 +1,2 @@
+module EmissionOperatorContractsHelper
+end

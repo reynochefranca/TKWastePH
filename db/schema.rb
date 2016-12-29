@@ -88,12 +88,6 @@ ActiveRecord::Schema.define(version: 20161207002029) do
     t.datetime "updated_at",             null: false
   end
 
-  create_table "tests", force: :cascade do |t|
-    t.text     "memo",       limit: 65535
-    t.datetime "created_at",               null: false
-    t.datetime "updated_at",               null: false
-  end
-
   create_table "traders", force: :cascade do |t|
     t.string   "name",       limit: 255
     t.datetime "created_at",             null: false
