@@ -34,7 +34,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 gem 'therubyracer'
 gem 'less-rails', git: 'https://github.com/MustafaZain/less-rails'
-gem 'twitter-bootstrap-rails'
+#gem 'twitter-bootstrap-rails'
 gem 'devise'
 
 group :development, :test do
