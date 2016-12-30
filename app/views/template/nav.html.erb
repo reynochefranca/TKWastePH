@@ -1,28 +1,49 @@
 <div class="navi-area">
 	<div class="navi-box cf">
 		<ul id="menu">
-			<li class="navi-li"><%= link_to "HOME", new_discharge_business_registrations_index_path %></li>
-			<li class="navi-li"><a href="">契約</a>
+			<li class="navi-li"><%= link_to "HOME", home_index_path %></li>
+			<li class="navi-li"><a href="javascript:void(0)">浪費会社</a>
 				<ul class="child">
-					<li><a href="#">個別</a></li>
-					<li><a href="#">基本</a></li>
+					<li><a href="#">トランスポーター</a></li>
+					<li><%= link_to "新規排出事業者登録画面", new_discharge_business_registrations_index_path %></li>
+				</ul>
+			</li>
+			<li class="navi-li"><a href="javascript:void(0)">契約</a>
+				<ul class="child">
+					<li><%= link_to "個別", individual_contracts_index_path %></li>
+					<li><%= link_to "基本", emission_operator_contracts_index_path %></li>
 				</ul>
 			</li>
 			<li class="navi-li"><a href="">マニフェスト</a></li>
 			<li class="navi-li"><a href="">請求</a></li>
-			<li class="navi-li"><a href="">マスタ</a>
+			<li class="navi-li"><a href="javascript:void(0)">マスタ</a>
 				<ul class="child">
-					<li><a href="#">マスタ一覧</a></li>
-					<li><a href="#">会社関連</a></li>
-					<li><a href="#">人物関連</a></li>
-					<li><a href="#">許可関連</a></li>
+					<li><a href="#">マスタ一覧</a>
+						<ul class="child">
+							<li><%= link_to "廃棄物種類", categories_index_path %></li>
+							<li><%= link_to "廃棄物種別", waste_types_index_path %></li>
+							<li><%= link_to "許可証(マスタ)", permissions_index_path %></li>
+							<li><%= link_to "処分方法", disposal_methods_index_path %></li>
+							<li><%= link_to "有害物質", hazardous_substances_index_path %></li>
+							<li><%= link_to "荷姿", packages_index_path %></li>
+							<li><%= link_to "形状", shapes_index_path %></li>
+							<li><%= link_to "単位", units_index_path %></li>
+							<li><%= link_to "EDIユーザー", edi_users_index_path %></li>
+							<li><%= link_to "役割", roles_index_path %></li>
+							<li><%= link_to "車両", cars_index_path %></li>
+							<li><%= link_to "場所", places_index_path %></li>
+						</ul>
+					</li>
+					<li><%= link_to "会社関連", company_registrations_index_path %></li>
+					<li><%= link_to "人物関連", person_registrations_index_path %></li>
+					<li><%= link_to "許可関連", permit_registrations_index_path %></li>
 				</ul>
 			</li>
-			<li class="navi-li"><a href="">ユーザー</a>
+			<li class="navi-li"><a href="javascript:void(0)">ユーザー</a>
 				<ul class="child">
 					<li><a href="#">ロール選択</a></li>
 					<li><a href="#">ユーザー編集</a></li>
-					<li><a href="#"><%= link_to t('devise.sessions.destroy.ログアウト'), destroy_user_session_path, method: :delete %></a></li>
+					<li><%= link_to t('devise.sessions.destroy.ログアウト'), destroy_user_session_path, method: :delete %></li>
 				</ul>
 			</li>
 		</ul>

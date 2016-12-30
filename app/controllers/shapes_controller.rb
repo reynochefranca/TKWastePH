@@ -18,24 +18,30 @@ class ShapesController < ApplicationController
     @shape.save
     redirect_to action: "index"
   end
-   
-  private
-    def shape_params
-      params.require(:shape).permit(:code, :name)
-    end
+  
+  def destroy
+    @shape = Shape.find(params[:id])
+    @shape.destroy
+    redirect_to action: "index"
+  end
   
   def edit
-    
+     @shape = Shape.find(params[:id])
   end
   
   def update
-    
+    @shape = Shape.find(params[:id])
+    if @shape.update_attributes(shape_params)
+    redirect_to shapes_path, :notice => "Sucessfully Updated!"
+  else
+    render "edit"
+  end
   end
   
-  def destroy
-    
-  end
+  private
+    def shape_params
+      params.require(:shape).permit(:code, :name)
+    end 
 
-  
-  
 end
+      

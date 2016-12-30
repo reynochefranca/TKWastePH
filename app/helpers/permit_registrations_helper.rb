@@ -1,0 +1,2 @@
+module PermitRegistrationsHelper
+end

@@ -11,7 +11,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161207002029) do
+ActiveRecord::Schema.define(version: 20161228024156) do
+
+  create_table "cars", force: :cascade do |t|
+    t.string   "car_type",   limit: 255
+    t.string   "number",     limit: 255
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
+
+  create_table "categories", force: :cascade do |t|
+    t.integer  "parent_id",  limit: 4
+    t.string   "code",       limit: 255
+    t.string   "name",       limit: 255
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
 
   create_table "disposal_methods", force: :cascade do |t|
     t.string   "code",       limit: 255
@@ -49,15 +64,11 @@ ActiveRecord::Schema.define(version: 20161207002029) do
     t.datetime "updated_at",             null: false
   end
 
-  create_table "permissions", force: :cascade do |t|
-    t.integer  "trader_id",       limit: 4
-    t.string   "permission_type", limit: 255
-    t.datetime "started_at"
-    t.datetime "limited_at"
-    t.string   "number",          limit: 255
-    t.string   "pdf",             limit: 255
-    t.datetime "created_at",                  null: false
-    t.datetime "updated_at",                  null: false
+  create_table "place_users", force: :cascade do |t|
+    t.integer  "place_id",   limit: 4
+    t.integer  "user_id",    limit: 4
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
   end
 
   create_table "places", force: :cascade do |t|
@@ -69,6 +80,7 @@ ActiveRecord::Schema.define(version: 20161207002029) do
     t.string   "prefecture",   limit: 255
     t.string   "city",         limit: 255
     t.string   "address",      limit: 255
+    t.string   "bill_name",    limit: 255
     t.string   "tel1",         limit: 255
     t.string   "tel2",         limit: 255
     t.datetime "created_at",               null: false
@@ -88,16 +100,28 @@ ActiveRecord::Schema.define(version: 20161207002029) do
     t.datetime "updated_at",             null: false
   end
 
-  create_table "tests", force: :cascade do |t|
-    t.text     "memo",       limit: 65535
-    t.datetime "created_at",               null: false
-    t.datetime "updated_at",               null: false
+  create_table "trader_places", force: :cascade do |t|
+    t.integer  "trader_id",  limit: 4
+    t.integer  "place_id",   limit: 4
+    t.integer  "place_type", limit: 4
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
   end
 
   create_table "traders", force: :cascade do |t|
-    t.string   "name",       limit: 255
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
+    t.string   "code",                                          limit: 255
+    t.string   "name_kanji",                                    limit: 255
+    t.string   "name_kana",                                     limit: 255
+    t.string   "tel_number",                                    limit: 255
+    t.string   "tel",                                           limit: 255
+    t.string   "fax_name",                                      limit: 255
+    t.string   "fax",                                           limit: 255
+    t.string   "email",                                         limit: 255
+    t.string   "devision",                                      limit: 255
+    t.string   "memo",                                          limit: 255
+    t.string   "industrial_waste_excellent_certification_type", limit: 255
+    t.datetime "created_at",                                                null: false
+    t.datetime "updated_at",                                                null: false
   end
 
   create_table "units", force: :cascade do |t|
@@ -108,7 +132,15 @@ ActiveRecord::Schema.define(version: 20161207002029) do
   end
 
   create_table "users", force: :cascade do |t|
+    t.integer  "trader_id",              limit: 4
     t.string   "email",                  limit: 255, default: "", null: false
+    t.string   "name_kanji",             limit: 255
+    t.string   "name_kana",              limit: 255
+    t.string   "tel_name",               limit: 255
+    t.string   "tel",                    limit: 255
+    t.string   "position",               limit: 255
+    t.string   "memo",                   limit: 255
+    t.string   "login_id",               limit: 255
     t.string   "encrypted_password",     limit: 255, default: "", null: false
     t.string   "reset_password_token",   limit: 255
     t.datetime "reset_password_sent_at"
@@ -126,7 +158,6 @@ ActiveRecord::Schema.define(version: 20161207002029) do
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
   create_table "waste_types", force: :cascade do |t|
-    t.string   "waste_type", limit: 255
     t.string   "code",       limit: 255
     t.string   "name",       limit: 255
     t.datetime "created_at",             null: false

@@ -6,13 +6,12 @@ one:
   name_kana: MyString
   abbreviation: MyString
   zipcode: MyString
-  prefecture: MyString
+  perfecture: MyString
   city: MyString
   address: MyString
+  bill_name: MyString
   tel1: MyString
   tel2: MyString
-  created_at: 2016-12-06 23:41:23
-  updated_at: 2016-12-06 23:41:23
 
 two:
   code: MyString
@@ -20,10 +19,9 @@ two:
   name_kana: MyString
   abbreviation: MyString
   zipcode: MyString
-  prefecture: MyString
+  perfecture: MyString
   city: MyString
   address: MyString
+  bill_name: MyString
   tel1: MyString
   tel2: MyString
-  created_at: 2016-12-06 23:41:23
-  updated_at: 2016-12-06 23:41:23

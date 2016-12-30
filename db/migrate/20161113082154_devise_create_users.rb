@@ -2,7 +2,15 @@ class DeviseCreateUsers < ActiveRecord::Migration
   def change
     create_table :users do |t|
       ## Database authenticatable
+      t.integer :trader_id
       t.string :email,              null: false, default: ""
+      t.string :name_kanji
+      t.string :name_kana
+      t.string :tel_name
+      t.string :tel
+      t.string :position
+      t.string :memo
+      t.string :login_id
       t.string :encrypted_password, null: false, default: ""
 
       ## Recoverable

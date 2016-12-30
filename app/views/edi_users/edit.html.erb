@@ -1,0 +1,60 @@
+<%= stylesheet_link_tag "permit-master.css" %>
+<header>
+	<h1 class="title">EDIユーザーマスタ画面</h1>
+</header>
+    <%= form_for @edi_user do |f| %>
+<div class="container">
+		<table class="place-table disposal-table">
+			<thead>
+				<tr>
+					<th class="table-title" colspan="9">新規追加</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<th>名前1</th>
+					<td><%= f.text_field :registration_user1_name, :required => 'required', class: 'sum-text'%></td>
+				</tr>
+				<tr>
+					<th>メール1</th>
+					<td><%= f.text_field :registration_user1_email, :required => 'required', class: 'sum-text'%></td>
+				</tr>
+				<tr>
+					<th>名前2</th>
+					<td><%= f.text_field :registration_user2_name, :required => 'required', class: 'sum-text'%></td>
+				</tr>
+				<tr>
+					<th>メール2</th>
+					<td><%= f.text_field :registration_user2_email, :required => 'required', class: 'sum-text'%></td>
+				</tr>
+				<tr>
+					<th>名前3</th>
+					<td><%= f.text_field :registration_user3_name, :required => 'required', class: 'sum-text'%></td>
+				</tr>
+				<tr>
+					<th>メール3</th>
+					<td><%= f.text_field :registration_user3_email, :required => 'required', class: 'sum-text'%></td>
+				</tr>
+				<tr>
+					<th>EDI加入者番号</th>
+					<td><%= f.text_field :subscriber_number, :required => 'required', class: 'sum-text'%></td>
+				</tr>
+				<tr>
+					<th>EDI接続登録番号</th>
+					<td><%= f.text_field :connection_registration_number, :required => 'required', class: 'sum-text'%></td>
+				</tr>
+				<tr>
+					<th>EDI公開確認番号</th>
+					<td><%= f.text_field :published_confirmation_number, :required => 'required', class: 'sum-text'%></td>
+				</tr>
+				<tr>
+					<th>EDI接続パスワード</th>
+					<td><%= f.text_field :password, :required => 'required', class: 'sum-text'%></td>
+				</tr>
+				<tr>
+					<td colspan="2" class="reg-btn-box"><%= f.submit "登録", class: 'choicebtn' %></td>
+				</tr>
+			</tbody>
+		</table>
+	<% end %>
+</div>

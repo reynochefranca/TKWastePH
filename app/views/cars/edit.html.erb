@@ -1,0 +1,24 @@
+<%= stylesheet_link_tag "master.css" %>
+<header>
+	<h1 class="title">車両マスタ画面</h1>
+</header>
+<%= form_for @car do |f| %>
+<div class="container">
+    	<table class="place-table disposal-table">
+			<thead>
+				<tr>
+					<th class="table-title" colspan="7">編集</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<th>車両<br>タイプ</th>
+					<td><%= f.text_field :car_type, :required => 'required', class: 'inp-text sum-text'%></td>
+					<th>番号</th>
+					<td><%= f.text_field :number, :required => 'required', class: 'inp-text sum-text'%></td>
+					<td class="reg-btn-box"><%= f.submit "登録", class: 'choicebtn' %></td>
+				</tr>
+			</tbody>
+		</table>
+</div>
+<% end %>

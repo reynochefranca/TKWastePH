@@ -1,7 +1,27 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  name: MyString
+  code: MyString
+  name_kanji: MyString
+  name_kana: MyString
+  tel_number: MyString
+  tel: MyString
+  fax_name: MyString
+  fax: MyString
+  email: MyString
+  devision: MyString
+  memo: MyString
+  industrial_waste_excellent_certification_type: MyString
 
 two:
-  name: MyString
+  code: MyString
+  name_kanji: MyString
+  name_kana: MyString
+  tel_number: MyString
+  tel: MyString
+  fax_name: MyString
+  fax: MyString
+  email: MyString
+  devision: MyString
+  memo: MyString
+  industrial_waste_excellent_certification_type: MyString

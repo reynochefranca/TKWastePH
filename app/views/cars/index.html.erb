@@ -1,0 +1,97 @@
+<%= stylesheet_link_tag "master.css" %>
+<header>
+	<%= render template: 'template/nav' %>
+	<h1 class="title">車両マスタ画面</h1>
+</header>
+
+<div class="container">
+	<%= form_for Car.new do |f| %>
+
+		<table class="place-table master-table">
+			<thead>
+				<tr>
+					<th colspan="9" class="table-title">車両マスタ</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<th>車両タイプ</th>
+					<th>番号</th>
+					<th></th>
+				</tr>
+				<% if @cars.blank? %>
+					<tr>
+						<td colspan="3"><center>NO DATA INPUT</center></td>
+					</tr>
+				<% else
+					@cars.each do |row| %>
+				<tr>
+					<td><%= row.car_type %></td>
+					<td><%= row.number %></td>
+					<td>
+						<div class="btn-box cf">
+							<ul class="cf">
+								<li><a href="javascript:void(0)" onclick="window.open('<%= row.id %>/edit', 'height=10', 'top=auto', 'left=auto');" class="choicebtn">編集</a></li>
+								<li><%= link_to '削除', row, method: :delete, :class => 'sakuzyobtn', data: { confirm: 'Are you sure?' } %></li>
+							</ul>
+						</div>
+					</td>
+				<% end 
+				end %>
+				</tr>
+			</tbody>
+		</table>
+
+		<table class="place-table disposal-table">
+			<thead>
+				<tr>
+					<th class="table-title" colspan="8">新規追加</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<th>車両<br>タイプ</th>
+					<td><%= f.text_field :car_type, :required => 'required', class: 'inp-text sum-text'%></td>
+					<th>番号</th>
+					<td><%= f.text_field :number, :required => 'required', class: 'inp-text sum-text'%></td>
+					<td class="reg-btn-box"><%= f.submit "登録", class: 'choicebtn' %></td>
+				</tr>
+			</tbody>
+		</table>
+		<div class="con-btn-box">
+			<input type="submit" class="con-btn" value="修正登録">
+		</div>
+	<% end %>
+</div>
+
+
+
+<%= render template: 'template/footer' %>
+
+
+<!-- ポップアップ -->
+<div class="modal-content con1">
+	<div class="batu-btn-box">
+		<a class="modal-close"><%= image_tag('batu.png', :alt => 'ボタン', :class => 'batu-btn') %></a>
+
+	</div>
+	<form action="" method="post">
+		<table class="place-table disposal-table">
+			<thead>
+				<tr>
+					<th colspan="7" class="table-title">編集</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<th>車両<br>タイプ</th>
+					<td><input type="text" name="" class="inp-text sum-text"></td>
+					<th>番号</th>
+					<td><input type="text" name="" class="inp-text sum-text"></td>
+				</tr>
+			</tbody>
+		</table>
+		<input type="submit" value="登録する">
+	</form>
+</div>
+

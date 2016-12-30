@@ -1,0 +1,418 @@
+<%= stylesheet_link_tag "contracts.css" %>
+<%= javascript_include_tag "jquery-ui.min.js" %>
+<%= javascript_include_tag "jquery-datepicker.min.js" %>
+<script type="text/javascript">
+jQuery(function ($) {
+	'use strict';
+	var limit = 6,	// 上限値
+		allBox = $("input[type=checkbox]");	// 対象のチェックボックス
+
+	// チェック制限用関数
+	function checkMe() {
+		var chkedLen = allBox.filter(":checked").length,
+			noBox = allBox.not(":checked");
+
+		if (chkedLen > limit - 1) {
+			noBox.prop("disabled", true);
+		} else {
+			noBox.prop("disabled", false);
+		}
+	}
+
+	allBox.on("click", checkMe);
+	checkMe();// 初期イベント発動
+});
+</script>
+
+<script type="text/javascript">
+//タブ
+$(function() {
+	//クリックしたときのファンクションをまとめて指定
+	$('.tab input').click(function() {
+
+		//.index()を使いクリックされたタブが何番目かを調べ、
+		//indexという変数に代入します。
+		var index = $('.tab input').index(this);
+
+		//コンテンツを一度すべて非表示にし、
+		$('.content li').css('display','none');
+
+		//クリックされたタブと同じ順番のコンテンツを表示します。
+		$('.content li').eq(index).css('display','block');
+
+		//一度タブについているクラスselectを消し、
+		$('.tab input').removeClass('select');
+
+		//クリックされたタブのみにクラスselectをつけます。
+		$(this).addClass('select')
+	});
+});
+</script>
+
+<script>
+//カレンダー
+$(function() {
+    $('.calendar').datepicker();
+	$.datepicker.setDefaults( $.datepicker.regional[ "ja" ] );
+});
+</script>
+
+<script>
+//カレンダーを増やす
+$(function(){
+	//btn_demoAがクリックされた時…
+	$('.calendar-tuika').click(function(){
+	//demoAの中のpにprependの処理をする
+	$('<input type="text" class="inp-text sum-text calendar"><br>').appendTo('.calendar-box');
+    $('.calendar').datepicker();
+	});
+});
+</script>
+
+<script>
+$(function() {
+    $(".ajax").colorbox({
+    maxWidth:"1150px",
+    maxHeight:"80%",
+    opacity: 0.7
+  });
+});
+</script>
+<header>
+	<%= render template: 'template/nav' %>
+	<h1 class="title">排出事業者契約画面</h1>
+</header>
+
+<div class="container">
+	<form action="" method="post">
+		<div class="head-kensaku-box cf">
+			<ul class="cf">
+				<li><a class="modal-open kensaku-btn" data-target="con00"><span class="btn-sum-text">登録済み情報を</span><br>検索</a></li>
+				<li>整理番号:<input type="text" name="" class="inp-text sum-text"></li>
+			</ul>
+		</div>
+    	<!-- <div class="reference-number">
+    	 	整理番号:<input type="text" name="" class="inp-text sum-text">
+    	</div> -->
+
+		<table class="reg-table">
+			<tr>
+				<th colspan="4" class="table-title">契約</th>
+			</tr>
+			<tr>
+				<td>
+					<label><input type="radio" name="00" value="" class="inp-radio">締結済</label>
+					<label><input type="radio" name="00" value="" class="inp-radio" checked="checked">仮契約</label>
+				</td>
+			</tr>
+		</table>
+
+
+		<!-- 排出事業者 -->
+		<table class="reg-table">
+			<tr>
+				<th colspan="4" class="table-title">排出事業者</th>
+			</tr>
+			<tr>
+				<th>排出事業者</th>
+				<td>
+					<div class="kensaku01 cf">
+						<div>
+							<p>株式会社モスフードサービス</p>
+							<p>カブシキガイシャモスフードサービス</p>
+						</div>
+					</div>
+				</td>
+			</tr>
+			<tr>
+				<th>排出事業者<br>登録担当者</th>
+				<td>
+					<div class="kensaku01 cf">
+						<div>
+							<p>石坂 麻緒</p>
+							<p>イシザカ マオ</p>
+						</div>
+					</div>
+				</td>
+			</tr>
+			<tr>
+				<th>自己運搬<br><span class="required-text">必須</span></th>
+				<td colspan="3">
+					<label><input type="radio" name="01" class="inp-radio">Yes</label>
+					<label><input type="radio" name="01" class="inp-radio" checked="checked">No</label>
+				</td>
+			</tr>
+		</table>
+
+		<!-- 請求 -->
+		<table class="reg-table ">
+			<tr>
+				<th colspan="6" class="table-title">請求</th>
+			</tr>
+			<tr>
+				<th>請求年月日<br><span class="required-text">必須</span></th>
+				<td colspan="5">
+					<div class="input-box">
+						<input type="text" name="" class="inp-text sum-text calendar" placeholder="締日">
+					</div>
+				</td>
+			</tr>
+			<tr>
+				<th>消費税<br><span class="required-text">必須</span></th>
+				<td colspan="2">
+					<label><input type="radio" name="00" class="inp-radio">内税</label>
+					<label><input type="radio" name="00" class="inp-radio">外税</label>
+					<label><input type="radio" name="00" class="inp-radio">非課税</label>
+				</td>
+				<th>税率<br><span class="required-text">必須</span></th>
+				<td colspan="2">
+					<input type="text" name="" class="inp-text sum-text">&nbsp;%
+				</td>
+			</tr>
+			<tr>
+				<th rowspan="3">管理費<br><span class="required-text">必須</span></th>
+				<td class="sub-title-td">種別</td>
+				<td class="sub-title-td">金額</td>
+				<th rowspan="3">手数料(その他)</th>
+				<td  rowspan="3" colspan="2"><input type="text" class="inp-text sum-text">&nbsp;円</td>
+			</tr>
+			<tr>
+				<td>
+					<div class="hbtn-01">
+						<a class="modal-open h-btn" data-target="con4">選択</a>
+					</div>
+				</td>
+				<td></td>
+			</tr>
+			<tr>
+				<td>
+					<div class="hbtn-01">
+						<a class="modal-open h-btn" data-target="con4">選択</a>
+					</div>
+				</td>
+				<td></td>
+			</tr>
+			<tr>
+				<th>メモ</th>
+				<td colspan="5"><textarea class="textarea-style"></textarea></td>
+			</tr>
+			<tr>
+				<th>契約書PDF<br><span class="required-text">必須</span></th>
+				<td colspan="5"><input type="file" name=""></td>
+			</tr>
+		</table>
+
+
+		<!-- 排出事業場 -->
+		<div class="tuika-btn-box">
+			<a class="h-btn modal-open" data-target="con9">事業場追加</a>
+		</div>
+
+		<table class="issue-table">
+			<tr>
+				<th colspan="8" class="table-title">排出事業場</th>
+			</tr>
+			<tr>
+				<th>排出事業場</th>
+				<th>排出事業場郵便番号</th>
+				<th>都道府県</th>
+				<th>市区町村</th>
+				<th>番地</th>
+				<th>連絡先電話番号</th>
+				<th>引渡し担当者</th>
+				<th>メールアドレス</th>
+			</tr>
+
+			<tr>
+				<td>
+					<p>モスバーガー水道橋西通り店</p>
+					<p>モスバーガースイドウバシニシドオリテン</p>
+				</td>
+				<td>101-0065</td>
+				<td>東京都</td>
+				<td>千代田区</td>
+				<td>西神田２丁目５-８</td>
+				<td>03-0000-0000</td>
+				<td><p>城戸 陽介</p>
+					<p>キド ヨウスケ</p>
+				</td>
+				<td>kido_yousuke@example.com</td>
+			</tr>
+
+			<tr>
+				<td>
+					<p></p>
+					<p></p>
+				</td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td><p></p>
+					<p></p>
+				</td>
+				<td></td>
+			</tr>
+		</table>
+
+		<div class="con-btn-box cf">
+			<ul class="cf">
+				<li><a href="" class="sakuzyo-btn">削除</a></li>
+				<li><input type="submit" class="con-btn" value="修正登録"></li>
+			</ul>
+		</div>
+	</form>
+</div>
+
+<%= render template: 'template/footer' %>
+
+<!-- ポップアップ部分 -->
+<div class="modal-content con4">
+	<div class="batu-btn-box">
+		<a class="modal-close"><%= image_tag('batu.png', :alt => 'ボタン', :class => 'batu-btn') %></a>
+
+	</div>
+	<form action="" method="post">
+		<table class="place-table disposal-table">
+			<thead>
+				<tr>
+					<th colspan="3" class="table-title">管理費 種別一覧</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<th></th>
+					<th>管理費 種別</th>
+				</tr>
+				<tr>
+					<td><input type="radio" name="002"></td>
+					<td></td>
+				</tr>
+				<tr>
+					<td><input type="radio" name="002"></td>
+					<td></td>
+				</tr>
+				<tr>
+					<td><input type="radio" name="002"></td>
+					<td></td>
+				</tr>
+			</tbody>
+		</table>
+		<input type="submit" value="登録する">
+	</form>
+</div>
+
+
+<div class="modal-content con9">
+	<div class="batu-btn-box">
+		<a class="modal-close"><%= image_tag('batu.png', :alt => 'ボタン', :class => 'batu-btn') %></a>
+
+	</div>
+		<div class="cf">
+			<a href="#" class="tuika-btn">排出事業場追加</a>
+			<a href="#" class="tuika-btn">排出事業情報と同じ</a>
+		</div>
+
+	<form action="" method="post">
+		<table class="mo-kensaku-table">
+			<tr>
+				<th colspan="7" class="table-title">検索キーワード</th>
+			</tr>
+			<tr>
+				<th>排出事業場</th>
+				<td><input type="text" name="" class="sum-text"></td>
+				<th>郵便番号</th>
+				<td><input type="text" name="" class="sum-text"></td>
+				<th>都道府県</th>
+				<td><input type="text" name="" class="sum-text"></td>
+			</tr>
+			<tr>
+				<th>市区町村</th>
+				<td><input type="text" name="" class="sum-text"></td>
+				<th>番地</th>
+				<td><input type="text" name="" class="sum-text"></td>
+				<th>電話番号</th>
+				<td><input type="text" name="" class="sum-text"></td>
+			</tr>
+			<tr>
+				<th>引渡し担当者</th>
+				<td><input type="text" name="" class="sum-text"></td>
+				<th>メールアドレス</th>
+				<td colspan="3"><input type="text" name="" class="inp-text"></td>
+			</tr>
+		</table>
+		<input type="submit" value="検索する">
+
+			<table class="issue-table">
+				<tr>
+					<th colspan="9" class="table-title">排出事業場</th>
+				</tr>
+				<tr>
+					<th></th>
+					<th>排出事業場</th>
+					<th>排出事業場郵便番号</th>
+					<th>都道府県</th>
+					<th>市区町村</th>
+					<th>番地</th>
+					<th>連絡先電話番号</th>
+					<th>引渡し担当者</th>
+					<th>メールアドレス</th>
+				</tr>
+
+				<tr>
+					<td><input type="radio" name=""></td>
+					<td>
+						<p>モスバーガー水道橋西通り店</p>
+						<p>モスバーガースイドウバシニシドオリテン</p>
+					</td>
+					<td>101-0065</td>
+					<td>東京都</td>
+					<td>千代田区</td>
+					<td>西神田２丁目５-８</td>
+					<td>03-0000-0000</td>
+					<td><p>城戸 陽介</p>
+						<p>キド ヨウスケ</p>
+					</td>
+					<td>kido_yousuke@example.com</td>
+				</tr>
+			</table>
+		<input type="submit" value="登録する">
+	</form>
+</div>
+
+<div class="modal-content con00">
+	<div class="batu-btn-box">
+		<a class="modal-close"><%= image_tag('batu.png', :alt => 'ボタン', :class => 'batu-btn') %></a>
+
+	</div>
+	<form action="" method="post">
+		<table class="place-table disposal-table">
+			<thead>
+				<tr>
+					<th colspan="3" class="table-title">検索結果一覧</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<th></th>
+					<th>検索結果</th>
+				</tr>
+				<tr>
+					<td><input type="radio" name="000"></td>
+					<td>trylang</td>
+				</tr>
+				<tr>
+					<td><input type="radio" name="000"></td>
+					<td>trylang</td>
+				</tr>
+				<tr>
+					<td><input type="radio" name="000"></td>
+					<td>trylang</td>
+				</tr>
+			</tbody>
+		</table>
+		<input type="submit" value="登録する">
+	</form>
+</div>
+

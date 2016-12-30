@@ -3,37 +3,49 @@ class DisposalMethodsController < ApplicationController
     @disposal_methods = DisposalMethod.all
   end
   
-  def show 
-    @disposal_method = DisposalMethod.find(params[:id])
+  def show
+    @disposal_method = DisposalMethod.(params[:id])
   end
   
   def new
     @disposal_method = DisposalMethod.new
   end
   
-
   def create
-    @disposal_method = DisposalMethod.new(disposal_method_params)
-   
-    @disposal_method.save
-    redirect_to action: "index"
-  end
-   
-  private
-    def disposal_method_params
-      params.require(:disposal_method).permit(:code, :name)
-    end
-  
-  def edit
+    @disposal_method = DisposalMethod.new(disposalmethods_params)
     
+    if @disposal_method.save
+      redirect_to action: "index"
+    else
+      redirect_to action: "index"
+    end
+  end
+  
+   def edit
+     @disposal_method = DisposalMethod.find(params[:id])
   end
   
   def update
-    
+    @disposal_method = DisposalMethod.find(params[:id])
+    if @disposal_method.update_attributes(disposalmethods_params)
+    redirect_to disposal_methods_path, :notice => "Sucessfully Updated!"
+  else
+    render "edit"
+  end
   end
   
   def destroy
-    
+   @disposal_method = DisposalMethod.find(params[:id])
+   if @disposal_method.destroy
+     redirect_to action: "index"
+   else
+     redirect_to action: "index"
+   end
   end
+  
+  private
+    def disposalmethods_params
+      params.require(:disposal_method).permit(:code, :name)
+    end
 
 end

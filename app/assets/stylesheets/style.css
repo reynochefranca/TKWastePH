@@ -36,7 +36,7 @@ header{
 }
 
 .navi-box {
-	width: 900px;
+	width: 1100px;
 	margin: 0 auto;
 }
 
@@ -51,42 +51,68 @@ header{
 }
 
 .navi-li{
-	padding: 15px 10px;
+	padding: 10px 10px;
 	text-align: center;
 }
 
-.navi-box ul#menu li{
+.navi-box ul a
+{
+	display:block;
+	color:#fff;
+	text-decoration:none;
+	font-weight: normal;
+
+	line-height:32px;
+
+
+}
+
+.navi-box ul li
+{
 	float: left;
 	position: relative;
 	margin: 0;
-	padding-top: 15px;
+	/* padding-top: 15px; */
 	width: 150px;
 	box-sizing: border-box;
 	background-color: #003f96;
 	display: block;
 	z-index: 1;
 }
-.navi-box ul#menu li a{
-	color: #fff;
-	text-decoration: none;
-	font-weight: normal;
+
+
+.navi-box ul li ul li a:hover{
+	background: #2773dc;
 }
 
-.navi-box ul.child{
-	display: none;
-	position: absolute;
-	margin-left: -5px;
-	padding: 0;
+.navi-box ul ul{
+	display:none;
+	position:absolute;
+	top:100%;
+	left:0;
+	background:#fff;
+	padding:0
 }
-.navi-box ul.child li a{
+
+.navi-box ul ul li{
+	float:none;	
+}
+
+.navi-box ul ul a{
 	padding: 15px 10px;
 	display: block;
 	color: #fff;
 	text-decoration: none;
 	font-weight: normal;
 }
-.navi-box ul.child li a:hover{
-	background: #2773dc;
+
+.navi-box ul ul ul{
+	top:0;
+	left:100%
+}
+
+.navi-box ul li:hover > ul{
+	display:block
 }
 
 footer {
@@ -662,3 +688,4 @@ a{
 .hide {
 	display:none;
 }
+

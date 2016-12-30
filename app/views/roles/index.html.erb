@@ -1,381 +1,66 @@
-<style>
-	
-	@charset "UTF-8";
-
-header{
-	border-top: solid 15px #003f96;
-	border-bottom: 1px solid #ededed;
-}
-
-.title{
-	text-align: center;
-	color: #003f96;
-	font-size: 30px;
-}
-
-.container{
-	width: 1100px;
-	margin: 0 auto 40px;
-}
-
-
-/*　==================================================== 
-
-　テーブル
-
-　==================================================== */
-
-/* テーブルタイトル */
-.table-title{
-	padding: 18px 0 !important;
-	color: #fff !important;
-	background-color: #003f96 !important;
-	border: 1px solid #003f96 !important;
-	text-align: center !important;
-	font-size: 16px !important;
-}
-
-
-/*　排出事業場.排出依頼登録部分　*/
-.place-table {
-	width: 900px;
-	margin: 40px auto 40px;
-	border-collapse: collapse;
-}
-
-.place-table thead,
-.place-table tbody{
-	display:block;
-}
-
-.place-table thead tr{
-	background-color: #003f96;
-	color: #fff;
-}
-
-.place-table thead th{
-	width: 980px;
-}
-
-.place-table tbody{
-	vertical-align: middle;
-	border: 1px solid #e1e1e1;
-}
-
-.place-table tbody tr:nth-child(2n-1){
-	background-color: #e7f1ff;
-}
-
-.place-table tbody tr:first-child{
-	background-color: #f7f7f7;
-}
-
-
-.place-table tbody td,
-.place-table tbody th{
-	border: 1px solid #e1e1e1;
-	font-size: 16px;
-	padding: 15px 20px;
-}
-
-.disposal-table td{
-	background-color: #fff;
-}
-
-.disposal-table tbody td{
-	width: 602px;
-}
-
-/* master-table 設定 */
-.master-table tbody th:nth-child(1){
-	width: 690px;
-	box-sizing: border-box;
-}
-
-.master-table tbody th:nth-child(2){
-	width: 210px;
-	box-sizing: border-box;
-}
-
-/* 登録するボタン td */
-.reg-btn-box{
-	width: 140px !important;
-	text-align: center;
-}
-
-
-
-/*　==================================================== 
-
-　フォーム設定
-
-　==================================================== */
-.inp-text{
-	width: 300px;
-}
-
-.sum-text{
-	width: 400px;
-}
-
-
-/*　==================================================== 
-
-　モーダル設定
-
-　==================================================== */
-.modal-content {
-	position:fixed;
-	display:none;
-	z-index:2;
-	width: 980px;
-	margin:0;
-	padding:10px 20px;
-	border:2px solid #aaa;
-	background:#fff;
-}
-
-.modal-content .reg-table{
-	margin: 20px auto;
-}
-
-.modal-title{
-	width: 884px;
-	border-left: 8px solid #003f96;
-	padding: 5px 0 5px 8px;
-	margin: 0 auto;
-	font-weight: bold;
-	font-size: 18px;
-
-}
-
-.modal-content p {
-	margin:0;
-	padding:0;
-}
-
-.modal-overlay {
-	z-index:1;
-	display:none;
-	position:fixed;
-	top:0;
-	left:0;
-	width:100%;
-	height:120%;
-	background-color:rgba(0,0,0,0.75);
-}
-
-.modal-close {
-	color:#00f;
-	text-decoration:underline;
-}
-
-.modal-close:hover {
-	cursor:pointer;
-	color:#f00;
-}
-
-
-
-
-/*　==================================================== 
-
-　各種ボタン設定
-
-　==================================================== */
-
-
-/* 確認するボタン */
-.con-btn{
-	border: none;
-}
-
-
-/* 登録するボタン */
-.h-btn{
-	padding: 10px 20px;
-	border: 1px solid #ccc;
-}
-
-
-/* モーダル内 */
-.modal-content input[type="submit"]{
-	display: block;
-	width: 200px;
-	border: none;
-	margin: 0 auto 20px;
-	padding: 10px 5px;
-	background-color: #003f96;
-	color: #fff;
-}
-
-
-.batu-btn-box{
-	text-align: right;
-}
-
-.batu-btn{
-	width: 35px;
-}
-
-/* 編集削除ボタン */
-.btn-box{
-	text-align: center;
-}
-
-.btn-box a{
-	margin-right: 10px;
-}
-
-.btn-box a:last-child{
-	margin-right: 0;
-}
-
-
-/* clearfix */
-.cf:after {
-	content:"";
-	display:block;
-	clear:both;
-}
-	
-</style>
-
-<script>
-	
-	# Place all the behaviors and hooks related to the matching controller here.
-# All this logic will automatically be available in application.js.
-# You can use CoffeeScript in this file: http://coffeescript.org/
-
-<script>
-$(function(){
-    // 「.modal-open」をクリック
-    $('.modal-open').click(function(){
-        // オーバーレイ用の要素を追加
-        $('body').append('<div class="modal-overlay"></div>');
-        // オーバーレイをフェードイン
-        $('.modal-overlay').fadeIn('slow');
-
-        // モーダルコンテンツのIDを取得
-        // var modal = '#' + $(this).attr('data-target');
-        var modal = '.' + $(this).attr('data-target');
-        // モーダルコンテンツの表示位置を設定
-        modalResize();
-         // モーダルコンテンツフェードイン
-        $(modal).fadeIn('slow');
-
-        // 「.modal-overlay」あるいは「.modal-close」をクリック
-        $('.modal-overlay, .modal-close').off().click(function(){
-            // モーダルコンテンツとオーバーレイをフェードアウト
-            $(modal).fadeOut('slow');
-            $('.modal-overlay').fadeOut('slow',function(){
-                // オーバーレイを削除
-                $('.modal-overlay').remove();
-            });
-        });
-
-        // リサイズしたら表示位置を再取得
-        $(window).on('resize', function(){
-            modalResize();
-        });
-
-        // モーダルコンテンツの表示位置を設定する関数
-        function modalResize(){
-            // ウィンドウの横幅、高さを取得
-            var w = $(window).width();
-            var h = $(window).height();
-
-            // モーダルコンテンツの表示位置を取得
-            var x = (w - $(modal).outerWidth(true)) / 2;
-            var y = (h - $(modal).outerHeight(true)) / 2;
-
-            // モーダルコンテンツの表示位置を設定
-            $(modal).css({'left': x + 'px','top': y + 'px'});
-        }
-
-    });
-});
-</script>
-
-	
-</script>
-
+<%= stylesheet_link_tag "roles-master.css" %>
 <header>
-		<h1 class="title">ロールマスタ画面</h1>
-	</header>
+	<%= render template: 'template/nav' %>
+	<h1 class="title">ロールマスタ画面</h1>
+</header>
 
-	<div class="container">
-		  <%= form_for Role.new do |f| %>
+<div class="container">
+	<%= form_for Role.new do |f| %>
 
-			<table class="place-table master-table">
-				<thead>
-					<tr>
-						<th colspan="9" class="table-title">ロールマスタ</th>
-					</tr>
-				</thead>
-				<tbody>
-					<tr>
-						<th>名称</th>
-						<th></th>
-					</tr>
-					<% @roles.each do |row| %>
-					<tr>
-						<td><%= row.name %></td>
-						<td>
-							<div class="btn-box">
-								<a class="modal-open h-btn" data-target="con1">編集</a>
-								<a href="#" class="h-btn">削除</a>
-							</div>
-						</td>
-					</tr>
-                    <% end %>
-				</tbody>
-			</table>
-           
-			<table class="place-table disposal-table">
-				<thead>
-					<tr>
-						<th class="table-title" colspan="5">新規追加</th>
-					</tr>
-				</thead>
-				<tbody>
-					<tr>
-						<th>名称</th>
-						<td><%= f.text_field :name, :required => 'required', class: 'inp-text sum-text'%></td>
-						<td class="reg-btn-box"><%= f.submit "登録", class: 'h-btn' %></td>
-					</tr>
-				</tbody>
-			</table>
-			<div class="con-btn-box">
-				<input type="submit" class="con-btn" value="確認する">
-			</div>
-			
-        <% end %>
-
-	</div>
-
-
-<!-- ポップアップ -->
-<div class="modal-content con1">
-	<div class="batu-btn-box">
-		<a class="modal-close"><img src="img/batu.png" alt="×ボタン" class="batu-btn"></a>
-
-	</div>
-	<form action="" method="post">
-		<table class="place-table disposal-table">
+		<table class="place-table master-table">
 			<thead>
 				<tr>
-					<th colspan="2" class="table-title">編集</th>
+					<th colspan="9" class="table-title">ロールマスタ</th>
 				</tr>
 			</thead>
 			<tbody>
 				<tr>
 					<th>名称</th>
-					<td><input type="text" name="" class="inp-text sum-text"></td>
-					<td class="reg-btn-box"><input type="button" name="" value="登録" class="h-btn"></td>
+					<th></th>
+				</tr>
+				<% if @roles.blank? %>
+					<tr>
+						<td colspan="2"><center>NO DATA INPUT</center></td>
+					</tr>
+				<% else 
+					@roles.each do |row| %>
+				<tr>
+					<td><%= row.name %></td>
+					<td>
+						<div class="btn-box cf">
+							<ul class="cf">
+								<!--li><a class="modal-open choicebtn" data-target="con1">編集</a></li -->
+								<li><a href="javascript:void(0)" onclick="window.open('<%= row.id %>/edit', 'height=10', 'top=auto', 'left=auto');" class="choicebtn">編集</a></li>
+								<li><%= link_to '削除', row, method: :delete, :class => 'sakuzyobtn', data: { confirm: 'Are you sure?' } %></li>
+							</ul>
+						</div>
+					</td>
+					<% end 
+					end %>
+				</tr>
+				
+			</tbody>
+		</table>
+
+		<table class="place-table disposal-table">
+			<thead>
+				<tr>
+					<th class="table-title" colspan="5">新規追加</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<th>名称</th>
+					<td><%= f.text_field :name, :required => 'required', class: 'inp-text sum-text'%></td>
+					<td class="reg-btn-box"><%= f.submit "登録", class: 'choicebtn' %></td>
 				</tr>
 			</tbody>
 		</table>
-		<input type="submit" value="登録する">
-	</form>
+		<div class="con-btn-box">
+			<input type="submit" class="con-btn" value="修正登録">
+		</div>
+	<% end %>
 </div>
+
+<%= render template: 'template/footer' %>
+

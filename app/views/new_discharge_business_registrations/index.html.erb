@@ -1,5 +1,6 @@
-<%= stylesheet_link_tag "new_discharge_business_reg.css" %>
+<%= stylesheet_link_tag "new-discharge-business-reg.css" %>
 <%= javascript_include_tag "jquery-colorbox.min.js" %>
+
 
 <script type="text/javascript">
 $(window).load(function(){
@@ -11,7 +12,7 @@ $(window).load(function(){
 	  event.data.a.slideDown(350);
 	} else {
 	  event.data.a.slideUp(350);
-	}
+	}W
   }
 });
 </script>
@@ -28,7 +29,7 @@ $(function() {
 
 <header>
 <%= render template: 'template/nav' %>
-<h1 class="title">新規排出事業者登録画面</h1>
+	<h1 class="title">新規排出事業者登録画面</h1>
 </header>
 
 <div class="container">
@@ -46,7 +47,9 @@ $(function() {
     						<p>株式会社モスフードサービス</p>
     						<p>カブシキガイシャモスフードサービス</p>
     					</div>
-    					<a class="modal-open h-btn02 combtn" data-target="con4">会社</a>
+    					<!-- <a class="modal-open h-btn02 combtn" data-target="con4">会社</a> -->
+    				
+    					<%= link_to '会社', 'javascript:void(0)', :onclick => "window.open('trader_search', 'trader_search', 'width=auto', 'height=auto');", :class => 'h-btn02 combtn' %>
     				</div>
     			</td>
     		</tr>

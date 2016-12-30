@@ -1,0 +1,19 @@
+
+------------------------------------------------------TASKS:----------------------------------------------------------------
+EDwards:
+    - modify navigation for master list (dropdown => sub dropdown)
+    - unified development (assets: css, js)
+    - all screens of vol 1 to 3 except manifesto and claim are screened
+    - master list: (categories, waste_types, and disposal_method) func: create, [update is still in progress on modal], read and delete
+    - waste company(sub dropdown: transporter and new discharge business registration) is added to menu in navigation 
+Jay:
+    - Database association
+    - Screen page connection/flow
+    - Master list (hazardous_substances, packages, shapes, units)
+Philip:
+    - Master list (edi_users, roles, cars, places) function: CRUD (update is temporarily viewed via window pop-up)
+    - Implemented temporary update function
+    
+    
+    *Mr. Fuji suggested the temporary use of the pop-up window since we are having a difficulty in using a modal
+    
