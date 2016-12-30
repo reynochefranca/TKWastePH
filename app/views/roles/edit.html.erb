@@ -1,24 +1,2 @@
 <%= stylesheet_link_tag "roles-master.css" %>
-<header>
-	<%= render template: 'template/nav' %>
-	<h1 class="title">ロールマスタ画面</h1>
-</header>
-	<%= form_for @role do |f| %>
-	<div class="container">
-		<table class="place-table disposal-table">
-			<thead>
-				<tr>
-					<th class="table-title" colspan="5">新規追加</th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr>
-					<th>名称</th>
-					<td><%= f.text_field :name, :required => 'required', class: 'inp-text sum-text'%></td>
-					<td class="reg-btn-box"><%= f.submit "登録", class: 'choicebtn' %></td>
-				</tr>
-			</tbody>
-		</table>
-		<input type="button" value="登録する">
-	<% end %>
-	</div>
+<%= render :partial => 'form' %>

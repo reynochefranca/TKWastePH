@@ -1,4 +1,4 @@
-<%= stylesheet_link_tag "permit-master.css" %>
+<%= stylesheet_link_tag "edi-users-master.css" %>
 <header>
 	<%= render template: 'template/nav' %>
 	<h1 class="title">EDIユーザーマスタ画面</h1>
@@ -28,10 +28,7 @@
 							<td class="btn-box-td" rowspan="4">
 								<div class="btn-box cf">
 									<ul class="cf">
-										<li>
-											<%# link_to '編集', 'javascript:void(0)', :class => 'modal-open choicebtn', data: {toggle: "modal", target: "con1", id: row.id, code: row.code, name: row.name} %>
-											<a href="javascript:void(0)" onclick="window.open('<%= row.id %>/edit', 'height=10', 'top=auto', 'left=auto');" class="choicebtn">編集</a>
-										</li>
+										<li><%= link_to '編集', edit_edi_user_path(row), :class => 'modal-open choicebtn', data: { target: 'con1', remote: 'true' } %></li>
 										<li><%= link_to '削除', row, method: :delete, :class => 'sakuzyobtn', data: { confirm: 'Are you sure?' } %></li>
 									</ul>
 								</div>
@@ -123,63 +120,3 @@
 </div>
 
 <%= render template: 'template/footer' %>
-
-<!-- ポップアップ -->
-<div class="modal-content con1">
-	<div class="batu-btn-box">
-		<a class="modal-close"><%= image_tag('batu.png', :alt => 'ボタン', :class => 'batu-btn') %></a>
-
-	</div>
-	<form action="" method="post">
-		<table class="place-table disposal-table">
-			<thead>
-				<tr>
-					<th class="table-title" colspan="9">編集</th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr>
-					<th>名前1</th>
-					<td><input type="text" name="" class="sum-text"></td>
-				</tr>
-				<tr>
-					<th>メール1</th>
-					<td><input type="text" name="" class="inp-text"></td>
-				</tr>
-				<tr>
-					<th>名前2</th>
-					<td><input type="text" name="" class="sum-text"></td>
-				</tr>
-				<tr>
-					<th>メール2</th>
-					<td><input type="text" name="" class="inp-text"></td>
-				</tr>
-				<tr>
-					<th>名前3</th>
-					<td><input type="text" name="" class="sum-text"></td>
-				</tr>
-				<tr>
-					<th>メール3</th>
-					<td><input type="text" name="" class="inp-text"></td>
-				</tr>
-				<tr>
-					<th>EDI加入者番号</th>
-					<td><input type="text" name="" class="sum-text"></td>
-				</tr>
-				<tr>
-					<th>EDI接続登録番号</th>
-					<td><input type="text" name="" class="sum-text"></td>
-				</tr>
-				<tr>
-					<th>EDI公開確認番号</th>
-					<td><input type="text" name="" class="sum-text"></td>
-				</tr>
-				<tr>
-					<th>EDI接続パスワード</th>
-					<td><input type="text" name="" class="sum-text"></td>
-				</tr>
-			</tbody>
-		</table>
-		<input type="submit" value="登録する">
-	</form>
-</div>

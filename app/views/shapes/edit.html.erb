@@ -1,24 +1,2 @@
 <%= stylesheet_link_tag "master.css" %>
-<header>
-	<h1 class="title">形状マスタ画面</h1>
-</header>
-<div class="container">
-    <%= form_for @shape do |f| %>
-        <table class="place-table disposal-table">
-        	<thead>
-        		<tr>
-        			<th class="table-title" colspan="5">編集</th>
-        		</tr>
-        	</thead>
-        	<tbody>
-        		<tr>
-        			<th>コード</th>
-        			<td><%= f.text_field :code, :required => 'required', class: 'inp-text sum-text' %></td>
-        			<th>品目</th>
-        			<td><%= f.text_field :name, :required => 'required', class: 'inp-text sum-text' %></td>
-        			<td class="reg-btn-box"><%= f.submit "登録", class: 'choicebtn' %></td>
-        		</tr>
-        	</tbody>
-        </table>
-    <% end %>
-</div>
+<%= render :partial => 'form' %>

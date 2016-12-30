@@ -29,8 +29,7 @@
 					<td>
 						<div class="btn-box cf">
 							<ul class="cf">
-								<!--li><a class="modal-open choicebtn" data-target="con1">編集</a></li -->
-								<li><a href="javascript:void(0)" onclick="window.open('<%= row.id %>/edit', 'height=10', 'top=auto', 'left=auto');" class="choicebtn">編集</a></li>
+								<li><%= link_to '編集', edit_role_path(row), :class => 'modal-open choicebtn', data: { target: 'con1', remote: 'true' } %></li>
 								<li><%= link_to '削除', row, method: :delete, :class => 'sakuzyobtn', data: { confirm: 'Are you sure?' } %></li>
 							</ul>
 						</div>

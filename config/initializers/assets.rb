@@ -23,6 +23,7 @@ Rails.application.config.assets.precompile += %w( master.css )
 Rails.application.config.assets.precompile += %w( permit-master.css )
 Rails.application.config.assets.precompile += %w( roles-master.css )
 Rails.application.config.assets.precompile += %w( places-master.css )
+Rails.application.config.assets.precompile += %w( edi-users-master.css )
 Rails.application.config.assets.precompile += %w( company-reg.css )
 
 # JS Global

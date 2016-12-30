@@ -31,9 +31,7 @@
 								<div class="btn-box cf">
 									<ul class="cf">
 										<li>
-											<%# link_to '編集', 'javascript:void(0)', :class => 'modal-open choicebtn', data: {toggle: "modal", target: "con1", id: row.id, code: row.code, name: row.name} %>
-											<a href="javascript:void(0)" onclick="window.open('<%= row.id %>/edit', 'height=10', 'top=auto', 'left=auto');" class="choicebtn">編集</a>
-										</li>
+											<li><%= link_to '編集', edit_hazardous_substance_path(row), :class => 'modal-open choicebtn', data: { target: 'con1', remote: 'true' } %></li>
 										<li><%= link_to '削除', row, method: :delete, :class => 'sakuzyobtn', data: { confirm: 'Are you sure?' } %></li>
 									</ul>
 								</div>

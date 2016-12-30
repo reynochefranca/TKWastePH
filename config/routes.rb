@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
   
+  get 'top/index'
+
   get 'home/index'
 
   get 'permit_registrations/index'
@@ -50,6 +52,7 @@ Rails.application.routes.draw do
   devise_for :users, :skip => [:registrations]
   as :user do
    # get 'users/edit' => 'devise/registrations#edit', :as => 'edit_user_registration'
+
     put 'users' => 'devise/registrations#update', :as => 'user_registration'
   end
 
@@ -58,6 +61,8 @@ Rails.application.routes.draw do
 
   # You can have the root of your site routed with "root"
   root 'home#index'
+  
+
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
