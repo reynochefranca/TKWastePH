@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161228024156) do
+ActiveRecord::Schema.define(version: 20170104103805) do
 
   create_table "cars", force: :cascade do |t|
     t.string   "car_type",   limit: 255
@@ -62,6 +62,23 @@ ActiveRecord::Schema.define(version: 20161228024156) do
     t.string   "name",       limit: 255
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
+  end
+
+  create_table "permissions", force: :cascade do |t|
+    t.integer  "trader_id",                                   limit: 4
+    t.string   "permission_type",                             limit: 255
+    t.string   "number",                                      limit: 255
+    t.string   "pdf",                                         limit: 255
+    t.string   "permit_type",                                 limit: 255
+    t.string   "permit_classification",                       limit: 255
+    t.string   "permission_number",                           limit: 255
+    t.string   "license_name",                                limit: 255
+    t.string   "permit_area",                                 limit: 255
+    t.string   "allow_municipalities",                        limit: 255
+    t.string   "permission_period",                           limit: 255
+    t.string   "industrial_waste_pay_certification_division", limit: 255
+    t.datetime "created_at",                                              null: false
+    t.datetime "updated_at",                                              null: false
   end
 
   create_table "place_users", force: :cascade do |t|

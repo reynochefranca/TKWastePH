@@ -6,12 +6,15 @@
   <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
     <table>
   			<tr>
-  				<th>ID</th>
+  				<th>EMAIL</th>
   				<td><%= f.email_field :email, autofocus: true %></td>
   			</tr>
   			<tr>
   				<th>PASS</th>
   				<td><%= f.password_field :password, autocomplete: "off" %></td>
+  			</tr>
+  			<tr>
+  			  <td colspan="2"><center><%= render "users/shared/links" %></center></td>
   			</tr>
   		</table>
       <div class="actions">

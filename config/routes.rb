@@ -1,6 +1,4 @@
 Rails.application.routes.draw do
-  
-  get 'top/index'
 
   get 'home/index'
 
@@ -41,20 +39,13 @@ Rails.application.routes.draw do
   get 'categories/index'
   
   get 'new_discharge_business_registrations/index'
-      get 'new_discharge_business_registrations/trader_search'
   
   get 'new_emission_plant_registrations/index'
   
   
-  resources :categories, :waste_types, :disposal_methods, :roles, :cars, :units, :places, :shapes, :edi_users, :packages, :hazardous_substances, :traders, :trader_places, :place_users
   # devise_for :users
 
-  devise_for :users, :skip => [:registrations]
-  as :user do
-   # get 'users/edit' => 'devise/registrations#edit', :as => 'edit_user_registration'
-
-    put 'users' => 'devise/registrations#update', :as => 'user_registration'
-  end
+  devise_for :users
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
@@ -63,6 +54,7 @@ Rails.application.routes.draw do
   root 'home#index'
   
 
+  resources :categories, :waste_types, :disposal_methods, :roles, :cars, :units, :places, :shapes, :edi_users, :packages, :hazardous_substances, :traders, :trader_places, :place_users, :users
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

@@ -1,0 +1,29 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  trader_id: 
+  permission_type: 
+  number: 
+  pdf: 
+  permit_type: 
+  permit_classification: 
+  permission_number: 
+  license_name: 
+  permit_area: 
+  allow_municipalities: 
+  permission_period: 
+  industrial_waste_pay_certification_division: MyString
+
+two:
+  trader_id: 
+  permission_type: 
+  number: 
+  pdf: 
+  permit_type: 
+  permit_classification: 
+  permission_number: 
+  license_name: 
+  permit_area: 
+  allow_municipalities: 
+  permission_period: 
+  industrial_waste_pay_certification_division: MyString
