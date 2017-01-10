@@ -1,29 +1,33 @@
-<h2>Sign up</h2>
+<header>
+  <h1 class="title">サインアップ</h1>
+</header>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+<div class="container">
+  <%= form_for @user do |f| %>
   <%= devise_error_messages! %>
+    <table>
+  			<tr>
+  				<th>EMAIL</th>
+  				<td><%= f.email_field :email, autofocus: true %></td>
+  			</tr>
+  			<tr>
+  				<th>PASS <% if @minimum_password_length %><em>(<%= @minimum_password_length %> characters minimum)</em<% end %></th>
+  				<td><%= f.password_field :password, autocomplete: "off" %></td>
+  			</tr>
+  			<tr>
+  				<th>RETYPE PASS</th>
+  				<td><%= f.password_field :password_confirmation, autocomplete: "off" %></td>
+  			</tr>
+  			
+  			  
+  			
+  		</table>
+      <div class="actions">
+        <%= f.submit "Sign up", :value => "サインアップ", :class => "con-btn" %>
+      </div>
+  <% end %>
+</div>
+<center><%= render "users/shared/links" %></center>
+<%= render template: 'template/footer' %>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true %>
-  </div>
 
-  <div class="field">
-    <%= f.label :password %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "off" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "off" %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "Sign up" %>
-  </div>
-<% end %>
-
-<%= render "users/shared/links" %>

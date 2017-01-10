@@ -3,31 +3,24 @@
 </header>
 
 <div class="container">
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <table>
-			<tr>
-				<th>ID</th>
-				<td><%= f.email_field :email, autofocus: true %></td>
-			</tr>
-			<tr>
-				<th>PASS</th>
-				<td><%= f.password_field :password, autocomplete: "off" %></td>
-			</tr>
-		</table>
-  <% if devise_mapping.rememberable? -%>
-    <center><div class="field">
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
-    </div></center>
-  <% end -%>
-  <center>
-  <%= link_to "Forgot your password?", new_password_path(resource_name) %><br /></center>
+  <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+    <table>
+  			<tr>
+  				<th>EMAIL</th>
+  				<td><%= f.email_field :email, autofocus: true %></td>
+  			</tr>
+  			<tr>
+  				<th>PASS</th>
+  				<td><%= f.password_field :password, autocomplete: "off" %></td>
+  			</tr>
+  			<tr>
+  			  <td colspan="2"><center><%= render "users/shared/links" %></center></td>
+  			</tr>
+  		</table>
+      <div class="actions">
+        <%= f.submit "Log in", :value => "ログイン", :class => "con-btn" %>
+      </div>
+  <% end %>
 </div>
 
-  <div class="actions">
-    <%= f.submit "Log in", :value => "ログイン", :class => "con-btn" %>
-  </div>
-<% end %>
-</div>
-
-
+<%= render template: 'template/footer' %>

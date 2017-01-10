@@ -1,4 +1,3 @@
-
 class WasteTypesController < ApplicationController
   def index
     @waste_types = WasteType.all
@@ -19,24 +18,29 @@ class WasteTypesController < ApplicationController
     @waste_type.save
     redirect_to action: "index"
   end
-   
-  private
-    def wastetype_params
-      params.require(:waste_type).permit(:waste_type, :code, :name)
-    end
   
-    
+  def destroy
+    @waste_type = WasteType.find(params[:id])
+    @waste_type.destroy
+    redirect_to action: "index"
+  end
+  
   def edit
-    
+     @waste_type = WasteType.find(params[:id])
   end
   
   def update
-    
+    @waste_type = WasteType.find(params[:id])
+    if @waste_type.update_attributes(wastetype_params)
+    redirect_to waste_types_path, :notice => "Sucessfully Updated!"
+  else
+    render "edit"
+    end
   end
   
-  def destroy
+  private
+    def wastetype_params
+      params.require(:waste_type).permit(:code, :name)
+    end
     
-  end
-
 end
-

@@ -1,0 +1,403 @@
+@charset "UTF-8";
+
+header{
+	border-top: solid 15px #003f96;
+	border-bottom: 1px solid #ededed;
+}
+
+.title{
+	text-align: center;
+	color: #003f96;
+	font-size: 30px;
+}
+
+.container{
+	min-width: 1100px;
+	margin: 0 auto 40px;
+}
+
+
+/*　==================================================== 
+
+　テーブル
+
+　==================================================== */
+.reg-table{
+	width: 980px;
+}
+
+
+/* 必須部分 */
+.reg-table .required-text{
+	margin-left: 0;
+}
+
+/* 灰色ボタン */
+.reg-table .h-btn{
+	border: 1px solid #ccc;
+	margin-top: 5px;
+	padding: 5px 0;
+	width: 65px;
+	float: right;
+}
+
+/*　排出事業場.排出依頼登録部分　*/
+.place-table {
+	width: 1100px;
+}
+
+.place-table tbody{
+	width: 1098px;
+}
+
+.place-table tbody th:last-child{
+	width: 206px;
+}
+
+.place-table tbody tr td:first-child{
+	width: 30px;
+	padding-right: 5px;
+	text-align: center;
+	vertical-align: middle;
+}
+
+.place-table thead tr:nth-child(2) th{
+	width: 1100px;
+	padding: 18px 0;
+	border-right: 2px solid #fff;
+}
+
+
+.reg-table .table-title{
+	padding: 18px 0;
+	color: #fff;
+	background-color: #003f96;
+	border: 1px solid #003f96;
+	text-align: center;
+	font-size: 16px;
+}
+
+.industrial-waste-table td:nth-child(1){
+	width: 27px !important;
+}
+
+.industrial-radi-box{
+	text-align: center;
+}
+
+/* kensaku01 */
+.kensaku01 div {
+	width: 100%;
+}
+
+
+/* 整理番号 */
+.reference-number{
+	width: 980px;
+	margin: 40px auto;
+	text-align: right;
+}
+
+.reference-number input{
+	margin-left: 5px;
+}
+
+
+/*  */
+.issue-table{
+	min-width: 1100px;
+}
+
+.issue-table tr:nth-child(2n){
+	background-color: #e7f1ff;
+}
+
+.issue-table th{
+	text-align: center;
+}
+
+.issue-table td{
+	width: 320px;
+	box-sizing: border-box;
+	padding: 10px 20px;
+}
+
+
+.issue-table td:last-child{
+	width: 140px;
+	text-align: center;
+}
+
+.select-box{
+	text-align: center;
+}
+
+/*　*/
+.sub-title-td{
+	background-color: #f7f7f7;
+	text-align: center;
+	font-weight: bold;
+}
+
+
+
+
+/*　==================================================== 
+
+　タブ設定
+
+　==================================================== */
+.tab-box{
+	width: 980px;
+	margin: 0 auto 40px;
+}
+
+.tab-box table{
+	margin: 40px auto 0;
+	width: 100%;
+}
+
+.tab-box .collection-table,
+.tab-box .reg-table td,
+.tab-box .reg-table th{
+	border-bottom: none !important;
+}
+
+.tab-box table:first-child{
+	margin-top: 0;
+}
+
+.tab-box ul{
+	margin: 0;
+	padding: 0;
+}
+
+.tab-box .big-text{
+	width: 400px;
+}
+
+.tab{
+	overflow:hidden;
+}
+
+.content li{
+	list-style: none;
+	background:none;
+	padding: 0;
+}
+.hide {
+	display:none;
+}
+
+/*　==================================================== 
+
+　フォーム設定
+
+　==================================================== */
+.inp-text{
+	width: 300px;
+}
+
+.sum-text{
+	width: 160px;
+}
+
+.big-text{
+	width: 600px;
+}
+
+.inp-checkbox,
+.inp-radio{
+	margin-right: 5px;
+}
+
+label{
+	margin-right: 15px;
+}
+
+select{
+	padding: 2px;
+	height: 26px;
+}
+
+.textarea-style{
+	width: 100%;
+	height: 200px;
+	margin: 0 auto;
+}
+
+/* 排出業者情報　住所/メールアドレス部分 */
+.address input{
+	width: 200px;
+}
+
+/* 日付　カレンダーbox */
+.calendar-box input{
+	margin-top: 15px;
+}
+
+/* 有害物質 テキスト */
+.material-text{
+	margin-top: 15px;
+	display: block;
+}
+
+.material-text:first-child{
+	margin-top: 0;
+}
+
+
+/*　==================================================== 
+
+　必須部分
+
+　==================================================== */
+.required-text{
+	margin-left: 0;
+	display: block;
+	box-sizing: border-box;
+	width: 49px;
+	margin-top: 5px;
+}
+
+/* 処理業者部分 */
+.mar-r{
+	display: inline-block;
+	margin-right: 10px;
+}
+
+
+/*　==================================================== 
+
+　モーダル設定
+
+　==================================================== */
+.modal-content {
+	width: 980px;
+}
+
+.modal-content .reg-table{
+	margin: 20px auto;
+}
+
+.modal-title{
+	width: 884px;
+}
+
+.modal-content p {
+	margin:0;
+	padding:0;
+}
+
+.modal-overlay {
+	z-index:1;
+	display:none;
+	position:fixed;
+	top:0;
+	left:0;
+	width:100%;
+	height:120%;
+	background-color:rgba(0,0,0,0.75);
+}
+
+.modal-close {
+	color:#00f;
+	text-decoration:underline;
+}
+
+.modal-close:hover {
+	cursor:pointer;
+	color:#f00;
+}
+
+
+
+/*　==================================================== 
+
+　各種ボタン設定
+
+　==================================================== */
+
+/*　表示ボタン設定  排出事業場登録部分の「排出事業者情報と同じ」ボタン設定　*/
+.menu,
+.tuika-btn{
+	width: 180px;
+	padding: 15px 10px;
+	border: 1px solid #ccc;
+	/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#ffffff+40,e5e5e5+100 */
+	background: rgb(255,255,255); /* Old browsers */
+	background: -moz-linear-gradient(top,  rgba(255,255,255,1) 40%, rgba(229,229,229,1) 100%); /* FF3.6-15 */
+	background: -webkit-linear-gradient(top,  rgba(255,255,255,1) 40%,rgba(229,229,229,1) 100%); /* Chrome10-25,Safari5.1-6 */
+	background: linear-gradient(to bottom,  rgba(255,255,255,1) 40%,rgba(229,229,229,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#e5e5e5',GradientType=0 ); /* IE6-9 */
+	text-align: center;
+}
+
+.haiki-tuika-box{
+	width: 980px;
+	margin: 0 auto;
+}
+
+.tuika-btn{
+	display: block;
+	float: left;
+	text-decoration: none;
+	color: #000;
+	width: 146px;
+	padding: 10px 5px;
+	margin: 20px 0 -20px 0;
+	font-size: 14px;
+}
+
+
+/* 確認するボタン */
+.con-btn{
+	border: none;
+}
+
+
+/*　日付追加　*/
+.calendar-tuika{
+	width: 200px !important;
+	margin-top: 0 !important;
+	margin-left: 20px !important;
+	float: none !important;
+}
+
+.hbtn-01{
+	width: 100%;
+	text-align: center;
+}
+
+.hbtn-01 .h-btn{
+	margin: 0 auto;
+	float: none;
+}
+
+/*  */
+.con-btn-box ul{
+	margin: 0 auto;
+	padding: 0;
+	width: 950px;
+}
+
+.con-btn-box li{
+	list-style: none;
+	float: left;
+}
+
+.con-btn-box li:nth-child(2){
+	margin: 0 25px;
+}
+
+.choicebtn,
+.choicebtn:hover{
+	margin-left: 0 !important;
+}
+
+/* clearfix */
+.cf:after {
+	content:"";
+	display:block;
+	clear:both;
+}

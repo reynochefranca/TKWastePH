@@ -18,21 +18,30 @@ class PackagesController < ApplicationController
     @package.save
     redirect_to action: "index"
   end
-   
-  private
-    def package_params
-      params.require(:package).permit(:code, :name)
-    end
+  
+  def destroy
+    @package = Package.find(params[:id])
+    @package.destroy
+    redirect_to action: "index"
+  end
   
   def edit
-    
+     @package = Package.find(params[:id])
   end
   
   def update
-    
+    @package = Package.find(params[:id])
+    if @package.update_attributes(package_params)
+    redirect_to packages_path, :notice => "Sucessfully Updated!"
+  else
+    render "edit"
+    end
   end
   
-  def destroy
-    
-  end
+  private
+    def package_params
+      params.require(:package).permit(:code, :name)
+    end 
+
 end
+      
