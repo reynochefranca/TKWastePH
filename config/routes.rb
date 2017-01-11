@@ -68,7 +68,7 @@ Rails.application.routes.draw do
   root 'home#index'
   
 
-  resources :categories, :waste_types, :disposal_methods, :roles, :cars, :units, :places, :shapes, :edi_users, :packages, :hazardous_substances, :traders, :trader_places, :place_users, :users
+  resources :categories, :waste_types, :disposal_methods, :roles, :cars, :units, :places, :shapes, :edi_users, :packages, :hazardous_substances, :traders, :trader_places, :place_users, :users, :permissions
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

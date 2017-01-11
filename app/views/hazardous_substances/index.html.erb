@@ -4,8 +4,8 @@
 	<h1 class="title">有害物質マスタ画面</h1>
 </header>
 <div class="container">
-		<%= form_for HazardousSubstance.new do |f| %>
-
+	<%= form_for HazardousSubstance.new do |f| %>
+		
 		<table class="place-table master-table">
 			<thead>
 				<tr>
@@ -30,8 +30,7 @@
 							<td>
 								<div class="btn-box cf">
 									<ul class="cf">
-										<li>
-											<li><%= link_to '編集', edit_hazardous_substance_path(row), :class => 'modal-open choicebtn', data: { target: 'con1', remote: 'true' } %></li>
+										<li><%= link_to '編集', edit_hazardous_substance_path(row), :class => 'modal-open choicebtn', data: { target: 'con1', remote: 'true' } %></li>
 										<li><%= link_to '削除', row, method: :delete, :class => 'sakuzyobtn', data: { confirm: 'Are you sure?' } %></li>
 									</ul>
 								</div>
@@ -51,10 +50,10 @@
 			<tbody>
 				<tr>
 					<th>コード</th>
-					<td><%= f.text_field :code, :required => 'required', class: 'inp-text sum-text'%></td>
+					<td><%= f.text_field :code, :required => 'required', :class => 'inp-text sum-text' %></td>
 					<th>名称</th>
-					<td><%= f.text_field :name, :required => 'required', class: 'inp-text sum-text'%></td>
-					<td class="reg-btn-box"><%= f.submit "登録", class: 'choicebtn' %></td>
+					<td><%= f.text_field :name, :required => 'required', :class => 'inp-text sum-text' %></td>
+					<td class="reg-btn-box"><%= f.submit "登録", :class => 'choicebtn' %></td>
 				</tr>
 			</tbody>
 		</table>
@@ -63,7 +62,6 @@
 		</div>
 	<% end %>
 </div>
-
 <div id="modal"></div>
 <%= render template: 'template/footer' %>
 

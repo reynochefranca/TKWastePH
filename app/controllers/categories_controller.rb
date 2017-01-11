@@ -6,11 +6,11 @@ class CategoriesController < ApplicationController
   end
   
   def show
-    @category = Category.(params[:id])
+     @category = Category.find(params[:id])
   end
   
   def new
-    @category = Category.newW
+    @category = Category.new
   end
   
   def create

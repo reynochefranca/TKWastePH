@@ -1,7 +1,6 @@
-<%= stylesheet_link_tag "emission_operator_contracts.css" %>
-<%= javascript_include_tag "jquery.ui.datepicker-ja.min.js" %>
-<%= javascript_include_tag "jquery.colorbox-min.js" %>
+<%= stylesheet_link_tag "contracts01.css" %>
 <%= javascript_include_tag "jquery-ui.min.js" %>
+<%= javascript_include_tag "jquery-datepicker.min.js" %>
 <script type="text/javascript">
 jQuery(function ($) {
 	'use strict';
@@ -60,134 +59,137 @@ $(function() {
 });
 </script>
 
-<%= render template: "templates/nav" %>
 
-	<header>
-		<h1 class="title">個別契約画面</h1>
-	</header>
 
-	<div class="container">
-		<form action="" method="post">
+<header>
+    <%= render template: 'template/nav' %>
+	<h1 class="title">個別契約画面</h1>
+</header>
 
-		<div class="reference-number">
-		 	整理番号:<input type="text" name="" class="inp-text sum-text">
+<div class="container">
+	<form action="" method="post">
+
+	<div class="reference-number">
+	 	整理番号:<input type="text" name="" class="inp-text sum-text">
+	</div>
+
+
+		<table class="reg-table">
+			<tr>
+				<th colspan="4" class="table-title">事業場</th>
+			</tr>
+			<tr>
+				<th>排出事業場</th>
+				<td><p>モスバーガー水道橋西通り店</p><p>モスバーガースイドウバシニシドオリテン</p></td>
+				<th>引渡し担当者</th>
+				<td><p>城戸 陽介</p><p>キド ヨウスケ</p></td>
+			</tr>
+		</table>
+
+		<div class="haiki-tuika-box cf">
+			<a href="#" class="tuika-btn">廃棄物追加</a>
 		</div>
 
+		<table class="reg-table issue-table">
+			<tr>
+				<th colspan="4" class="table-title">個別契約</th>
+			</tr>
+			<tr>
+				<th>種類</th>
+				<th>区分</th>
+				<th>処理業者</th>
+				<th></th>
+			</tr>
 
-			<table class="reg-table">
-				<tr>
-					<th colspan="4" class="table-title">事業場</th>
-				</tr>
-				<tr>
-					<th>排出事業場</th>
-					<td><p>モスバーガー水道橋西通り店</p><p>モスバーガースイドウバシニシドオリテン</p></td>
-					<th>引渡し担当者</th>
-					<td><p>城戸 陽介</p><p>キド ヨウスケ</p></td>
-				</tr>
-			</table>
+			<tr>
+				<td rowspan="4"><p>特別管理産</p><p>21廃石綿等</p></td>
+				<td class="select-box">
+					<select>
+						<option>選択して下さい</option>
+						<option selected="selected">収集運搬</option>
+						<option>中間処分</option>
+						<option>最終処分</option>
+					</select>
+				</td>
+				<td>
+					<p>株式会社山九</p>
+					<p>カブシキガイシャヤママル</p>
+				</td>
+				<td><a href="#" class="choicebtn">追加</a></td>
+			</tr>
 
-			<div class="haiki-tuika-box cf">
-				<a href="#" class="tuika-btn">廃棄物追加</a>
-			</div>
+			<tr>
+				<td class="select-box">
+					<select>
+						<option>選択して下さい</option>
+						<option>収集運搬</option>
+						<option selected="selected">中間処分</option>
+						<option>最終処分</option>
+					</select>
+				</td>
+				<td>
+					<p>株式会社中間貯蔵・環境安全事業</p>
+					<p>カブシキガイシャチュウカンチョゾウ・カンキョウアンゼンジギョウ</p>
+				</td>
+				<td><a href="#" class="choicebtn">追加</a></td>
+			</tr>
 
-			<table class="reg-table issue-table">
-				<tr>
-					<th colspan="4" class="table-title">個別契約</th>
-				</tr>
-				<tr>
-					<th>種類</th>
-					<th>区分</th>
-					<th>処理業者</th>
-					<th></th>
-				</tr>
+			<tr>
+				<td class="select-box">
+					<select>
+						<option>選択して下さい</option>
+						<option>収集運搬</option>
+						<option>中間処分</option>
+						<option selected="selected">最終処分</option>
+					</select>
+				</td>
+				<td>
+					<p>株式会社早来工営</p>
+					<p>カブシキガイシャハヤキタコウエイ</p>
+				</td>
+				<td><a href="#" class="choicebtn">追加</a></td>
+			</tr>
 
-				<tr>
-					<td rowspan="4"><p>特別管理産</p><p>21廃石綿等</p></td>
-					<td class="select-box">
-						<select>
-							<option>選択して下さい</option>
-							<option selected="selected">収集運搬</option>
-							<option>中間処分</option>
-							<option>最終処分</option>
-						</select>
-					</td>
-					<td>
-						<p>株式会社山九</p>
-						<p>カブシキガイシャヤママル</p>
-					</td>
-					<td><a href="#" class="choicebtn">追加</a></td>
-				</tr>
+			<tr>
+				<td colspan="3"><a href="#" class="koumoku-tuika choicebtn">区分/業者 追加</a></td>
+			</tr>
 
-				<tr>
-					<td class="select-box">
-						<select>
-							<option>選択して下さい</option>
-							<option>収集運搬</option>
-							<option selected="selected">中間処分</option>
-							<option>最終処分</option>
-						</select>
-					</td>
-					<td>
-						<p>株式会社中間貯蔵・環境安全事業</p>
-						<p>カブシキガイシャチュウカンチョゾウ・カンキョウアンゼンジギョウ</p>
-					</td>
-					<td><a href="#" class="choicebtn">追加</a></td>
-				</tr>
+			<tr>
+				<td rowspan="3"><p>管理</p><p>12紙くず</p></td>
+				<td class="select-box">
+					<select>
+						<option>選択して下さい</option>
+						<option selected="selected">収集運搬</option>
+						<option>中間処分</option>
+						<option>最終処分</option>
+					</select>
+				</td>
+				<td>
+					<p>株式会社伊藤</p>
+					<p>カブシキガイシャイトウ</p>
+				</td>
+				<td><a href="#" class="choicebtn">追加</a></td>
+			</tr>
 
-				<tr>
-					<td class="select-box">
-						<select>
-							<option>選択して下さい</option>
-							<option>収集運搬</option>
-							<option>中間処分</option>
-							<option selected="selected">最終処分</option>
-						</select>
-					</td>
-					<td>
-						<p>株式会社早来工営</p>
-						<p>カブシキガイシャハヤキタコウエイ</p>
-					</td>
-					<td><a href="#" class="choicebtn">追加</a></td>
-				</tr>
-
-				<tr>
-					<td colspan="3"><a href="#" class="koumoku-tuika choicebtn">区分/業者 追加</a></td>
-				</tr>
-
-				<tr>
-					<td rowspan="3"><p>管理</p><p>12紙くず</p></td>
-					<td class="select-box">
-						<select>
-							<option>選択して下さい</option>
-							<option selected="selected">収集運搬</option>
-							<option>中間処分</option>
-							<option>最終処分</option>
-						</select>
-					</td>
-					<td>
-						<p>株式会社伊藤</p>
-						<p>カブシキガイシャイトウ</p>
-					</td>
-					<td><a href="#" class="choicebtn">追加</a></td>
-				</tr>
-
-				<tr>
-					<td colspan="3"><a href="#" class="koumoku-tuika choicebtn">区分/業者 追加</a></td>
-				</tr>
+			<tr>
+				<td colspan="3"><a href="#" class="koumoku-tuika choicebtn">区分/業者 追加</a></td>
+			</tr>
 
 
-			</table>
+		</table>
 
-			<div class="con-btn-box">
-				<input type="submit" class="con-btn" value="修正登録">
-			</div>
-		</form>
-	</div>
+		<div class="con-btn-box">
+			<input type="submit" class="con-btn" value="修正登録">
+		</div>
+	</form>
+</div>
+
+<%= render template: 'template/footer' %>
 
 <!-- ポップアップ部分 -->
 <div class="modal-content con1">
 	<div class="batu-btn-box">
-		<a class="modal-close"><img src="img/batu.png" alt="×ボタン" class="batu-btn"></a>
+		<a class="modal-close"><%= image_tag('batu.png', :alt => 'ボタン', :class => 'batu-btn') %></a>
 
 	</div>
 	<div class="cf">
@@ -229,7 +231,7 @@ $(function() {
 
 <div class="modal-content con2">
 	<div class="batu-btn-box">
-		<a class="modal-close"><img src="img/batu.png" alt="×ボタン" class="batu-btn"></a>
+		<a class="modal-close"><%= image_tag('batu.png', :alt => 'ボタン', :class => 'batu-btn') %></a>
 	</div>
 	<div class="cf">
 		<a class="tuika-btn ajax" href="company-reg.html">会社新規登録</a>
@@ -270,7 +272,7 @@ $(function() {
 
 <div class="modal-content con3">
 	<div class="batu-btn-box">
-		<a class="modal-close"><img src="img/batu.png" alt="×ボタン" class="batu-btn"></a>
+		<a class="modal-close"><%= image_tag('batu.png', :alt => 'ボタン', :class => 'batu-btn') %></a>
 
 	</div>
 	<form action="" method="post">
@@ -361,7 +363,7 @@ $(function() {
 
 <div class="modal-content con4">
 	<div class="batu-btn-box">
-		<a class="modal-close"><img src="img/batu.png" alt="×ボタン" class="batu-btn"></a>
+		<a class="modal-close"><%= image_tag('batu.png', :alt => 'ボタン', :class => 'batu-btn') %></a>
 
 	</div>
 	<form action="" method="post">
@@ -402,11 +404,9 @@ $(function() {
 	</form>
 </div>
 
-<%= render template: "templates/footer" %>
-
 <div class="modal-content con5">
 	<div class="batu-btn-box">
-		<a class="modal-close"><img src="img/batu.png" alt="×ボタン" class="batu-btn"></a>
+		<a class="modal-close"><%= image_tag('batu.png', :alt => 'ボタン', :class => 'batu-btn') %></a>
 
 	</div>
 	<form action="" method="post">
@@ -441,7 +441,7 @@ $(function() {
 
 <div class="modal-content con6">
 	<div class="batu-btn-box">
-		<a class="modal-close"><img src="img/batu.png" alt="×ボタン" class="batu-btn"></a>
+		<a class="modal-close"><%= image_tag('batu.png', :alt => 'ボタン', :class => 'batu-btn') %></a>
 
 	</div>
 	<form action="" method="post">
@@ -501,7 +501,7 @@ $(function() {
 
 <div class="modal-content con7">
 	<div class="batu-btn-box">
-		<a class="modal-close"><img src="img/batu.png" alt="×ボタン" class="batu-btn"></a>
+		<a class="modal-close"><%= image_tag('batu.png', :alt => 'ボタン', :class => 'batu-btn') %></a>
 
 	</div>
 	<form action="" method="post">
@@ -625,7 +625,7 @@ $(function() {
 
 <div class="modal-content con8">
 	<div class="batu-btn-box">
-		<a class="modal-close"><img src="img/batu.png" alt="×ボタン" class="batu-btn"></a>
+		<a class="modal-close"><%= image_tag('batu.png', :alt => 'ボタン', :class => 'batu-btn') %></a>
 
 	</div>
 	<form action="" method="post">
@@ -672,4 +672,4 @@ $(function() {
 		<input type="submit" value="登録する">
 	</form>
 </div>
-<%= javascript_include_tag "application" %>
+

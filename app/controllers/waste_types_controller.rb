@@ -13,10 +13,13 @@ class WasteTypesController < ApplicationController
   
 
   def create
-    @waste_type = WasteType.new(wastetype_params)
-   
-    @waste_type.save
-    redirect_to action: "index"
+    @waste_type = Shape.new(wastetype_params)
+    
+    if @waste_type.save
+      redirect_to action: "index"
+    else
+      redirect_to action: "index"
+    end
   end
   
   def destroy

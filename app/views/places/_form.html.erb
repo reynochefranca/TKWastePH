@@ -2,39 +2,37 @@
     <table class="place-table disposal-table">
 		<thead>
 			<tr>
-				<th class="table-title" colspan="9">新規追加</th>
+				<th class="table-title" colspan="11">編集</th>
 			</tr>
 		</thead>
 		<tbody>
 			<tr>
 				<th>コード</th>
-				<td><%= f.text_field :code, :required => 'required', class: 'inp-text sum-text'%></td>
+				<td><%= f.text_field :code, :required => 'required', :class => 'inp-text sum-text'%></td>
 				<th>名称(漢字)</th>
-				<td><%= f.text_field :name_kanji, :required => 'required', class: 'inp-text sum-text'%></td>
+				<td><%= f.text_field :name_kanji, :required => 'required', :class => 'inp-text sum-text'%></td>
 				<th>名称(カナ)</th>
-				<td><%= f.text_field :name_kana, :required => 'required', class: 'inp-text sum-text'%></td>
+				<td><%= f.text_field :name_kana, :required => 'required', :class => 'inp-text sum-text'%></td>
 				<th>略称</th>
-				<td><%= f.text_field :abbreviation, :required => 'required', class: 'inp-text sum-text'%></td>
-				
+				<td><%= f.text_field :abbreviation, :required => 'required', :class => 'inp-text sum-text'%></td>
 			</tr>
 			<tr>
 				<th>郵便番号</th>
-				<td><%= f.text_field :zipcode, :required => 'required', class: 'inp-text sum-text'%></td>
+				<td><%= f.text_field :zipcode, :required => 'required', :class => 'inp-text sum-text'%></td>
 				<th>都道府県</th>
-				<td><%= f.text_field :prefecture, :required => 'required', class: 'inp-text sum-text'%></td>
+				<td><%= f.text_field :prefecture, :required => 'required', :class => 'inp-text sum-text'%></td>
 				<th>市区町村</th>
-				<td><%= f.text_field :city, :required => 'required', class: 'inp-text sum-text'%></td>
+				<td><%= f.text_field :city, :required => 'required', :class => 'inp-text sum-text'%></td>
 				<th>番地以下</th>
-				<td><%= f.text_field :address, :required => 'required', class: 'inp-text sum-text'%></td>
+				<td><%= f.text_field :address, :required => 'required', :class => 'inp-text sum-text'%></td>
 			</tr>
 			<tr>
-				<th colspan="2">電話番号1</th>
-				<td colspan="2"><%= f.text_field :tel1, :required => 'required', class: 'inp-text sum-text'%></td>
-				<th colspan="2">電話番号2</th>
-				<td colspan="2"><%= f.text_field :tel2, :required => 'required', class: 'inp-text sum-text'%></td>
+				<th colspan="1">電話番号1</th>
+				<td colspan="2"><%= f.text_field :tel1, :required => 'required', :class => 'inp-text sum-text'%></td>
+				<th colspan="1">電話番号2</th>
+				<td colspan="2"><%= f.text_field :tel2, :required => 'required', :class => 'inp-text sum-text'%></td>
+				<td colspan="2" class="reg-btn-box"><%= f.submit "登録", :class => 'choicebtn' %></td>
 			</tr>
 		</tbody>
 	</table>
-	<input type="submit" value="登録する">
-
 <% end %>

@@ -8,49 +8,49 @@
 
 		<tbody>
 			<tr>
-				<th>名前1</th>
-				<td><%= f.text_field :registration_user1_name, :required => 'required', class: 'sum-text' %></td>
+				<th align="left">名前1</th>
+				<td><%= f.text_field :registration_user1_name, :required => 'required', :class => 'sum-text' %></td>
 			</tr>
 			<tr>
 				<th>メール1</th>
-				<td><%= f.text_field :registration_user1_email, :required => 'required', class: 'inp-text' %></td>
+				<td><%= f.text_field :registration_user1_email, :required => 'required', :class => 'inp-text' %></td>
 			</tr>
 			<tr>
 				<th>名前2</th>
-				<td><%= f.text_field :registration_user2_name, :required => 'required', class: 'sum-text' %></td>
+				<td><%= f.text_field :registration_user2_name, :required => 'required', :class => 'sum-text' %></td>
 			</tr>
 			<tr>
 				<th>メール2</th>
-				<td><%= f.text_field :registration_user2_email, :required => 'required', class: 'inp-text' %></td>
+				<td><%= f.text_field :registration_user2_email, :required => 'required', :class => 'inp-text' %></td>
 			</tr>
 			<tr>
 				<th>名前3</th>
-				<td><%= f.text_field :registration_user3_name, :required => 'required', class: 'sum-text' %></td>
+				<td><%= f.text_field :registration_user3_name, :required => 'required', :class => 'sum-text' %></td>
 			</tr>
 			<tr>
 				<th>メール3</th>
-				<td><%= f.text_field :registration_user3_email, :required => 'required', class: 'inp-text' %></td>
+				<td><%= f.text_field :registration_user3_email, :required => 'required', :class => 'inp-text' %></td>
 			</tr>
 			<tr>
 				<th>EDI加入者番号</th>
-				<td><%= f.text_field :subscriber_number, :required => 'required', class: 'sum-text' %></td>
+				<td><%= f.text_field :subscriber_number, :required => 'required', :class => 'sum-text' %></td>
 			</tr>
 			<tr>
 				<th>EDI接続登録番号</th>
-				<td><%= f.text_field :connection_registration_number, :required => 'required', class: 'sum-text' %></td>
+				<td><%= f.text_field :connection_registration_number, :required => 'required', :class => 'sum-text' %></td>
 			</tr>
 			<tr>
 				<th>EDI公開確認番号</th>
-				<td><%= f.text_field :published_confirmation_number, :required => 'required', class: 'sum-text' %></td>
+				<td><%= f.text_field :published_confirmation_number, :required => 'required', :class => 'sum-text' %></td>
 			</tr>
 			<tr>
 				<th>EDI接続パスワード</th>
-				<td><%= f.text_field :password, :required => 'required', class: 'sum-text' %></td>
+				<td><%= f.text_field :password, :required => 'required', :class => 'sum-text' %></td>
+			</tr>
+			<tr>
+				<td colspan="9" class="reg-btn-box"><center><%= f.submit "登録", :class => 'choicebtn' %></center></td>
 			</tr>
 		</tbody>
 	</table>
-
-		<%= f.submit "修正登録" %>
-
  <% end %>
 

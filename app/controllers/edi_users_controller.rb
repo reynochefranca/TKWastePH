@@ -1,7 +1,7 @@
 class EdiUsersController < ApplicationController
-   def index
+  def index
     @edi_users = EdiUser.all
-   end
+  end
   
   def show 
     @edi_user = EdiUser.find(params[:id])
@@ -14,15 +14,12 @@ class EdiUsersController < ApplicationController
 
   def create
     @edi_user = EdiUser.new(edi_user_params)
-   
-    @edi_user.save
-    redirect_to action: "index"
-  end
-  
-  def destroy
-   @edi_user = EdiUser.find(params[:id])
-   @edi_user.destroy
-   redirect_to action: "index"
+    
+    if @edi_user.save
+      redirect_to action: "index"
+    else
+      redirect_to action: "index"
+    end
   end
   
   def edit
@@ -30,18 +27,19 @@ class EdiUsersController < ApplicationController
   end
   
   def update
-     @edi_user = EdiUser.find(params[:id])
+    @edi_user= EdiUser.find(params[:id])
+
     if @edi_user.update_attributes(edi_user_params)
-    redirect_to edi_users_path, :notice => "Ok na bes! sa wakas!"
-  else
-    render "edit"
+      redirect_to action: "index"
+    else
+      redirect_to action: "index"
     end
   end
   
   def destroy
-   @edi_user = EdiUser.find(params[:id])
-   @edi_user.destroy
-   redirect_to action: "index"
+    @edi_user = EdiUser.find(params[:id])
+    @edi_user.destroy
+    redirect_to action: "index"
   end
   
    

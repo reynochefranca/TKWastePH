@@ -5,15 +5,15 @@ class UnitsController < ApplicationController
   end
   
   def show
-    @unit = Unit.(params[:id])
+    @unit = Unit.find(params[:id])
   end
   
   def new
-    @unit = Unit.newW
+    @unit = Unit.new
   end
   
   def create
-    @unit = Unit.new(unit_params)
+    @unit = Unit.new(units_params)
     
     if @unit.save
       redirect_to action: "index"

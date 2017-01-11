@@ -3,26 +3,22 @@ class PackagesController < ApplicationController
     @packages = Package.all
   end
   
-  def show 
-    @package = Package.find(params[:id])
+  def show
+     @package = Package.find(params[:id])
   end
   
   def new
     @package = Package.new
   end
   
-
   def create
     @package = Package.new(package_params)
-   
-    @package.save
-    redirect_to action: "index"
-  end
-  
-  def destroy
-    @package = Package.find(params[:id])
-    @package.destroy
-    redirect_to action: "index"
+    
+    if @package.save
+      redirect_to action: "index"
+    else
+      redirect_to action: "index"
+    end
   end
   
   def edit
@@ -31,11 +27,18 @@ class PackagesController < ApplicationController
   
   def update
     @package = Package.find(params[:id])
+    
     if @package.update_attributes(package_params)
-    redirect_to packages_path, :notice => "Sucessfully Updated!"
-  else
-    render "edit"
+      redirect_to action: "index"
+    else
+      redirect_to action: "index"
     end
+  end
+  
+  def destroy
+    @package = Package.find(params[:id])
+    @package.destroy
+    redirect_to action: "index"
   end
   
   private

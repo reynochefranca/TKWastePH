@@ -4,7 +4,7 @@ class DisposalMethodsController < ApplicationController
   end
   
   def show
-    @disposal_method = DisposalMethod.(params[:id])
+     @disposal_method = DisposalMethod.find(params[:id])
   end
   
   def new
@@ -21,26 +21,24 @@ class DisposalMethodsController < ApplicationController
     end
   end
   
-   def edit
+  def edit
      @disposal_method = DisposalMethod.find(params[:id])
-   end
+  end
   
   def update
     @disposal_method = DisposalMethod.find(params[:id])
+
     if @disposal_method.update_attributes(disposalmethods_params)
-    redirect_to disposal_methods_path, :notice => "Sucessfully Updated!"
-  else
-    render "edit"
+      redirect_to action: "index"
+    else
+      redirect_to action: "index"
     end
   end
   
   def destroy
-   @disposal_method = DisposalMethod.find(params[:id])
-   if @disposal_method.destroy
+     @disposal_method = DisposalMethod.find(params[:id])
+     @disposal_method.destroy
      redirect_to action: "index"
-   else
-     redirect_to action: "index"
-   end
   end
   
   private

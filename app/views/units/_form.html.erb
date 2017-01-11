@@ -1,21 +1,18 @@
 <%= form_for @unit do |f| %>
-   	<table class="place-table disposal-table">
+	<table class="place-table disposal-table">
 		<thead>
 			<tr>
-				<th class="table-title" colspan="5">新規追加</th>
+				<th class="table-title" colspan="5">編集</th>
 			</tr>
 		</thead>
 		<tbody>
 			<tr>
 				<th>コード</th>
-				<td><%= f.text_field :code, :required => 'required', class: 'inp-text sum-text'%></td>
+				<td><%= f.text_field :code, :required => 'required', :class => 'inp-text sum-text' %></td>
 				<th>品目</th>
-				<td><%= f.text_field :name, :required => 'required', class: 'inp-text sum-text'%></td>
-				<td class="reg-btn-box"><%= f.submit "登録", class: 'choicebtn' %></td>
+				<td><%= f.text_field :name, :required => 'required', :class => 'inp-text sum-text' %></td>
+				<td class="reg-btn-box"><%= f.submit "登録", :class => 'choicebtn' %></td>
 			</tr>
 		</tbody>
 	</table>
-	<div class="con-btn-box">
-    	<input type="submit" class="con-btn" value="修正登録">
-    </div>
 <% end %>

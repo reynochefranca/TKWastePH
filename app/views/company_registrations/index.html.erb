@@ -1,2 +1,399 @@
-<h1>CompanyRegistrations#index</h1>
-<p>Find me in app/views/company_registrations/index.html.erb</p>
+<%= stylesheet_link_tag "company-reg.css" %>
+
+<header>
+    <%= render template: 'template/nav' %>
+	<h1 class="title">会社関連画面</h1>
+</header>
+
+<div class="container">
+	<form action="" method="post">
+		<div class="head-kensaku-box cf">
+			<ul class="cf">
+				<li><a class="modal-open kensaku-btn" data-target="con00"><span class="btn-sum-text">登録済み情報を</span><br>検索</a></li>
+			</ul>
+		</div>
+
+		<!-- 会社情報 -->
+		<table class="reg-table">
+			<tr>
+				<th colspan="8" class="table-title">会社情報</th>
+			</tr>
+			<tr>
+				<th rowspan="2">会社名<br><span class="required-text">必須</span></th>
+				<th colspan="3">漢字</th>
+				<td colspan="4"><input type="text" name="" class="inp-text"></td>
+			</tr>
+			<tr>
+				<th colspan="3">カナ</th>
+				<td colspan="4"><input type="text" name="" class="inp-text"></td>
+			</tr>
+			<tr>
+				<th rowspan="4">住所<br><span class="required-text">必須</span></th>
+				<th colspan="3">住所名称</th>
+				<td colspan="3"><input type="text" name="" class="inp-text"></td>
+				<td rowspan="4"><a class="modal-open choicebtn" data-target="con01">検索</a></td>
+			</tr>
+			<tr>
+				<th colspan="3">郵便番号</th>
+				<td colspan="3"><input type="text" name="" class="inp-text sum-text"></td>
+			</tr>
+			<tr>
+				<th>都道府県</th>
+				<td><input type="text" name="" class="inp-text sum-text"></td>
+				<th>市区町村</th>
+				<td><input type="text" name="" class="inp-text sum-text"></td>
+				<th>番地</th>
+				<td><input type="text" name="" class="inp-text sum-text"></td>
+			</tr>
+			<tr>
+				<th colspan="3">ビル名</th>
+				<td colspan="3"><input type="text" name="" class="inp-text"></td>
+			</tr>
+			<tr>
+				<th rowspan="2">電話<br><span class="required-text">必須</span></th>
+				<th colspan="3">電話名称</th>
+				<td colspan="3"><input type="text" name="" class="inp-text"></td>
+				<td rowspan="5"><a class="modal-open choicebtn" data-target="con02">検索</a></td>
+			</tr>
+			<tr>
+				<th colspan="3">電話番号</th>
+				<td colspan="3"><input type="text" name="" class="inp-text"></td>
+			</tr>
+			<tr>
+				<th rowspan="2">FAX</th>
+				<th colspan="3">FAX名称</th>
+				<td colspan="3"><input type="text" name="" class="inp-text"></td>
+			</tr>
+			<tr>
+				<th colspan="3">FAX番号</th>
+				<td colspan="3"><input type="text" name="" class="inp-text"></td>
+			</tr>
+			<tr>
+				<th colspan="4">メールアドレス</th>
+				<td colspan="3"><input type="text" name="" class="inp-text"></td>
+			</tr>
+			<tr>
+				<th colspan="4">メモ</th>
+				<td colspan="3">
+					<textarea class="textarea-style"></textarea>
+				</td>
+				<td><a class="modal-open choicebtn" data-target="con03">検索</a></td>
+			</tr>
+			<tr>
+				<th rowspan="2">EDI<br><span class="required-text">必須</span></th>
+				<th colspan="3">接続登録番号</th>
+				<td colspan="4"><input type="text" name="" class="inp-text"></td>
+			</tr>
+			<tr>
+				<th colspan="3">接続パスワード</th>
+				<td colspan="4"><input type="text" name="" class="inp-text"></td>
+			</tr>
+			<tr>
+				<th colspan="4">役割</th>
+				<td colspan="3"><input type="text" name="" class="inp-text"></td>
+				<td><a class="modal-open choicebtn" data-target="con04">検索</a></td>
+			</tr>
+		</table>
+
+		<div class="con-btn-box cf">
+			<ul class="cf">
+				<li><a href="" class="sakuzyo-btn">削除</a></li>
+				<li><input type="submit" class="con-btn" value="登録修正"></li>
+			</ul>
+		</div>
+	</form>
+</div>
+
+
+<%= render template: 'template/footer' %>
+
+<!-- ポップアップ -->
+<div class="modal-content con00">
+	<div class="batu-btn-box">
+		<a class="modal-close"><%= image_tag('batu.png', :alt => 'ボタン', :class => 'batu-btn') %></a>
+
+	</div>
+	<form action="" method="post">
+		<table class="place-table disposal-table">
+			<thead>
+				<tr>
+					<th colspan="3" class="table-title">検索結果一覧</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<th></th>
+					<th>検索結果</th>
+				</tr>
+				<tr>
+					<td><input type="radio" name="000"></td>
+					<td></td>
+				</tr>
+				<tr>
+					<td><input type="radio" name="000"></td>
+					<td></td>
+				</tr>
+				<tr>
+					<td><input type="radio" name="000"></td>
+					<td></td>
+				</tr>
+			</tbody>
+		</table>
+		<input type="submit" value="登録する">
+	</form>
+</div>
+
+
+<div class="modal-content con01">
+	<div class="batu-btn-box">
+		<a class="modal-close"><%= image_tag('batu.png', :alt => 'ボタン', :class => 'batu-btn') %></a>
+
+	</div>
+	<form action="" method="post">
+		<table>
+			<tr>
+				<th colspan="8" class="table-title">検索</th>
+			</tr>
+			<tr>
+				<th rowspan="4">住所</th>
+				<th colspan="3">住所名称</th>
+				<td colspan="3"><input type="text" name="" class="inp-text"></td>
+			</tr>
+			<tr>
+				<th colspan="3">郵便番号</th>
+				<td colspan="3"><input type="text" name="" class="inp-text sum-text"></td>
+			</tr>
+			<tr>
+				<th>都道府県</th>
+				<td><input type="text" name="" class="inp-text sum-text"></td>
+				<th>市区町村</th>
+				<td><input type="text" name="" class="inp-text sum-text"></td>
+				<th>番地</th>
+				<td><input type="text" name="" class="inp-text sum-text"></td>
+			</tr>
+			<tr>
+				<th colspan="3">ビル名</th>
+				<td colspan="3"><input type="text" name="" class="inp-text"></td>
+			</tr>
+		</table>
+		<input type="submit" value="検索">
+
+			<table class="issue-table">
+				<tbody><tr>
+					<th colspan="8" class="table-title">検索結果</th>
+				</tr>
+				<tr>
+					<th></th>
+					<th>会社名</th>
+					<th>住所名称</th>
+					<th>郵便番号</th>
+					<th>都道府県</th>
+					<th>市区町村</th>
+					<th>番地</th>
+					<th>ビル名</th>
+				</tr>
+
+				<tr>
+					<td><input type="radio" name=""></td>
+					<td>
+						<p>株式会社モスフードサービス</p>
+						<p>カブシキガイシャモスフードサービス</p>
+					</td>
+					<td>モスバーガー</td>
+					<td>141-6004</td>
+					<td>東京都</td>
+					<td>品川区</td>
+					<td>大崎2-1-1</td>
+					<td>ThinkPark Tower</td>
+				</tr>
+
+			</tbody>
+		</table>
+
+		<input type="submit" value="登録する">
+	</form>
+</div>
+
+<div class="modal-content con02">
+	<div class="batu-btn-box">
+		<a class="modal-close"><%= image_tag('batu.png', :alt => 'ボタン', :class => 'batu-btn') %></a>
+
+	</div>
+	<form action="" method="post">
+		<table>
+			<tr>
+				<th colspan="8" class="table-title">検索</th>
+			</tr>
+			<tr>
+				<th>会社電話</th>
+				<td><input type="text" name="" class="inp-text sum-text"></td>
+				<th>人物電話</th>
+				<td><input type="text" name="" class="inp-text sum-text"></td>
+				<th>連絡電話</th>
+				<td><input type="text" name="" class="inp-text sum-text"></td>
+			</tr>
+			<tr>
+				<th>会社名FAX</th>
+				<td colspan="2"><input type="text" name="" class="inp-text sum-text"></td>
+				<th>人物FAX</th>
+				<td colspan="2"><input type="text" name="" class="inp-text sum-text"></td>
+			</tr>
+			<tr>
+				<th>会社メールアドレス</th>
+				<td colspan="2"><input type="text" name="" class="inp-text sum-text"></td>
+				<th>人物メールアドレス</th>
+				<td colspan="2"><input type="text" name="" class="inp-text sum-text"></td>
+			</tr>
+		</table>
+
+		<input type="submit" value="検索">
+
+			<table class="issue-table">
+				<tbody><tr>
+					<th colspan="8" class="table-title">検索結果</th>
+				</tr>
+				<tr>
+					<th></th>
+					<th>会社名</th>
+					<th>人物名</th>
+					<th>都道府県</th>
+					<th>市区町村</th>
+					<th>番地</th>
+					<th>ビル名</th>
+					<th>各種情報</th>
+				</tr>
+
+				<tr>
+					<td><input type="radio" name=""></td>
+					<td>
+						<p>株式会社モスフードサービス</p>
+						<p>カブシキガイシャモスフードサービス</p>
+					</td>
+					<td>
+						<p>石坂 麻緒</p>
+						<p>イシザカ マオ</p>
+					</td>
+					<td>東京都</td>
+					<td>品川区</td>
+					<td>大崎2-1-1</td>
+					<td>ThinkPark Tower</td>
+					<td></td>
+				</tr>
+
+			</tbody>
+		</table>
+
+		<input type="submit" value="登録する">
+	</form>
+</div>
+
+
+<div class="modal-content con03">
+	<div class="batu-btn-box">
+		<a class="modal-close"><%= image_tag('batu.png', :alt => 'ボタン', :class => 'batu-btn') %></a>
+
+	</div>
+	<form action="" method="post">
+		<table>
+			<tr>
+				<th colspan="6" class="table-title">検索</th>
+			</tr>
+			<tr>
+				<th>キーワード&#9312;</th>
+				<td><input type="text" name="" class="inp-text sum-text"></td>
+				<th>キーワード&#9313;</th>
+				<td><input type="text" name="" class="inp-text sum-text"></td>
+				<th>キーワード&#9314;</th>
+				<td><input type="text" name="" class="inp-text sum-text"></td>
+			</tr>
+			<tr>
+				<th>キーワード&#9315;</th>
+				<td colspan="2"><input type="text" name="" class="inp-text sum-text"></td>
+				<th>キーワード&#9316;</th>
+				<td colspan="2"><input type="text" name="" class="inp-text sum-text"></td>
+			</tr>
+		</table>
+
+		<input type="submit" value="検索">
+
+			<table class="issue-table">
+				<tbody><tr>
+					<th colspan="8" class="table-title">検索結果</th>
+				</tr>
+				<tr>
+					<th></th>
+					<th>会社名</th>
+					<th>人物名</th>
+					<th>メモ</th>
+				</tr>
+
+				<tr>
+					<td><input type="radio" name=""></td>
+					<td>
+						<p>株式会社モスフードサービス</p>
+						<p>カブシキガイシャモスフードサービス</p>
+					</td>
+					<td>
+						<p>石坂 麻緒</p>
+						<p>イシザカ マオ</p>
+					</td>
+					<td>週末は特にゴミが出やすいです。油がよく出ます。担当者は朝のほうが電話にでやすいです。</td>
+				</tr>
+			</tbody>
+		</table>
+
+		<input type="submit" value="登録する">
+	</form>
+</div>
+
+
+<div class="modal-content con04">
+	<div class="batu-btn-box">
+		<a class="modal-close"><%= image_tag('batu.png', :alt => 'ボタン', :class => 'batu-btn') %></a>
+
+	</div>
+	<form action="" method="post">
+		<table>
+			<tr>
+				<th colspan="4" class="table-title">検索</th>
+			</tr>
+			<tr>
+				<th>会社役割</th>
+				<td><input type="text" name="" class="inp-text sum-text"></td>
+				<th>個人役割</th>
+				<td><input type="text" name="" class="inp-text sum-text"></td>
+			</tr>
+		</table>
+
+		<input type="submit" value="検索">
+
+			<table class="issue-table">
+				<tbody><tr>
+					<th colspan="8" class="table-title">検索結果</th>
+				</tr>
+				<tr>
+					<th></th>
+					<th>会社名</th>
+					<th>人物名</th>
+					<th>役割</th>
+				</tr>
+
+				<tr>
+					<td><input type="radio" name=""></td>
+					<td>
+						<p>株式会社モスフードサービス</p>
+						<p>カブシキガイシャモスフードサービス</p>
+					</td>
+					<td>
+						<p>石坂 麻緒</p>
+						<p>イシザカ マオ</p>
+					</td>
+					<td>排出事業者　登録担当者</td>
+				</tr>
+			</tbody>
+		</table>
+
+		<input type="submit" value="登録する">
+	</form>
+</div>
+

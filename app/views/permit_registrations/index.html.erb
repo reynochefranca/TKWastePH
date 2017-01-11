@@ -1,2 +1,378 @@
-<h1>PermitRegistrations#index</h1>
-<p>Find me in app/views/permit_registrations/index.html.erb</p>
+<%= stylesheet_link_tag "company-reg.css" %>
+<%= javascript_include_tag "jquery-ui.min.js" %>
+<%= javascript_include_tag "jquery-datepicker.min.js" %>
+<script>
+//カレンダー
+$(function() {
+    $('.calendar').datepicker();
+	$.datepicker.setDefaults( $.datepicker.regional[ "ja" ] );
+});
+</script>
+<header>
+	<%= render template: 'template/nav' %>
+	<h1 class="title">許可証関連画面</h1>
+</header>
+
+<div class="head-kensaku-box cf">
+	<ul class="cf">
+		<li><a class="modal-open kensaku-btn" data-target="con00"><span class="btn-sum-text">登録済み情報を</span><br>検索</a></li>
+	</ul>
+</div>
+
+<div class="container">
+	<form action="" method="post">
+		<!-- 会社情報 -->
+		<table class="reg-table">
+			<tr>
+				<th colspan="2" class="table-title">許可証情報</th>
+			</tr>
+			<tr>
+				<th>許可証種別</th>
+				<td>
+					<div class="kensaku01 cf">
+						<div>
+							<p></p>
+						</div>
+						<a class="modal-open choicebtn" data-target="con2">選択</a>
+					</div>
+				</td>
+			</tr>
+			<tr>
+				<th>許可区分</th>
+				<td>
+					<div class="kensaku01 cf">
+						<div>
+							<p></p>
+						</div>
+						<a class="modal-open choicebtn" data-target="con3">選択</a>
+					</div>
+				</td>
+			</tr>
+			<tr>
+				<th>許可番号</th>
+				<td><input type="text" name="" class="inp-text"></td>
+			</tr>
+			<tr>
+				<th>許可廃棄物分類</th>
+				<td>
+					<div class="kensaku01 cf">
+						<div>
+							<p></p>
+						</div>
+						<a class="modal-open choicebtn" data-target="con4">選択</a>
+					</div>
+				</td>
+			</tr>
+			<tr>
+				<th>許可名称</th>
+				<td><input type="text" name="" class="inp-text"></td>
+			</tr>
+			<tr>
+				<th>許可地域</th>
+				<td>
+					<div class="kensaku01 cf">
+						<div>
+							<p></p>
+						</div>
+						<a class="modal-open choicebtn" data-target="con5">選択</a>
+					</div>
+				</td>
+			</tr>
+			<tr>
+				<th>許可市町村</th>
+				<td>
+					<div class="kensaku01 cf">
+						<div>
+							<p></p>
+						</div>
+						<a class="modal-open choicebtn" data-target="con6">選択</a>
+					</div>
+				</td>
+			</tr>
+			<tr>
+				<th>許可期間</th>
+				<td><input type="text" name="" class="inp-text sum-text calendar">&nbsp;〜&nbsp;<input type="text" name="" class="inp-text sum-text calendar"></td>
+			</tr>
+			<tr>
+				<th>産廃有料認定区分</th>
+				<td>
+					<div class="kensaku01 cf">
+						<div>
+							<p></p>
+						</div>
+						<a class="modal-open choicebtn" data-target="con8">選択</a>
+					</div>
+				</td>
+			</tr>
+			<tr>
+				<th>許可証PDF</th>
+				<td><input type="file" name=""></td>
+			</tr>
+		</table>
+
+
+		<div class="con-btn-box cf">
+			<ul class="cf">
+				<li><a href="" class="sakuzyo-btn">削除</a></li>
+				<li><input type="submit" class="con-btn" value="登録修正"></li>
+			</ul>
+		</div>
+	</form>
+</div>
+
+
+
+<%= render template: 'template/footer' %>
+
+
+<!-- ポップアップ -->
+<div class="modal-content con2">
+	<div class="batu-btn-box">
+		<a class="modal-close"><%= image_tag('batu.png', :alt => 'ボタン', :class => 'batu-btn') %></a>
+
+	</div>
+	<form action="" method="post">
+		<table class="place-table disposal-table">
+			<thead>
+				<tr>
+					<th colspan="2" class="table-title">許可証種別一覧</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<th></th>
+					<th>許可証種別</th>
+				</tr>
+				<tr>
+					<td><input type="radio" name="003"></td>
+					<td></td>
+				</tr>
+				<tr>
+					<td><input type="radio" name="003"></td>
+					<td></td>
+				</tr>
+				<tr>
+					<td><input type="radio" name="003"></td>
+					<td></td>
+				</tr>
+			</tbody>
+		</table>
+		<input type="submit" value="登録する">
+	</form>
+</div>
+
+
+<div class="modal-content con3">
+	<div class="batu-btn-box">
+		<a class="modal-close"><%= image_tag('batu.png', :alt => 'ボタン', :class => 'batu-btn') %></a>
+
+	</div>
+	<form action="" method="post">
+		<table class="place-table disposal-table">
+			<thead>
+				<tr>
+					<th colspan="2" class="table-title">許可区分一覧</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<th></th>
+					<th>許可区分</th>
+				</tr>
+				<tr>
+					<td><input type="radio" name="003"></td>
+					<td></td>
+				</tr>
+				<tr>
+					<td><input type="radio" name="003"></td>
+					<td></td>
+				</tr>
+				<tr>
+					<td><input type="radio" name="003"></td>
+					<td></td>
+				</tr>
+			</tbody>
+		</table>
+		<input type="submit" value="登録する">
+	</form>
+</div>
+
+
+<div class="modal-content con4">
+	<div class="batu-btn-box">
+		<a class="modal-close"><%= image_tag('batu.png', :alt => 'ボタン', :class => 'batu-btn') %></a>
+
+	</div>
+	<form action="" method="post">
+		<table class="place-table disposal-table">
+			<thead>
+				<tr>
+					<th colspan="2" class="table-title">許可廃棄物分類一覧</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<th></th>
+					<th>許可廃棄物分類</th>
+				</tr>
+				<tr>
+					<td><input type="radio" name="003"></td>
+					<td></td>
+				</tr>
+				<tr>
+					<td><input type="radio" name="003"></td>
+					<td></td>
+				</tr>
+				<tr>
+					<td><input type="radio" name="003"></td>
+					<td></td>
+				</tr>
+			</tbody>
+		</table>
+		<input type="submit" value="登録する">
+	</form>
+</div>
+
+
+<div class="modal-content con5">
+	<div class="batu-btn-box">
+		<a class="modal-close"><%= image_tag('batu.png', :alt => 'ボタン', :class => 'batu-btn') %></a>
+
+	</div>
+	<form action="" method="post">
+		<table class="place-table disposal-table">
+			<thead>
+				<tr>
+					<th colspan="2" class="table-title">許可地域一覧</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<th></th>
+					<th>許可地域</th>
+				</tr>
+				<tr>
+					<td><input type="radio" name="003"></td>
+					<td></td>
+				</tr>
+				<tr>
+					<td><input type="radio" name="003"></td>
+					<td></td>
+				</tr>
+				<tr>
+					<td><input type="radio" name="003"></td>
+					<td></td>
+				</tr>
+			</tbody>
+		</table>
+		<input type="submit" value="登録する">
+	</form>
+</div>
+
+
+<div class="modal-content con6">
+	<div class="batu-btn-box">
+		<a class="modal-close"><%= image_tag('batu.png', :alt => 'ボタン', :class => 'batu-btn') %></a>
+
+	</div>
+	<form action="" method="post">
+		<table class="place-table disposal-table">
+			<thead>
+				<tr>
+					<th colspan="2" class="table-title">許可市区町村一覧</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<th></th>
+					<th>許可市区町村</th>
+				</tr>
+				<tr>
+					<td><input type="radio" name="003"></td>
+					<td></td>
+				</tr>
+				<tr>
+					<td><input type="radio" name="003"></td>
+					<td></td>
+				</tr>
+				<tr>
+					<td><input type="radio" name="003"></td>
+					<td></td>
+				</tr>
+			</tbody>
+		</table>
+		<input type="submit" value="登録する">
+	</form>
+</div>
+
+
+<div class="modal-content con8">
+	<div class="batu-btn-box">
+		<a class="modal-close"><%= image_tag('batu.png', :alt => 'ボタン', :class => 'batu-btn') %></a>
+
+	</div>
+	<form action="" method="post">
+		<table class="place-table disposal-table">
+			<thead>
+				<tr>
+					<th colspan="2" class="table-title">産廃有料認定区分一覧</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<th></th>
+					<th>産廃有料認定区分</th>
+				</tr>
+				<tr>
+					<td><input type="radio" name="003"></td>
+					<td></td>
+				</tr>
+				<tr>
+					<td><input type="radio" name="003"></td>
+					<td></td>
+				</tr>
+				<tr>
+					<td><input type="radio" name="003"></td>
+					<td></td>
+				</tr>
+			</tbody>
+		</table>
+		<input type="submit" value="登録する">
+	</form>
+</div>
+
+<div class="modal-content con00">
+	<div class="batu-btn-box">
+		<a class="modal-close"><%= image_tag('batu.png', :alt => 'ボタン', :class => 'batu-btn') %></a>
+
+	</div>
+	<form action="" method="post">
+		<table class="place-table disposal-table">
+			<thead>
+				<tr>
+					<th colspan="3" class="table-title">検索結果一覧</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<th></th>
+					<th>検索結果</th>
+				</tr>
+				<tr>
+					<td><input type="radio" name="000"></td>
+					<td></td>
+				</tr>
+				<tr>
+					<td><input type="radio" name="000"></td>
+					<td></td>
+				</tr>
+				<tr>
+					<td><input type="radio" name="000"></td>
+					<td></td>
+				</tr>
+			</tbody>
+		</table>
+		<input type="submit" value="登録する">
+	</form>
+</div>
+
