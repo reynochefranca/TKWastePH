@@ -1,0 +1,96 @@
+<%= form_for @permission do |f| %>
+    <table class="place-table disposal-table">
+    	<thead>
+    		<tr>
+    			<th class="table-title" colspan="5">編集</th>
+    		</tr>
+    	</thead>
+    	<tbody>
+    		<tr>
+    			<th>許可証種別</th>
+    			<td>
+    				<div class="kensaku01 cf">
+    					<%= f.text_field :permit_type, :required => 'required', :id => 'textbox_id', :class => 'inp-text sum-text'%>
+    					<a class="modal-open choicebtn" data-target="con2">編集</a>
+    				</div>
+    			</td>
+    		</tr>
+    		<tr>
+    			<th>許可区分</th>
+    			<td>
+    				<div class="kensaku01 cf">
+    					<%= f.text_field :permission_type, :required => 'required', :class => 'inp-text sum-text'%>
+    					<a class="modal-open choicebtn" data-target="con3">編集</a>
+    				</div>
+    			</td>
+    		</tr>
+    		<tr>
+    			<th>許可番号</th>
+    			<td><%= f.text_field :permit_number, :required => 'required', :class => 'inp-text sum-text'%></td>
+    		</tr>
+    		<tr>
+    			<th>許可廃棄物分類</th>
+    			<td>
+    				<div class="kensaku01 cf">
+    					<%= f.text_field :permitted_waste_classification, :required => 'required', :class => 'inp-text sum-text'%>
+    					<a class="modal-open choicebtn" data-target="con4">編集</a>
+    				</div>
+    			</td>
+    		</tr>
+    		<tr>
+    			<th>許可名称</th>
+    			<td><%= f.text_field :permit_name, :required => 'required', :class => 'inp-text sum-text'%></td>
+    		</tr>
+    		<tr>
+    			<th>許可地域</th>
+    			<td>
+    				<div class="kensaku01 cf">
+    					<%= f.text_field :allowed_area, :required => 'required', :class => 'inp-text sum-text'%>
+    					<a class="modal-open choicebtn" data-target="con5">編集</a>
+    				</div>
+    			</td>
+    		</tr>
+    		<tr>
+    			<th>許可市区町村</th>
+    			<td>
+    				<div class="kensaku01 cf">
+    					<%= f.text_field :permitted_municipality, :required => 'required', :class => 'inp-text sum-text'%>
+    					<a class="modal-open choicebtn" data-target="con6">編集</a>
+    				</div>
+    			</td>
+    		</tr>
+    		<tr>
+    			<th>許可期間</th>
+    			<td>
+    				<div class="kensaku01 cf">
+    					<%= f.text_field :started_at, :required => 'required', :class => 'inp-text sum-text'%>
+    				</div>
+    				<div class="kensaku01 cf">
+    					<%= f.text_field :limited_at, :required => 'required', :class => 'inp-text sum-text'%>
+    				</div>
+    			</td>
+    		</tr>
+    		<tr>
+    			<th>産廃有料認定区分</th>
+    			<td>
+    				<div class="kensaku01 cf">
+    					<%= f.text_field :industrial_waste_paid_certification_category, :required => 'required', :class => 'inp-text sum-text'%>
+    					<a class="modal-open choicebtn" data-target="con7">編集</a>
+    				</div>
+    			</td>
+    		</tr>
+    		<tr>
+    			<th>許可証PDF</th>
+    			<td>
+    				<div class="kensaku01 cf">
+    					<%= f.file_field :permit_pdf %>
+    				</div>
+    			</td>
+    		</tr>
+    
+    		<tr>
+    			<td colspan="2" class="reg-btn-box"><%= f.submit "登録", :class => 'choicebtn' %></td>
+    		</tr>
+    	</tbody>
+    </table>
+<% end %>

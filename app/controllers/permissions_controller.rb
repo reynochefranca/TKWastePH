@@ -1,10 +1,10 @@
 class PermissionsController < ApplicationController
   def index
     @permissions = Permission.all
-    @waste_types = WasteType.all.group(:code, :name)
-    @roles = Role.all.group(:name)
-    @categories = Category.all.group(:code, :name)
-    @places = Place.all.group(:city, :prefecture)
+    @waste_types = WasteType.all.group(:id, :code, :name)
+    @roles = Role.all.group(:id, :name)
+    @categories = Category.all.group(:id, :code, :name)
+    @places = Place.all.group(:id, :city, :prefecture)
   end
   
   def show 
@@ -30,7 +30,7 @@ class PermissionsController < ApplicationController
   end
   
   def update
-    @permission= Permission.find(params[:id])
+    @permission = Permission.find(params[:id])
 
     if @permission.update_attributes(permission_params)
       redirect_to action: "index"
