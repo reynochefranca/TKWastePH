@@ -1,0 +1,312 @@
+<%= stylesheet_link_tag "new-discharge-business-reg.css" %>
+<%= javascript_include_tag "jquery-colorbox.min.js" %>
+
+
+<script type="text/javascript">
+$(window).load(function(){
+  var menu = $("div.js-menu");
+  menu.hide();
+  $("div.menu").on("click", {a: menu}, slide);
+  function slide(event) {
+	if (event.data.a.css("display") === "none") {
+	  event.data.a.slideDown(350);
+	} else {
+	  event.data.a.slideUp(350);
+	}W
+  }
+});
+</script>
+
+<script>
+$(function() {
+    $(".ajax").colorbox({
+    maxWidth:"1150px",
+    maxHeight:"80%",
+    opacity: 0.7
+  });
+});
+</script>
+
+<header>
+<%= render template: 'template/nav' %>
+	<h1 class="title">新規排出事業者登録画面</h1>
+</header>
+
+<div class="container">
+    <form action="" method="post">
+    	<!-- ①上部情報 -->
+    	<table class="reg-table">
+    		<tr>
+    			<th colspan="2" class="table-title">排出事業者情報</th>
+    		</tr>
+    		<tr>
+    			<th>排出事業者<span class="required-text">必須</span></th>
+    			<td>
+    				<div class="kensaku01 cf">
+    					<div>
+    						<p>株式会社モスフードサービス</p>
+    						<p>カブシキガイシャモスフードサービス</p>
+    					</div>
+    					 <a class="modal-open h-btn02 combtn" data-target="con4">会社</a> 
+    				</div>
+    			</td>
+    		</tr>
+    		<tr>
+    			<th>排出事業者名郵便番号<span class="required-text">必須</span></th>
+    			<td><input type="text" name="" class="inp-text sum-text"></td>
+    		</tr>
+    		<tr>
+    			<th>都道府県市区町村<span class="required-text">必須</span></th>
+    			<td><input type="text" name="" class="inp-text"></td>
+    		</tr>
+    		<tr>
+    			<th>町名 番地以下<span class="required-text">必須</span></th>
+    			<td><input type="text" name="" class="inp-text"></td>
+    		</tr>
+    		<tr>
+    			<th>連絡先電話番号1<span class="required-text">必須</span></th>
+    			<td><input type="text" name="" class="inp-text sum-text"></td>
+    		</tr>
+    		<tr>
+    			<th>連絡先電話番号2</th>
+    			<td><input type="text" name="" class="inp-text sum-text"></td>
+    		</tr>
+    	</table>
+    
+    
+    
+    	<div class="edi-box">
+    		<div class="menu">JWNET情報表示する</div>
+    		<div class="js-menu">
+    			<table class="reg-table edi-table">
+    				<tr>
+    					<th colspan="4" class="table-title">JWNET情報</th>
+    				</tr>
+    				<tr>
+    					<th colspan="2">EDI接続登録番号</th>
+    					<td colspan="2"><input type="text" name="" class="inp-text"></td>
+    				</tr>
+    				<tr>
+    					<th colspan="2">EDI接続パスワード</th>
+    					<td colspan="2"><input type="text" name="" class="inp-text"></td>
+    				</tr>
+    				<tr>
+    					<th>JWNET<br>登録担当者1</th>
+    					<td><input type="text" name="" class="inp-text"></td>
+    					<th>JWNET<br>登録担当者1<br>メールアドレス</th>
+    					<td><input type="text" name="" class="inp-text"></td>
+    				</tr>
+    				<tr>
+    					<th>JWNET<br>登録担当者2</th>
+    					<td><input type="text" name="" class="inp-text"></td>
+    					<th>JWNET<br>登録担当者2<br>メールアドレス</th>
+    					<td><input type="text" name="" class="inp-text"></td>
+    				</tr>
+    				<tr>
+    					<th>JWNET<br>登録担当者3</th>
+    					<td><input type="text" name="" class="inp-text"></td>
+    					<th>JWNET<br>登録担当者3<br>メールアドレス</th>
+    					<td><input type="text" name="" class="inp-text"></td>
+    				</tr>
+    			</table>
+    		</div>
+    	</div>
+    
+    	<table class="place-table">
+    		<thead>
+    			<tr>
+    				<th colspan="8">
+    					<a class="modal-open" data-target="con1">事業場所追加</a>
+    				</th>
+    			</tr>
+    			<tr>
+    				<th class="table-title" colspan="8">排出事業場登録</th>
+    			</tr>
+    		</thead>
+    		<tbody>
+    			<tr>
+    				<th>排出事業場名漢字</th>
+    				<th>排出事業場名(カナ)</th>
+    				<th>排出事業場名郵便番号</th>
+    				<th>都道府県市区町村</th>
+    				<th>町名 番地以下</th>
+    				<th>電話番号</th>
+    				<th>引き渡し担当者</th>
+    				<th>引き渡し担当者メールアドレス</th>
+    				<th></th>
+    			</tr>
+    			<tr>
+    				<td>モスバーガー水道橋西通り店</td>
+    				<td>モスバーガースイドウバシニシドオリテン</td>
+    				<td>101-0065</td>
+    				<td>東京都千代田区</td>
+    				<td>西神田２丁目５-８</td>
+    				<td>03-0000-0000</td>
+    				<td>城戸 陽介</td>
+    				<td>kido_yousuke@example.com</td>
+    				<td class="about-box"><%= link_to "詳しく見る", new_emission_plant_registrations_index_path, :class => "choicebtn" %></td>
+    			</tr>
+    		</tbody>
+    	</table>
+    
+    	<div class="con-btn-box">
+    		<input type="submit" class="con-btn" value="修正登録">
+    	</div>
+    </form>
+</div>
+
+<%= render template: 'template/footer' %>
+
+<!-- ポップアップ部分 -->
+<div class="modal-content con1">
+	<div class="batu-btn-box">
+		<a class="modal-close"><%= image_tag('batu.png', :alt => 'ボタン', :class => 'batu-btn') %></a>
+
+	</div>
+	<form action="" method="post">
+		<div class="modal-title">
+			排出事業場登録
+		</div>
+		<div class="cf">
+			<a href="#" class="tuika-btn">排出事業場追加</a>
+			<a href="#" class="tuika-btn">排出事業情報と同じ</a>
+		</div>
+		<table class="mo-kensaku-table">
+			<tr>
+				<th colspan="7" class="table-title">検索キーワード</th>
+			</tr>
+			<tr>
+				<th>排出事業場</th>
+				<td><input type="text" name="" class="sum-text"></td>
+				<th>郵便番号</th>
+				<td><input type="text" name="" class="sum-text"></td>
+				<th>都道府県</th>
+				<td><input type="text" name="" class="sum-text"></td>
+			</tr>
+			<tr>
+				<th>市区町村</th>
+				<td><input type="text" name="" class="sum-text"></td>
+				<th>番地</th>
+				<td><input type="text" name="" class="sum-text"></td>
+				<th>電話番号</th>
+				<td><input type="text" name="" class="sum-text"></td>
+			</tr>
+			<tr>
+				<th>引渡し担当者</th>
+				<td><input type="text" name="" class="sum-text"></td>
+				<th>メールアドレス</th>
+				<td colspan="3"><input type="text" name="" class="inp-text"></td>
+			</tr>
+		</table>
+		<input type="submit" value="検索する">
+
+			<table class="issue-table">
+				<tr>
+					<th colspan="9" class="table-title">排出事業場</th>
+				</tr>
+				<tr>
+					<th></th>
+					<th>排出事業場</th>
+					<th>排出事業場郵便番号</th>
+					<th>都道府県</th>
+					<th>市区町村</th>
+					<th>番地</th>
+					<th>連絡先電話番号</th>
+					<th>引渡し担当者</th>
+					<th>メールアドレス</th>
+				</tr>
+
+				<tr>
+					<td><input type="radio" name=""></td>
+					<td>
+						<p>モスバーガー水道橋西通り店</p>
+						<p>モスバーガースイドウバシニシドオリテン</p>
+					</td>
+					<td>101-0065</td>
+					<td>東京都</td>
+					<td>千代田区</td>
+					<td>西神田２丁目５-８</td>
+					<td>03-0000-0000</td>
+					<td><p>城戸 陽介</p>
+						<p>キド ヨウスケ</p>
+					</td>
+					<td>kido_yousuke@example.com</td>
+				</tr>
+			</table>
+		<input type="submit" value="登録する">
+	</form>
+</div>
+
+<div class="modal-content con4">
+	<div class="batu-btn-box">
+		<a class="modal-close"><%= image_tag('batu.png', :alt => 'ボタン', :class => 'batu-btn') %></a>
+	</div>
+	<div class="cf">
+		<a class="tuika-btn ajax" href="company-reg.html">排出事業者追加</a>
+	</div>
+	<form action="" method="post">
+		<table class="mo-kensaku-table">
+			<tr>
+				<th colspan="7" class="table-title">検索キーワード</th>
+			</tr>
+			<tr>
+				<th>排出事業者</th>
+				<td><input type="text" name="" class="sum-text"></td>
+				<th>郵便番号</th>
+				<td><input type="text" name="" class="sum-text"></td>
+				<th>都道府県</th>
+				<td><input type="text" name="" class="sum-text"></td>
+			</tr>
+			<tr>
+				<th>市区町村</th>
+				<td><input type="text" name="" class="sum-text"></td>
+				<th>番地</th>
+				<td><input type="text" name="" class="sum-text"></td>
+				<th>電話番号</th>
+				<td><input type="text" name="" class="sum-text"></td>
+			</tr>
+			<tr>
+				<th>引渡し担当者</th>
+				<td><input type="text" name="" class="sum-text"></td>
+				<th>メールアドレス</th>
+				<td colspan="3"><input type="text" name="" class="inp-text"></td>
+			</tr>
+		</table>
+		<input type="submit" value="検索する">
+
+			<table class="issue-table">
+				<tr>
+					<th colspan="9" class="table-title">排出事業者</th>
+				</tr>
+				<tr>
+					<th></th>
+					<th>排出事業者</th>
+					<th>排出事業場郵便番号</th>
+					<th>都道府県</th>
+					<th>市区町村</th>
+					<th>番地</th>
+					<th>連絡先電話番号</th>
+					<th>引渡し担当者</th>
+					<th>メールアドレス</th>
+				</tr>
+
+				<tr>
+					<td><input type="radio" name=""></td>
+					<td>
+						<p>株式会社モスフードサービス</p>
+						<p>カブシキガイシャモスフードサービス</p>
+					</td>
+					<td>101-0065</td>
+					<td>東京都</td>
+					<td>千代田区</td>
+					<td>西神田２丁目５-８</td>
+					<td>03-0000-0000</td>
+					<td><p>石坂 麻緒</p>
+						<p>イシザカ マオ</p>
+					</td>
+					<td>ishizaka@example.com</td>
+				</tr>
+			</table>
+		<input type="submit" value="登録する">
+	</form>
+</div>

@@ -1,0 +1,2 @@
+module NewEmissionPlantRegistrationsHelper
+end

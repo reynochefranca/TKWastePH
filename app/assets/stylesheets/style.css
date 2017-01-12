@@ -1,0 +1,691 @@
+@charset "UTF-8";
+
+html {
+  min-height: 100%;
+  position: relative;
+}
+
+body{
+	min-width: 1200px;
+	font-family: "Hiragino Kaku Gothic ProN","メイリオ", sans-serif;
+	background-color: #fff;
+	margin-bottom: 60px !important;
+}
+
+header{
+	border-top: solid 15px #003f96;
+	border-bottom: 1px solid #ededed;
+}
+
+.title{
+	text-align: center;
+	color: #003f96;
+	font-size: 30px;
+}
+
+.container{
+	min-width: 1100px;
+	margin: 0 auto 40px;
+	padding-bottom: 60px !important;
+}
+
+.navi-area{
+	width: 100%;
+	background-color: #003f96;
+	z-index: 1000;
+}
+
+.navi-box {
+	width: 1050px;
+	margin: 0 auto;
+}
+
+.navi-box ul{
+	list-style-type: none;
+	margin: 0 auto;
+	padding: 0;
+	color: #fff;
+	font-size: 14px;
+	background-color: #000;
+
+}
+
+.navi-li{
+	padding: 10px 10px;
+	text-align: center;
+}
+
+.navi-box ul a
+{
+	display:block;
+	color:#fff;
+	text-decoration:none;
+	font-weight: normal;
+
+	line-height:32px;
+
+
+}
+
+.navi-box ul li
+{
+	float: left;
+	position: relative;
+	margin: 0;
+	/* padding-top: 15px; */
+	width: 150px;
+	box-sizing: border-box;
+	background-color: #003f96;
+	display: block;
+	z-index: 1;
+}
+
+
+.navi-box ul li ul li a:hover{
+	background: #2773dc;
+}
+
+.navi-box ul ul{
+	display:none;
+	position:absolute;
+	top:100%;
+	left:0;
+	background:#fff;
+	padding:0
+}
+
+.navi-box ul ul li{
+	float:none;	
+}
+
+.navi-box ul ul a{
+	padding: 15px 10px;
+	display: block;
+	color: #fff;
+	text-decoration: none;
+	font-weight: normal;
+}
+
+.navi-box ul ul ul{
+	top:0;
+	left:100%
+}
+
+.navi-box ul li:hover > ul{
+	display:block
+}
+
+footer {
+	width: 100%;
+	min-width: 1200px;
+	bottom: 0;
+	height: 60px;
+	position: absolute;
+}
+
+footer .common-copy-text{
+	height: 60px;
+	width: 100%;
+	text-align: center;
+	background-color: #003f96;
+	padding: 20px 0;
+	box-sizing: border-box;
+	color: #fff;
+	font-size: 12px;
+}
+
+.top-first-linkbox{
+	text-align: center;
+	padding: 20px;
+}
+
+.top-first-link{
+	display: inline-block;
+}
+
+
+/* clearfix */
+.cf:after {
+	content:"";
+	display:block;
+	clear:both;
+}
+
+/*　==================================================== 
+
+　テーブル
+
+　==================================================== */
+
+table{
+	border-collapse: collapse;
+	border-spacing: 0;
+	border: 1px solid #e1e1e1;
+	margin: 40px auto;
+}
+
+th{
+	border: 1px solid #e1e1e1;
+	padding: 15px;
+	font-size: 14px;
+	font-weight: bold;
+	text-align: left;
+}
+
+tbody th{
+	background: #f7f7f7;
+}
+
+td{
+	border: 1px solid #e1e1e1;
+	padding: 15px 25px;
+	vertical-align: middle;
+	line-height: 1.5em;
+}
+
+/* テーブルタイトル */
+.table-title{
+	padding: 18px 0 !important;
+	color: #fff !important;
+	background-color: #003f96 !important;
+	border: 1px solid #003f96 !important;
+	text-align: center !important;
+	font-size: 16px !important;
+}
+
+
+/* 検索とフォームで一行表示 */
+.kensaku01 {
+	position: relative;
+}
+
+.kensaku01 .h-btn{
+	margin-top: 0;
+	float: left;
+	margin-left: 15px;
+}
+
+.kensaku01 input{
+	float: left;
+	margin-top: 3px;
+}
+
+.kensaku01 div{
+	float: left;
+	width: 200px;
+}
+
+.kensaku01 div input{
+	float: none;
+	margin-top: 8px;
+}
+
+.kensaku01 div input:first-child{
+	margin: 0;
+}
+
+.kensaku01 div p{
+	margin: 0;
+	padding: 6px 0 0;
+	min-height: 24px;
+}
+
+/* 必須部分 */
+.required-text{
+	/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#ff0000+0,bf0000+100 */
+	color: #fff;
+	padding: 5px 10px;
+	border-radius: 4px;
+	margin-left: 10px;
+	background: rgb(255,0,0); /* Old browsers */
+	background: -moz-linear-gradient(top,  rgba(255,0,0,1) 0%, rgba(191,0,0,1) 100%); /* FF3.6-15 */
+	background: -webkit-linear-gradient(top,  rgba(255,0,0,1) 0%,rgba(191,0,0,1) 100%); /* Chrome10-25,Safari5.1-6 */
+	background: linear-gradient(to bottom,  rgba(255,0,0,1) 0%,rgba(191,0,0,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff0000', endColorstr='#bf0000',GradientType=0 ); /* IE6-9 */
+}
+
+
+/* 検索テーブル */
+
+
+.modal-content .place-table thead,
+.modal-content .place-table tbody{
+	display:block;
+}
+
+.modal-content .place-table tbody{
+	overflow:auto;
+	max-height: 600px;
+	width: 100%;
+	vertical-align: middle;
+	box-sizing: border-box;
+	border: 1px solid #e1e1e1;
+}
+
+.modal-content .place-table th{
+	text-align: center;
+}
+
+.modal-content .place-table tr:nth-child(2n-1){
+	background-color: #e7f1ff;
+}
+
+
+/*　排出事業場.排出依頼登録部分　*/
+.place-table {
+	margin: 40px auto 40px;
+	border-collapse: collapse;
+}
+
+.place-table thead,
+.place-table tbody{
+	display:block;
+}
+
+.place-table thead tr{
+	background-color: #003f96;
+	color: #fff;
+}
+
+.place-table thead tr:first-child{
+	background-color: #fff;
+}
+
+.place-table thead tr:first-child a{
+	float: right;
+	display: block;
+	width: 200px;
+	padding: 15px 10px;
+	margin: 5px 0 10px;
+	font-weight: normal;
+	border: 1px solid #ccc;
+	color: #000;
+	text-decoration: none;
+	/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#ffffff+40,e5e5e5+100 */
+	background: rgb(255,255,255); /* Old browsers */
+	background: -moz-linear-gradient(top,  rgba(255,255,255,1) 40%, rgba(229,229,229,1) 100%); /* FF3.6-15 */
+	background: -webkit-linear-gradient(top,  rgba(255,255,255,1) 40%,rgba(229,229,229,1) 100%); /* Chrome10-25,Safari5.1-6 */
+	background: linear-gradient(to bottom,  rgba(255,255,255,1) 40%,rgba(229,229,229,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#e5e5e5',GradientType=0 ); /* IE6-9 */
+	text-align: center;
+}
+
+.place-table tbody{
+	overflow:auto;
+	vertical-align: middle;
+	border: 1px solid #e1e1e1;
+}
+
+.place-table tbody tr:nth-child(2n-1){
+	background-color: #e7f1ff;
+}
+
+.place-table tbody tr:first-child{
+	background-color: #f7f7f7;
+}
+
+.place-table tbody td,
+.place-table tbody th{
+	border: 1px solid #e1e1e1;
+	font-size: 14px;
+	padding: 10px 7px;
+}
+
+
+
+
+/*　==================================================== 
+
+　モーダル設定
+
+　==================================================== */
+.modal-content {
+	position:fixed;
+	display:none;
+	z-index:2;
+	margin:0;
+	padding:20px;
+	border:2px solid #aaa;
+	background:#fff;
+	width: 1200px;
+	overflow: auto;
+	max-height: 600px;
+	max-width: 980px;
+}
+
+.modal-content .reg-table{
+	margin: 20px auto;
+}
+
+.modal-title{
+	border-left: 8px solid #003f96;
+	padding: 5px 0 5px 8px;
+	margin: 0 auto;
+	font-weight: bold;
+	font-size: 18px;
+
+}
+
+.modal-content p {
+	margin:0;
+	padding:0;
+}
+
+.modal-overlay {
+	z-index:1;
+	display:none;
+	position:fixed;
+	top:0;
+	left:0;
+	width:100%;
+	height:120%;
+	background-color:rgba(0,0,0,0.75);
+}
+
+.modal-close {
+	color:#00f;
+	text-decoration:underline;
+}
+
+.modal-close:hover {
+	cursor:pointer;
+	color:#f00;
+}
+
+.modal-content input[type="submit"]{
+	display: block;
+	width: 200px;
+	border: none;
+	margin: 0 auto 20px;
+	padding: 10px 5px;
+	background-color: #003f96;
+	color: #fff;
+}
+
+
+.batu-btn-box{
+	text-align: right;
+}
+
+.batu-btn{
+	width: 35px;
+}
+
+
+/*　==================================================== 
+
+　ボタン
+
+　==================================================== */
+
+/* 灰色ボタン */
+.h-btn{
+	/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#ffffff+40,e5e5e5+100 */
+	background: rgb(255,255,255); /* Old browsers */
+	background: -moz-linear-gradient(top,  rgba(255,255,255,1) 40%, rgba(229,229,229,1) 100%); /* FF3.6-15 */
+	background: -webkit-linear-gradient(top,  rgba(255,255,255,1) 40%,rgba(229,229,229,1) 100%); /* Chrome10-25,Safari5.1-6 */
+	background: linear-gradient(to bottom,  rgba(255,255,255,1) 40%,rgba(229,229,229,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#e5e5e5',GradientType=0 ); /* IE6-9 */
+	text-align: center;
+	display: inline-block;
+	text-decoration: none;
+	font-weight: normal;
+	color: #000;
+}
+
+/* 確認するボタン */
+.con-btn-box{
+	padding-top: 10px;
+}
+
+.con-btn{
+	display: block;
+	width: 300px;
+	margin: 0 auto;
+	padding: 20px 0;
+	text-align: center;
+	background-color: #003f96;
+	text-decoration: none;
+	font-weight: bold;
+	color: #fff;
+	font-size: 20px;
+	border: none;
+}
+
+/* テキストリンク */
+a{
+	font-weight: bold;
+	color: #2169cc;
+}
+
+
+/* ボタン 選択する/会社選択/人物選択/マスタ内削除ボタン */
+.choicebtn,
+.combtn,
+.perbtn,
+.sakuzyobtn {
+	background:none;
+	border: none !important;
+	display:inline-block;
+	padding:5px 20px;
+	border-radius: 6px !important;
+	-moz-border-radius:6px !important;
+	-webkit-border-radius:6px !important;
+	color: #fff;
+	font-size: 14px;
+	font-weight: bold;
+	text-decoration: none;
+}
+
+.choicebtn{
+	margin:0 0 4px 15px !important;
+	background-color: #003f96;
+	box-shadow: 0 4px 0 rgba(0,38,90,1) !important;
+}
+
+
+.choicebtn:hover {
+	margin:4px 0 0 15px !important;
+	box-shadow:none !important;
+}
+
+
+.combtn{
+	margin:13px 0 4px 15px !important;
+	background-color: #ed710f;
+	box-shadow: 0 4px 0 rgba(199,88,0,1) !important;
+}
+
+.combtn:hover{
+	margin:17px 0 0 15px !important;
+	box-shadow:none !important;
+}
+
+.sakuzyobtn{
+	margin: 4px auto 8px !important;
+	background-color: #e02b2b;
+	box-shadow: 0 4px 0 rgba(169,17,17,1) !important;
+}
+
+.sakuzyobtn:hover{
+	margin: 8px auto 4px !important;
+	box-shadow:none !important;
+}
+
+.perbtn{
+	margin: 13px 0 4px 15px !important;
+	background-color: #4ea909;
+	box-shadow: 0 4px 0 rgb(50, 113, 2) !important;
+}
+
+.perbtn:hover{
+	margin:17px 0 0 15px !important;
+	box-shadow:none !important;
+}
+
+
+
+
+/* 検索 */
+.kensaku-btn{
+	display: block;
+	background-color: #7b7b7b;
+	text-decoration: none;
+	color: #fff;
+	width: 300px;
+	margin: 0 auto;
+	padding: 10px 0;
+	text-align: center;
+	font-size: 20px;
+}
+
+
+/*　削除　*/
+.sakuzyo-btn{
+	display: block;
+	background-color: #e02b2b;
+	text-decoration: none;
+	color: #fff;
+	width: 300px;
+	margin: 0 auto;
+	padding: 20px 0;
+	text-align: center;
+	font-size: 20px;
+}
+
+/* ボタンが3つのとき */
+.con-btn-box ul{
+	margin: 0 auto;
+	padding: 0;
+	width: 625px;
+}
+
+.con-btn-box li{
+	list-style: none;
+	float: left;
+}
+
+.con-btn-box li:nth-child(2){
+	margin-left: 25px;
+}
+
+
+/* head btn */
+.btn-sum-text{
+	font-size: 14px;
+}
+
+.head-kensaku-box ul{
+	margin: 40px auto;
+	padding: 0;
+	width: 900px;
+}
+
+.head-kensaku-box li{
+	list-style: none;
+}
+
+.head-kensaku-box li:nth-child(1){
+	float: left;
+}
+
+.head-kensaku-box li:nth-child(2){
+	float: right;
+	margin-top: 25px;
+}
+
+
+/* マスタ画面　編集/削除部分 */
+
+/* 編集削除ボタン */
+.btn-box .sakuzyobtn,
+.btn-box .choicebtn{
+	margin: 4px auto 8px !important;
+	display: block;
+	width: 68px;
+	box-sizing: border-box;
+	font-weight: bold;
+}
+
+.btn-box .sakuzyobtn:hover,
+.btn-box .choicebtn:hover{
+	margin: 8px auto 4px !important;
+}
+
+.btn-box ul{
+	margin: 0 auto;
+	padding: 0;
+	width: 146px;
+}
+
+.btn-box li{
+	float: left;
+	list-style: none;
+	margin-right: 10px;
+}
+
+.btn-box li:last-child{
+	margin-right: 0;
+}
+
+
+
+
+/*　==================================================== 
+
+　タブ設定
+
+　==================================================== */
+.tab-box{
+	margin: 0 auto;
+}
+
+.tab-box table{
+	margin: 40px auto 0;
+	width: 100%;
+}
+
+.tab-box table:first-child{
+	margin-top: 0;
+}
+
+.tab-box ul{
+	margin: 0;
+	padding: 0;
+}
+
+.tab-box .big-text{
+	width: 400px;
+}
+
+.tab{
+	overflow:hidden;
+}
+
+.tab li{
+	list-style: none;
+	background:#ccc; 
+	padding:5px 25px;
+	float:left;
+	margin-right:1px;
+	width: 145px;
+}
+
+.tab li:last-child{
+	margin-right: 0;
+	width: 146px;
+}
+
+.tab li.select{
+	background:#eee;
+}
+
+.content li{
+	list-style: none;
+	background:#eee;
+	padding:20px;
+}
+.hide {
+	display:none;
+}
+

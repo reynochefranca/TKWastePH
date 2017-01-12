@@ -1,0 +1,68 @@
+<%= stylesheet_link_tag "master.css" %>
+<header>
+	<%= render template: 'template/nav' %>
+	<h1 class="title">数量単位マスタ画面面</h1>
+</header>
+<div class="container">
+	<%= form_for Unit.new do |f| %>
+
+		<table class="place-table master-table">
+			<thead>
+				<tr>
+					<th colspan="9" class="table-title">数量単位マスタ</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<th>コード</th>
+					<th>名称</th>
+					<th></th>
+				</tr>
+				<% if @units.blank? %>
+					<tr>
+						<td colspan="3"><center>NO DATA INPUT</center></td>
+					</tr>
+				<% else 
+					@units.each do |row| %>
+						<tr>
+							<td><%= row.code %></td>
+							<td><%= row.name %></td>
+							<td>
+								<div class="btn-box cf">
+									<ul class="cf">
+										<li><%= link_to '編集', edit_unit_path(row), :class => 'modal-open choicebtn', data: { target: 'con1', remote: 'true' } %></li>
+										<li><%= link_to '削除', row, method: :delete, :class => 'sakuzyobtn', data: { confirm: 'Are you sure?' } %></li>
+									</ul>
+								</div>
+							</td>
+						</tr>
+					<% end 
+				end %>
+			</tbody>
+		</table>
+
+		<table class="place-table disposal-table">
+			<thead>
+				<tr>
+					<th class="table-title" colspan="5">新規追加</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<th>コード</th>
+					<td><%= f.text_field :code, :required => 'required', :class => 'inp-text sum-text' %></td>
+					<th>名称</th>
+					<td><%= f.text_field :name, :required => 'required', :class => 'inp-text sum-text' %></td>
+					<td class="reg-btn-box"><%= f.submit "登録", :class => 'choicebtn' %></td>
+				</tr>
+			</tbody>
+		</table>
+		<div class="con-btn-box">
+			<input type="submit" class="con-btn" value="修正登録">
+		</div>
+	<% end %>
+</div>
+<div id="modal"></div>
+<%= render template: 'template/footer' %>
+
+

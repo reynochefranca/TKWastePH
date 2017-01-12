@@ -1,0 +1,490 @@
+@charset "UTF-8";
+
+header{
+	border-top: solid 15px #003f96;
+	border-bottom: 1px solid #ededed;
+}
+
+.title{
+	text-align: center;
+	color: #003f96;
+	font-size: 30px;
+}
+
+.container{
+	width: 1100px;
+	margin: 0 auto 40px;
+}
+
+
+/*　==================================================== 
+
+　テーブル
+
+　==================================================== */
+.reg-table{
+	border-collapse: collapse;
+	border-spacing: 0;
+	border: 1px solid #e1e1e1;
+	margin: 40px auto;
+	width: 900px;
+}
+
+.reg-table th{
+	border: 1px solid #e1e1e1;
+	padding: 15px 9px 15px 15px;
+	background: #f7f7f7;
+	font-size: 14px;
+	font-weight: bold;
+	text-align: left;
+}
+
+.reg-table td{
+    border: 1px solid #e1e1e1;
+    padding: 20px 40px;
+    background: #fff;
+    vertical-align: middle;
+    line-height: 1.5em;
+}
+
+.edi-box{
+	width: 900px;
+	margin: 0 auto;
+}
+
+.edi-table{
+	width: 100%;
+}
+
+.edi-table td{
+	padding: 20px 30px;
+	word-wrap: break-word;
+}
+
+.edi-table .inp-text{
+	width: 210px;
+}
+
+.edi-table tr:first-child th{
+	width: 439px;
+	box-sizing: border-box;
+}
+
+
+/*　排出事業場.排出依頼登録部分　*/
+.place-table {
+	width: 1100px;
+	margin: 40px auto 20px;
+	border-collapse: collapse;
+	border: none;
+}
+
+.place-table thead,
+.place-table tbody{
+	display:block;
+}
+
+.place-table thead tr{
+	background-color: #003f96;
+	color: #fff;
+}
+
+.place-table thead tr:first-child{
+	background-color: #fff;
+	border: none;
+}
+
+.place-table thead tr:first-child th:first-child{
+	background-color: #fff;
+	border: none;
+}
+
+.place-table thead tr:first-child a{
+	float: right;
+	display: block;
+	width: 200px;
+	padding: 15px 10px;
+	margin: 5px 0 10px;
+	font-weight: normal;
+	border: 1px solid #ccc;
+	color: #000;
+	text-decoration: none;
+	/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#ffffff+40,e5e5e5+100 */
+	background: rgb(255,255,255); /* Old browsers */
+	background: -moz-linear-gradient(top,  rgba(255,255,255,1) 40%, rgba(229,229,229,1) 100%); /* FF3.6-15 */
+	background: -webkit-linear-gradient(top,  rgba(255,255,255,1) 40%,rgba(229,229,229,1) 100%); /* Chrome10-25,Safari5.1-6 */
+	background: linear-gradient(to bottom,  rgba(255,255,255,1) 40%,rgba(229,229,229,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#e5e5e5',GradientType=0 ); /* IE6-9 */
+	text-align: center;
+}
+
+.place-table tbody{
+	overflow:auto;
+	max-height: 600px;
+	width: 1098px;
+	vertical-align: middle;
+	border: 1px solid #e1e1e1;
+}
+
+.place-table tbody tr:nth-child(2n-1){
+	background-color: #e7f1ff;
+}
+
+.place-table tbody tr:first-child{
+	background-color: #f7f7f7;
+}
+
+.place-table tbody td,
+.place-table tbody th{
+	border: 1px solid #e1e1e1;
+	font-size: 14px;
+	padding: 10px 7px;
+}
+
+.place-table tbody th{
+	width: 137.5px;
+	box-sizing: border-box;
+}
+
+.place-table thead tr:nth-child(2) th{
+	width: 1100px;
+	padding: 18px 0;
+	border-right: 2px solid #fff;
+}
+
+.about-box{
+	text-align: center;
+}
+
+.disposal-table th:nth-child(2),
+.disposal-table th:nth-child(3){
+	width: 202px;
+}
+
+.disposal-table th:nth-child(5){
+	width: 96px;
+}
+
+.disposal-table th:nth-child(6){
+	width: 160px;
+}
+
+.disposal-table tbody th:nth-child(7){
+	width: 206px;
+}
+
+.reg-table .table-title{
+	padding: 18px 0;
+	color: #fff;
+	background-color: #003f96;
+	border: 1px solid #003f96;
+	text-align: center;
+	font-size: 16px;
+}
+
+/* ゴミテーブル */
+.gomi-table {
+	width: 100%;
+	overflow: auto;
+	margin: 0 auto 0;
+}
+
+.gomi-table tbody th:nth-child(1){
+	width: 171px;
+	box-sizing: border-box;
+}
+
+.gomi-table tbody th:nth-child(2){
+	width: 172px;
+	box-sizing: border-box;
+}
+
+.gomi-table tbody th:nth-child(3){
+	width: 181px;
+	box-sizing: border-box;
+}
+
+.gomi-table tbody th:nth-child(4){
+	width: 204px;
+	box-sizing: border-box;
+}
+
+.gomi-table tbody th:nth-child(5){
+	width: 174px;
+	box-sizing: border-box;
+}
+
+.gomi-table tbody th:nth-child(6){
+	width: 197px;
+	box-sizing: border-box;
+}
+
+.gomi-table .table-title{
+	width: 1100px;
+}
+
+.about-btn,
+.new-btn{
+	background: rgb(255,255,255); /* Old browsers */
+	background: -moz-linear-gradient(top,  rgba(255,255,255,1) 40%, rgba(229,229,229,1) 100%); /* FF3.6-15 */
+	background: -webkit-linear-gradient(top,  rgba(255,255,255,1) 40%,rgba(229,229,229,1) 100%); /* Chrome10-25,Safari5.1-6 */
+	background: linear-gradient(to bottom,  rgba(255,255,255,1) 40%,rgba(229,229,229,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#e5e5e5',GradientType=0 ); /* IE6-9 */
+	text-align: center;
+	padding: 20px 0 !important;
+	font-weight: bold;
+}
+
+
+.new-btn{
+	display: block;
+	text-decoration: none;
+	color: #000;
+	width: 200px;
+	margin-top: 20px;
+	padding: 15px 20px;
+	border: 1px solid #ccc;
+}
+
+
+/* kensaku01部分 */
+.kensaku01 div{
+	width: 350px;
+}
+
+.gomi-table .kensaku01 div{
+	width: 100%;
+}
+
+/* 矢印画像 */
+.arrow-img{
+	width: 20px;
+	padding-right: 10px;
+	margin-bottom: 1px;
+}
+
+/*　モーダル内テーブル　*/
+.modal-content .table-title{
+	width: 980px !important;
+}
+
+.modal-content .place-table th:first-child{
+	width: 42px;
+	box-sizing: border-box;
+}
+
+.modal-content .place-table td:first-child{
+	text-align: center;
+}
+
+.mo-table td:nth-child(2){
+	width: 938px;
+	box-sizing: border-box;
+}
+
+.con5 table th:nth-child(2){
+	width: 910px;
+}
+
+.con5 table td:first-child{
+	width: 20px;
+}
+
+.industrial-radi-box{
+	text-align: center;
+}
+
+.kaisya-table th:nth-child(2),
+.kaisya-table th:nth-child(3){
+	width: 469px;
+    box-sizing: border-box;
+}
+
+/*　　*/
+.modal-content table{
+	width: 980px !important;
+}
+
+.issue-table td{
+	font-size: 12px;
+	padding: 10px;
+}
+
+
+/*　==================================================== 
+
+　フォーム設定
+
+　==================================================== */
+.inp-text{
+	width: 300px;
+}
+
+.sum-text{
+	width: 160px;
+}
+
+
+/*　==================================================== 
+
+　必須部分
+
+　==================================================== */
+.edi-table .required-text{
+	margin-left: 0;
+}
+
+
+
+/*　==================================================== 
+
+　モーダル設定
+
+　==================================================== */
+.modal-content {
+    position:fixed;
+    display:none;
+    z-index:2;
+    width: 980px;
+    margin:0;
+    padding:10px 20px;
+    border:2px solid #aaa;
+    background:#fff;
+}
+
+.modal-content .reg-table{
+	margin: 20px auto;
+}
+
+.modal-title{
+	width: 884px;
+	border-left: 8px solid #003f96;
+	padding: 5px 0 5px 8px;
+	margin: 0 auto;
+	font-weight: bold;
+	font-size: 18px;
+
+}
+
+.modal-content p {
+    margin:0;
+    padding:0;
+}
+
+.modal-overlay {
+    z-index:1;
+    display:none;
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:120%;
+    background-color:rgba(0,0,0,0.75);
+}
+
+.modal-open:hover {
+    cursor:pointer;
+}
+
+.modal-close {
+    color:#00f;
+    text-decoration:underline;
+}
+
+.modal-close:hover {
+    cursor:pointer;
+    color:#f00;
+}
+
+
+
+/*　==================================================== 
+
+　各種ボタン設定
+
+　==================================================== */
+
+/*　表示ボタン設定  排出事業場登録部分の「排出事業者情報と同じ」ボタン設定　*/
+.menu,
+.tuika-btn{
+	width: 180px;
+	padding: 15px 10px;
+	border: 1px solid #ccc;
+	/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#ffffff+40,e5e5e5+100 */
+	background: rgb(255,255,255); /* Old browsers */
+	background: -moz-linear-gradient(top,  rgba(255,255,255,1) 40%, rgba(229,229,229,1) 100%); /* FF3.6-15 */
+	background: -webkit-linear-gradient(top,  rgba(255,255,255,1) 40%,rgba(229,229,229,1) 100%); /* Chrome10-25,Safari5.1-6 */
+	background: linear-gradient(to bottom,  rgba(255,255,255,1) 40%,rgba(229,229,229,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#e5e5e5',GradientType=0 ); /* IE6-9 */
+	text-align: center;
+}
+
+.tuika-btn{
+	display: block;
+	float: right;
+	text-decoration: none;
+	color: #000;
+	width: 146px;
+	padding: 10px 5px;
+	margin: 20px 0 -10px 20px;
+	font-size: 14px;
+}
+
+.con3 .tuika-btn,
+.con4 .tuika-btn{
+	margin: 20px 0 -20px 0;
+}
+
+/* 確認するボタン */
+.con-btn{
+	border: none;
+}
+
+
+.modal-content input[type="submit"]{
+	display: block;
+	width: 200px;
+	border: none;
+	margin: 0 auto 20px;
+	padding: 10px 5px;
+	background-color: #003f96;
+	color: #fff;
+}
+
+
+.batu-btn-box{
+	text-align: right;
+}
+
+.batu-btn{
+	width: 35px;
+}
+
+/* 廃棄物登録 */
+.gomi-table .h-btn02,
+.gomi-table .choicebtn{
+	margin: 4px 0 4px !important;
+}
+
+.gomi-table .choicebtn:hover{
+	margin: 8px 0 0 0 !important;
+}
+
+.h-btn{
+	padding: 10px;
+	border: 1px solid #ccc;
+}
+
+.about-box .choicebtn,
+.about-box .choicebtn:hover{
+	margin-left: 0 !important;
+	padding: 5px 15px;
+}
+
+
+/* clearfix */
+.cf:after {
+    content:"";
+    display:block;
+    clear:both;
+}

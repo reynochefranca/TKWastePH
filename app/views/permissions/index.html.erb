@@ -1,0 +1,638 @@
+<%= stylesheet_link_tag "permit-master.css" %>
+<header>
+	<%= render template: 'template/nav' %>
+	<h1 class="title">許可証マスタ画面</h1>
+</header>
+
+<div class="container">
+	<%= form_for Permission.new, :multipart => "true" do |f| %>
+
+		<table class="place-table master-table">
+			<thead>
+				<tr>
+					<th colspan="6" class="table-title">許可証マスタ</th>
+				</tr>
+			</thead>
+			<tbody>
+				<% if @ermissions.blank? %>
+			
+				<% else 
+					@permissions.each do |row| %>
+						<tr>
+							<th>許可証種別</th>
+							<th>許可区分</th>
+							<th>許可番号</th>
+							<th>許可廃棄物分類</th>
+							<th>許可名称</th>
+							<th>許可地域</th>
+							<td rowspan="4">
+								<div class="btn-box cf">
+									<ul class="cf">
+										<li><a class="modal-open choicebtn" data-target="con1">編集</a></li>
+										<li><a href="#" class="sakuzyobtn">削除</a></li>
+									</ul>
+								</div>
+							</td>
+						</tr>
+						<tr>
+							<td><%= row.permit_type %></td>
+							<td><%= row.permission_type %></td>
+							<td><%= row.permit_number %></td>
+							<td><%= row.permitted_waste_classification %></td>
+							<td><%= row.permit_name %></td>
+							<td><%= row.allowed_area %></td>
+						</tr>
+						<tr>
+							
+							<th>許可市区町村</th>
+							<th colspan="2">許可期間</th>
+							<th>許可廃棄物分類</th>
+							<th>産廃有料認定区分</th>
+							<th>許可証PDF</th>
+						</tr>
+						<tr>
+							
+							<td><%= row.permitted_municipality %></td>
+							<td colspan="2"><%= row.started_at %>-<%= row.limited_at %></td>
+							<td><%= row.industrial_waste_paid_certification_category %></td>
+							<td><%= link_to "Download", row.permit_pdf_url %></td>
+						</tr>
+					<% end
+				end %>
+			</tbody>
+		</table>
+
+		<table class="place-table disposal-table">
+			<thead>
+				<tr>
+					<th class="table-title" colspan="5">新規追加</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<th>許可証種別</th>
+					<td>
+						<div class="kensaku01 cf">
+							<%= f.text_field :permit_type, :required => 'required', :class => 'inp-text sum-text'%>
+							<a class="modal-open choicebtn" data-target="con2">編集</a>
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<th>許可区分</th>
+					<td>
+						<div class="kensaku01 cf">
+							<%= f.text_field :permission_type, :required => 'required', :class => 'inp-text sum-text'%>
+							<a class="modal-open choicebtn" data-target="con3">編集</a>
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<th>許可番号</th>
+					<td><%= f.text_field :permit_number, :required => 'required', :class => 'inp-text sum-text'%></td>
+				</tr>
+				<tr>
+					<th>許可廃棄物分類</th>
+					<td>
+						<div class="kensaku01 cf">
+							<%= f.text_field :permitted_waste_classification, :required => 'required', :class => 'inp-text sum-text'%>
+							<a class="modal-open choicebtn" data-target="con4">編集</a>
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<th>許可名称</th>
+					<td><%= f.text_field :permit_name, :required => 'required', :class => 'inp-text sum-text'%></td>
+				</tr>
+				<tr>
+					<th>許可地域</th>
+					<td>
+						<div class="kensaku01 cf">
+							<%= f.text_field :allowed_area, :required => 'required', :class => 'inp-text sum-text'%>
+							<a class="modal-open choicebtn" data-target="con5">編集</a>
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<th>許可市区町村</th>
+					<td>
+						<div class="kensaku01 cf">
+							<%= f.text_field :permitted_municipality, :required => 'required', :class => 'inp-text sum-text'%>
+							<a class="modal-open choicebtn" data-target="con6">編集</a>
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<th>許可期間</th>
+					<td>
+						<div class="kensaku01 cf">
+							<%= f.text_field :started_at, :required => 'required', :class => 'inp-text sum-text'%>
+						</div>
+						<div class="kensaku01 cf">
+							<%= f.text_field :limited_at, :required => 'required', :class => 'inp-text sum-text'%>
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<th>産廃有料認定区分</th>
+					<td>
+						<div class="kensaku01 cf">
+							<%= f.text_field :industrial_waste_paid_certification_category, :required => 'required', :class => 'inp-text sum-text'%>
+							<a class="modal-open choicebtn" data-target="con8">編集</a>
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<th>許可証PDF</th>
+					<td>
+						<div class="kensaku01 cf">
+							<%= f.file_field :permit_pdf %>
+						</div>
+					</td>
+				</tr>
+
+				<tr>
+					<td colspan="2" class="reg-btn-box"><%= f.submit "登録", :class => 'choicebtn' %></td>
+				</tr>
+			</tbody>
+		</table>
+		<div class="con-btn-box">
+			<input type="submit" class="con-btn" value="修正登録">
+		</div>
+	<% end %>
+</div>
+
+<%= render template: 'template/footer' %>
+
+
+
+
+<div class="modal-content con2">
+	<div class="batu-btn-box">
+		<a class="modal-close"><%= image_tag('batu.png', :alt => 'ボタン', :class => 'batu-btn') %></a>
+
+	</div>
+	<form action="" method="post">
+		<table class="place-table disposal-table">
+			<thead>
+				<tr>
+					<th colspan="2" class="table-title" style="width:100%;">許可証種別一覧</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<th colspan="2">許可証種別</th>
+				</tr>
+				<% @waste_types.each do |w| %>
+				<tr>
+					<td colspan="1"><input type="radio" name="003"></td>
+					<td colspan="1" style="width:100%;"><%= w.code %> / <%= w.name %></td>
+				</tr>
+				<% end %>
+			</tbody>
+		</table>
+		<input type="submit" value="登録する">
+	</form>
+</div>
+
+
+<div class="modal-content con3">
+	<div class="batu-btn-box">
+		<a class="modal-close"><%= image_tag('batu.png', :alt => 'ボタン', :class => 'batu-btn') %></a>
+
+	</div>
+	<form action="" method="post">
+		<table class="place-table disposal-table">
+			<thead>
+				<tr>
+					<th colspan="2" class="table-title">許可区分一覧</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<th colspan="2">許可区分</th>
+				</tr>
+				<% @roles.each do |r| %>
+					<tr>
+						<td colspan="1"><input type="radio" name="003"></td>
+						<td colspan="1" style="width:100%;"><%= r.name %></td>
+					</tr>
+				<% end %>
+			</tbody>
+		</table>
+		<input type="submit" value="登録する">
+	</form>
+</div>
+
+
+<div class="modal-content con4">
+	<div class="batu-btn-box">
+		<a class="modal-close"><%= image_tag('batu.png', :alt => 'ボタン', :class => 'batu-btn') %></a>
+
+	</div>
+	<form action="" method="post">
+		<table class="place-table disposal-table">
+			<thead>
+				<tr>
+					<th colspan="2" class="table-title">許可廃棄物分類一覧</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<th colspan="2">許可廃棄物分類</th>
+				</tr>
+				<% @categories.each do |c| %>
+					<tr>
+						<td colspan="1"><input type="radio" name="003"></td>
+						<td colspan="1" style="width:100%;"><%= c.name %></td>
+					</tr>
+				<% end %>
+			</tbody>
+		</table>
+		<input type="submit" value="登録する">
+	</form>
+</div>
+
+
+<div class="modal-content con5">
+	<div class="batu-btn-box">
+		<a class="modal-close"><%= image_tag('batu.png', :alt => 'ボタン', :class => 'batu-btn') %></a>
+
+	</div>
+	<form action="" method="post">
+		<table class="place-table disposal-table">
+			<thead>
+				<tr>
+					<th colspan="2" class="table-title">許可地域一覧</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<th colspan="2">許可地域</th>
+				</tr>
+				<% @places.each do |pl| %>
+					<tr>
+						<td colspan="1"><input type="radio" name="003"></td>
+						<td colspan="1" style="width:100%;"><%= pl.prefecture %></td>
+					</tr>
+				<% end %>
+			</tbody>
+		</table>
+		<input type="submit" value="登録する">
+	</form>
+</div>
+
+
+<div class="modal-content con6">
+	<div class="batu-btn-box">
+		<a class="modal-close"><%= image_tag('batu.png', :alt => 'ボタン', :class => 'batu-btn') %></a>
+
+	</div>
+	<form action="" method="post">
+		<table class="place-table disposal-table">
+			<thead>
+				<tr>
+					<th colspan="2" class="table-title">許可市区町村一覧</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<th colspan="2">許可市区町村</th>
+				</tr>
+				<% @places.each do |pl| %>
+					<tr>
+						<td colspan="1"><input type="radio" name="003"></td>
+						<td colspan="1" style="width:100%;"><%= pl.city %></td>
+					</tr>
+				<% end %>
+			</tbody>
+		</table>
+		<input type="submit" value="登録する">
+	</form>
+</div>
+
+
+<div class="modal-content con7">
+	<div class="batu-btn-box">
+		<a class="modal-close"><%= image_tag('batu.png', :alt => 'ボタン', :class => 'batu-btn') %></a>
+
+	</div>
+	<form action="" method="post">
+		<table class="place-table disposal-table">
+			<thead>
+				<tr>
+					<th colspan="2" class="table-title">許可期間一覧</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<th></th>
+					<th>許可期間</th>
+				</tr>
+				<tr>
+					<td><input type="radio" name="003"></td>
+					<td></td>
+				</tr>
+				<tr>
+					<td><input type="radio" name="003"></td>
+					<td></td>
+				</tr>
+				<tr>
+					<td><input type="radio" name="003"></td>
+					<td></td>
+				</tr>
+			</tbody>
+		</table>
+		<input type="submit" value="登録する">
+	</form>
+</div>
+
+
+<div class="modal-content con8">
+	<div class="batu-btn-box">
+		<a class="modal-close"><%= image_tag('batu.png', :alt => 'ボタン', :class => 'batu-btn') %></a>
+
+	</div>
+	<form action="" method="post">
+		<table class="place-table disposal-table">
+			<thead>
+				<tr>
+					<th colspan="2" class="table-title">産廃有料認定区分一覧</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<th></th>
+					<th>産廃有料認定区分</th>
+				</tr>
+				<tr>
+					<td><input type="radio" name="003"></td>
+					<td></td>
+				</tr>
+				<tr>
+					<td><input type="radio" name="003"></td>
+					<td></td>
+				</tr>
+				<tr>
+					<td><input type="radio" name="003"></td>
+					<td></td>
+				</tr>
+			</tbody>
+		</table>
+		<input type="submit" value="登録する">
+	</form>
+</div>
+
+
+<!--  -->
+
+<div class="modal-content con9">
+	<div class="batu-btn-box">
+		<a class="modal-close2"><%= image_tag('batu.png', :alt => 'ボタン', :class => 'batu-btn') %></a>
+
+	</div>
+	<form action="" method="post">
+		<table class="place-table disposal-table">
+			<thead>
+				<tr>
+					<th colspan="2" class="table-title">許可証種別一覧</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<th></th>
+					<th>許可証種別</th>
+				</tr>
+				<tr>
+					<td><input type="radio" name="003"></td>
+					<td></td>
+				</tr>
+				<tr>
+					<td><input type="radio" name="003"></td>
+					<td></td>
+				</tr>
+				<tr>
+					<td><input type="radio" name="003"></td>
+					<td></td>
+				</tr>
+			</tbody>
+		</table>
+		<input type="submit" value="登録する">
+	</form>
+</div>
+
+
+<div class="modal-content con10">
+	<div class="batu-btn-box">
+		<a class="modal-close2"><%= image_tag('batu.png', :alt => 'ボタン', :class => 'batu-btn') %></a>
+
+	</div>
+	<form action="" method="post">
+		<table class="place-table disposal-table">
+			<thead>
+				<tr>
+					<th colspan="2" class="table-title">許可区分一覧</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<th></th>
+					<th>許可区分</th>
+				</tr>
+				<tr>
+					<td><input type="radio" name="003"></td>
+					<td></td>
+				</tr>
+				<tr>
+					<td><input type="radio" name="003"></td>
+					<td></td>
+				</tr>
+				<tr>
+					<td><input type="radio" name="003"></td>
+					<td></td>
+				</tr>
+			</tbody>
+		</table>
+		<input type="submit" value="登録する">
+	</form>
+</div>
+
+
+<div class="modal-content con11">
+	<div class="batu-btn-box">
+		<a class="modal-close2"><%= image_tag('batu.png', :alt => 'ボタン', :class => 'batu-btn') %></a>
+
+	</div>
+	<form action="" method="post">
+		<table class="place-table disposal-table">
+			<thead>
+				<tr>
+					<th colspan="2" class="table-title">許可廃棄物分類一覧</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<th></th>
+					<th>許可廃棄物分類</th>
+				</tr>
+				<tr>
+					<td><input type="radio" name="003"></td>
+					<td></td>
+				</tr>
+				<tr>
+					<td><input type="radio" name="003"></td>
+					<td></td>
+				</tr>
+				<tr>
+					<td><input type="radio" name="003"></td>
+					<td></td>
+				</tr>
+			</tbody>
+		</table>
+		<input type="submit" value="登録する">
+	</form>
+</div>
+
+
+<div class="modal-content con12">
+	<div class="batu-btn-box">
+		<a class="modal-close2"><%= image_tag('batu.png', :alt => 'ボタン', :class => 'batu-btn') %></a>
+
+	</div>
+	<form action="" method="post">
+		<table class="place-table disposal-table">
+			<thead>
+				<tr>
+					<th colspan="2" class="table-title">許可地域一覧</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<th></th>
+					<th>許可地域</th>
+				</tr>
+				<tr>
+					<td><input type="radio" name="003"></td>
+					<td></td>
+				</tr>
+				<tr>
+					<td><input type="radio" name="003"></td>
+					<td></td>
+				</tr>
+				<tr>
+					<td><input type="radio" name="003"></td>
+					<td></td>
+				</tr>
+			</tbody>
+		</table>
+		<input type="submit" value="登録する">
+	</form>
+</div>
+
+
+<div class="modal-content con13">
+	<div class="batu-btn-box">
+		<a class="modal-close2"><%= image_tag('batu.png', :alt => 'ボタン', :class => 'batu-btn') %></a>
+
+	</div>
+	<form action="" method="post">
+		<table class="place-table disposal-table">
+			<thead>
+				<tr>
+					<th colspan="2" class="table-title">許可市区町村一覧</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<th></th>
+					<th>許可市区町村</th>
+				</tr>
+				<tr>
+					<td><input type="radio" name="003"></td>
+					<td></td>
+				</tr>
+				<tr>
+					<td><input type="radio" name="003"></td>
+					<td></td>
+				</tr>
+				<tr>
+					<td><input type="radio" name="003"></td>
+					<td></td>
+				</tr>
+			</tbody>
+		</table>
+		<input type="submit" value="登録する">
+	</form>
+</div>
+
+
+<div class="modal-content con14">
+	<div class="batu-btn-box">
+		<a class="modal-close2"><%= image_tag('batu.png', :alt => 'ボタン', :class => 'batu-btn') %></a>
+
+	</div>
+	<form action="" method="post">
+		<table class="place-table disposal-table">
+			<thead>
+				<tr>
+					<th colspan="2" class="table-title">許可期間一覧</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<th></th>
+					<th>許可期間</th>
+				</tr>
+				<tr>
+					<td><input type="radio" name="003"></td>
+					<td></td>
+				</tr>
+				<tr>
+					<td><input type="radio" name="003"></td>
+					<td></td>
+				</tr>
+				<tr>
+					<td><input type="radio" name="003"></td>
+					<td></td>
+				</tr>
+			</tbody>
+		</table>
+		<input type="submit" value="登録する">
+	</form>
+</div>
+
+
+<div class="modal-content con15">
+	<div class="batu-btn-box">
+		<a class="modal-close2"><%= image_tag('batu.png', :alt => 'ボタン', :class => 'batu-btn') %></a>
+
+	</div>
+	<form action="" method="post">
+		<table class="place-table disposal-table">
+			<thead>
+				<tr>
+					<th colspan="2" class="table-title">産廃有料認定区分一覧</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<th></th>
+					<th>産廃有料認定区分</th>
+				</tr>
+				<tr>
+					<td><input type="radio" name="003"></td>
+					<td></td>
+				</tr>
+				<tr>
+					<td><input type="radio" name="003"></td>
+					<td></td>
+				</tr>
+				<tr>
+					<td><input type="radio" name="003"></td>
+					<td></td>
+				</tr>
+			</tbody>
+		</table>
+		<input type="submit" value="登録する">
+	</form>
+</div>
