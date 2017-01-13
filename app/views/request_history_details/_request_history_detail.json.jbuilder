@@ -1,0 +1,2 @@
+json.extract! request_history_detail, :id, :request_history_id, :edi_user_id, :manifest_id, :fuctioction_number, :request_value, :result_status, :created_at, :updated_at
+json.url request_history_detail_url(request_history_detail, format: :json)

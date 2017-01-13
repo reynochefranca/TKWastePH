@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  resources :request_history_details
+  resources :request_histories
   get 'person_registrations/index'
 
   get 'permit_registrations/index'

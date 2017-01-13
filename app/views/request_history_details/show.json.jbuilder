@@ -1,0 +1,1 @@
+json.partial! "request_history_details/request_history_detail", request_history_detail: @request_history_detail

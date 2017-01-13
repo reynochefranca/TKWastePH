@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  request_history_id: 1
+  edi_user_id: 1
+  manifest_id: 1
+  fuctioction_number: MyString
+  request_value: MyString
+  result_status: 1
+
+two:
+  request_history_id: 1
+  edi_user_id: 1
+  manifest_id: 1
+  fuctioction_number: MyString
+  request_value: MyString
+  result_status: 1

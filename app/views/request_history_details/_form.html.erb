@@ -1,0 +1,41 @@
+<%= form_for(@request_history_detail) do |f| %>
+  <% if @request_history_detail.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@request_history_detail.errors.count, "error") %> prohibited this request_history_detail from being saved:</h2>
+
+      <ul>
+      <% @request_history_detail.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :request_history_id %><br>
+    <%= f.number_field :request_history_id %>
+  </div>
+  <div class="field">
+    <%= f.label :edi_user_id %><br>
+    <%= f.number_field :edi_user_id %>
+  </div>
+  <div class="field">
+    <%= f.label :manifest_id %><br>
+    <%= f.number_field :manifest_id %>
+  </div>
+  <div class="field">
+    <%= f.label :fuctioction_number %><br>
+    <%= f.text_field :fuctioction_number %>
+  </div>
+  <div class="field">
+    <%= f.label :request_value %><br>
+    <%= f.text_field :request_value %>
+  </div>
+  <div class="field">
+    <%= f.label :result_status %><br>
+    <%= f.number_field :result_status %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

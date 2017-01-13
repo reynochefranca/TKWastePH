@@ -1,0 +1,1 @@
+json.array! @request_history_details, partial: 'request_history_details/request_history_detail', as: :request_history_detail

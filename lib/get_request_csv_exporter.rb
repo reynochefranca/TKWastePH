@@ -1,4 +1,4 @@
-class CsvExporter
+class SendCsvExporter
 
   require 'csv'
   require 'nkf'
@@ -101,7 +101,7 @@ class CsvExporter
     end
   end
 
-  def HD1
+  def HR1
       row = [
                   "HD1",
                   "0001",

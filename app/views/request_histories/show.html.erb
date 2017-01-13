@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Requested at:</strong>
+  <%= @request_history.requested_at %>
+</p>
+
+<p>
+  <strong>Csv file path:</strong>
+  <%= @request_history.csv_file_path %>
+</p>
+
+<%= link_to 'Edit', edit_request_history_path(@request_history) %> |
+<%= link_to 'Back', request_histories_path %>

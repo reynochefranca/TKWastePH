@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170111071838) do
+ActiveRecord::Schema.define(version: 20170113091223) do
 
   create_table "cars", force: :cascade do |t|
     t.string   "car_type",   limit: 255
@@ -96,6 +96,24 @@ ActiveRecord::Schema.define(version: 20170111071838) do
     t.datetime "updated_at",               null: false
   end
 
+  create_table "request_histories", force: :cascade do |t|
+    t.datetime "requested_at"
+    t.string   "csv_file_path", limit: 255
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
+  end
+
+  create_table "request_history_details", force: :cascade do |t|
+    t.integer  "request_history_id", limit: 4
+    t.integer  "edi_user_id",        limit: 4
+    t.integer  "manifest_id",        limit: 4
+    t.string   "fuctioction_number", limit: 255
+    t.string   "request_value",      limit: 255
+    t.integer  "result_status",      limit: 4
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
+  end
+
   create_table "roles", force: :cascade do |t|
     t.string   "name",       limit: 255
     t.datetime "created_at",             null: false
@@ -107,6 +125,12 @@ ActiveRecord::Schema.define(version: 20170111071838) do
     t.string   "name",       limit: 255
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
+  end
+
+  create_table "tests", force: :cascade do |t|
+    t.text     "memo",       limit: 65535
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
   end
 
   create_table "traders", force: :cascade do |t|

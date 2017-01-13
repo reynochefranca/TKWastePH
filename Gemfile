@@ -34,6 +34,8 @@ gem 'carrierwave', '~> 1.0'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
+gem 'whenever', require: false
+
 gem 'therubyracer'
 gem 'less-rails', git: 'https://github.com/MustafaZain/less-rails'
 #gem 'twitter-bootstrap-rails'
