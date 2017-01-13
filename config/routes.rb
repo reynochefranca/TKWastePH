@@ -47,7 +47,7 @@ Rails.application.routes.draw do
   get 'disposal_methods/index'
   
   get 'permissions/index'
-  
+    
   get 'waste_types/index'
   
   get 'categories/index'
@@ -72,9 +72,10 @@ Rails.application.routes.draw do
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
-
+  
   # Example of named route that can be invoked with purchase_url(id: product.id)
   #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase
+  # get 'permissions/:id/modal_search' => 'permissions#modal_search', :as => :modal_search
 
   # Example resource route (maps HTTP verbs to controller actions automatically):
 
