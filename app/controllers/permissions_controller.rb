@@ -27,6 +27,10 @@ class PermissionsController < ApplicationController
   
   def edit
      @permission = Permission.find(params[:id])
+     @waste_types = WasteType.all.group(:id, :code, :name)
+     @roles = Role.all.group(:id, :name)
+     @categories = Category.all.group(:id, :code, :name)
+     @places = Place.all.group(:id, :city, :prefecture)
   end
   
   def update

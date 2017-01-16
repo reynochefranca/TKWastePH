@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170111071838) do
+ActiveRecord::Schema.define(version: 20170113093448) do
 
   create_table "cars", force: :cascade do |t|
     t.string   "car_type",   limit: 255
@@ -110,9 +110,19 @@ ActiveRecord::Schema.define(version: 20170111071838) do
   end
 
   create_table "traders", force: :cascade do |t|
-    t.string   "name",       limit: 255
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
+    t.string   "code",                                          limit: 255
+    t.string   "name_kanji",                                    limit: 255
+    t.string   "name_kana",                                     limit: 255
+    t.string   "tel_name",                                      limit: 255
+    t.integer  "tel",                                           limit: 4
+    t.string   "fax_name",                                      limit: 255
+    t.integer  "fax",                                           limit: 4
+    t.string   "email",                                         limit: 255
+    t.string   "division",                                      limit: 255
+    t.string   "memo",                                          limit: 255
+    t.string   "industrial_waste_excellent_certification_type", limit: 255
+    t.datetime "created_at",                                                null: false
+    t.datetime "updated_at",                                                null: false
   end
 
   create_table "units", force: :cascade do |t|
@@ -140,8 +150,19 @@ ActiveRecord::Schema.define(version: 20170111071838) do
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
-  create_table "waste_types", force: :cascade do |t|
+  create_table "waste_regs", force: :cascade do |t|
+    t.string   "code",       limit: 255
+    t.string   "name",       limit: 255
     t.string   "waste_type", limit: 255
+    t.string   "quantity",   limit: 255
+    t.string   "unit",       limit: 255
+    t.string   "form",       limit: 255
+    t.string   "packing",    limit: 255
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
+
+  create_table "waste_types", force: :cascade do |t|
     t.string   "code",       limit: 255
     t.string   "name",       limit: 255
     t.datetime "created_at",             null: false

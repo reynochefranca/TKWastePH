@@ -25,6 +25,7 @@ Rails.application.config.assets.precompile += %w( roles-master.css )
 Rails.application.config.assets.precompile += %w( places-master.css )
 Rails.application.config.assets.precompile += %w( edi-users-master.css )
 Rails.application.config.assets.precompile += %w( company-reg.css )
+Rails.application.config.assets.precompile += %w( select2.css )
 
 # JS Global
 Rails.application.config.assets.precompile += %w( jquery.js )
@@ -37,5 +38,5 @@ Rails.application.config.assets.precompile += %w( navi.js )
 # JS Local
 Rails.application.config.assets.precompile += %w( jquery-colorbox.min.js )
 Rails.application.config.assets.precompile += %w( jquery-ui.min.js )
-Rails.application.config.assets.precompile += %w( jquery-datepicker.min.js )
+Rails.application.config.assets.precompile += %w( select2.js )
 

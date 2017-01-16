@@ -1,0 +1,2 @@
+module WasteRegsHelper
+end
