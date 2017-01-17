@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
 
+  get 'waste_regs/index'
+
+  get 'wastes/index'
+
   get 'person_registrations/index'
 
   get 'permit_registrations/index'
@@ -68,14 +72,14 @@ Rails.application.routes.draw do
   root 'home#index'
   
 
-  resources :categories, :waste_types, :disposal_methods, :roles, :cars, :units, :places, :shapes, :edi_users, :packages, :hazardous_substances, :traders, :trader_places, :place_users, :users, :permissions
+  resources :categories, :waste_types, :disposal_methods, :roles, :cars, :units, :places, :shapes, :edi_users, :packages, :hazardous_substances, :traders, :trader_places, :place_users, :users, :permissions, :waste_regs
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
   
   # Example of named route that can be invoked with purchase_url(id: product.id)
   #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase
-  # get 'permissions/:id/modal_search' => 'permissions#modal_search', :as => :modal_search
+  # get 'categories/:id/blahblah' => 'categories#blahblah', :as => :blahblah
 
   # Example resource route (maps HTTP verbs to controller actions automatically):
 

@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  code: MyString
+  name: MyString
+  waste_type: MyString
+  quantity: MyString
+  unit: MyString
+  form: MyString
+  packing: MyString
+
+two:
+  code: MyString
+  name: MyString
+  waste_type: MyString
+  quantity: MyString
+  unit: MyString
+  form: MyString
+  packing: MyString

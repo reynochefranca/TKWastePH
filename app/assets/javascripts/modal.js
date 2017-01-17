@@ -48,9 +48,9 @@ $(function(){
 	// 「.modal-open」をクリック
 	$('.modal-open2').click(function(){
 		// オーバーレイ用の要素を追加
-		$('body').append('<div class="modal-overlay2"></div>');
+		$('body').append('<div class="modal-overlay"></div>');
 		 // オーバーレイをフェードイン
-		$('.modal-overlay2').fadeIn('slow');
+		$('.modal-overlay').fadeIn('slow');
 
 		// モーダルコンテンツのIDを取得
 		var modal2 = '.' + $(this).attr('data-target');
@@ -63,9 +63,9 @@ $(function(){
 		$('.modal-overlay2, .modal-close2').off().click(function(){
 			// モーダルコンテンツとオーバーレイをフェードアウト
 			$(modal2).fadeOut('slow');
-			$('.modal-overlay2').fadeOut('slow',function(){
+			$('.modal-overlay').fadeOut('slow',function(){
 				// オーバーレイを削除
-				$('.modal-overlay2').remove();
+				$('.modal-overlay').remove();
 			});
 		});
 

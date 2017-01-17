@@ -1,0 +1,96 @@
+<%= stylesheet_link_tag "company-reg.css" %>
+<header>
+    <%= render template: 'template/nav' %>
+	<h1 class="title">Waste Information</h1>
+</header>
+<div class="container">
+	<%= form_for WasteReg.new do |f| %>
+	<center><h3><%= notice %></h3></center>
+	<table class="issue-table">
+		<tr>
+			<th colspan="10" class="table-title">廃棄リスト</th>
+		</tr>
+		<tr>
+			<th>Code</th>
+			<th>Name</th>
+			<th>Waste type</th>
+			<th>Quantity</th>
+			<th>Unit</th>
+			<th>Form</th>
+			<th>Packing</th>
+			<th></th>
+		</tr>
+		<% if @waste_regs.blank? %>
+		<center>
+			<tr>
+				<td colspan="10"><center><h2>No Data Input</h2></center></td>
+			</tr>
+		</center>
+		<% else @waste_regs.each do |row| %>
+		<tr>
+			<td><%= row.code %></td>
+			<td><%= row.name %></td>
+			<td><%= row.waste_type %></td>
+			<td><%= row.quantity %></td>
+			<td><%= row.unit %></td>
+			<td><%= row.form %></td>
+			<td><%= row.packing %></td>
+			<td>
+				<div class="btn-box cf">
+					<ul class="cf">
+						<li><%= link_to '編集', edit_waste_reg_path(row), :class => 'modal-open choicebtn', data: { target: 'con1', remote: 'true' } %></li>
+						<li><%= link_to '削除', row, method: :delete, :class => 'sakuzyobtn', data: { confirm: 'Are you sure?' } %></li>
+					</ul>
+				</div>
+		</tr>
+		<% end
+		end%>
+		</table>
+		<table class="reg-table">
+			<tr>
+				<th colspan="7" class="table-title">廃棄物の登録</th>
+			</tr>
+			<tr>
+				<th colspan="3">Waste code</th>
+				<td colspan="4"><%= f.text_field :code, :required => 'required', class: 'inp-text sum-text'%></td>
+			</tr>
+			<tr>
+				<th colspan="3">Waste name</th>
+				<td colspan="4"><%= f.text_field :name, :required => 'required', class: 'inp-text sum-text'%></td>
+			</tr>
+			<tr>
+				<th colspan="3">Waste type</th>
+				<td colspan="3"><%= f.text_field :waste_type, :required => 'required', class: 'inp-text sum-text'%></td>
+				<td colspan="1" align="center"><a class="modal-open choicebtn" data-target="con02">検索</a></td>
+				<%# link_to 'select',wastes_select_path, :class => 'modal-open choicebtn', date: {target: 'con2', remote: 'true' } %>
+			</tr>
+			
+			<tr>
+				<th colspan="3">Quantity</th>
+				<td colspan="4"><%= f.text_field :quantity, :required => 'required', class: 'inp-text sum-text'%></td>
+			</tr>
+			<tr>
+				<th colspan="3">Unit</th>
+				<td colspan="4"><%= f.collection_select :unit, WasteReg::UNITS, :to_s, :to_s, :include_blank => true, :required => 'required', class: 'inp-text sum-text'%></td>
+				<%#td colspan="1" align="center"><a class="modal-open choicebtn" data-target="con03">検索</a></td #%>
+			</tr>
+			<tr>
+				<th colspan="3">Form</th>
+				<td colspan="4"><%= f.collection_select :form, WasteReg::FORMS, :to_s, :to_s, :include_blank => true, :required => 'required', class: 'inp-text sum-text'%></td>
+				<%#td colspan="1" align="center"><a class="modal-open choicebtn" data-target="con04">検索</a></td #%>
+			</tr>
+			<tr>
+				<th colspan="3">Packing style</th>
+				<td colspan="4"><%= f.collection_select :packing, WasteReg::PACKING, :to_s, :to_s, :include_blank => true, :required => 'required', class: 'inp-text sum-text'%></td>
+				<%# td colspan="1" align="center"><a class="modal-open choicebtn" data-target="con05">検索</a></td #%>
+			</tr>
+		</table>
+
+		<div class="con-btn-box cf">
+			<%= f.submit "submit", :class => "con-btn" %>
+		</div>
+		<% end %>
+</div>
+
+<%= render template: 'template/footer' %>
+
