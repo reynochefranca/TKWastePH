@@ -22,5 +22,5 @@
 set :output, 'log/crontab.log'
 
 every 1.minutes do
-  rake "a:rake_command_test"
+  rake "JWNET:timer"
 end

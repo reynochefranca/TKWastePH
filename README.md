@@ -65,3 +65,19 @@ Tokuda &amp; Kondo waste manifest project
    - ~~DEPRECATION WARNING: Sprockets method `register_engine` is deprecated.~~
 
    - ~~DEPRECATION WARNING: You are using the a deprecated processor interface Less::Rails::ImportProcessor.~~
+
+* JWNET rake タスク
+  - JWNET への各要求処理を行う rakeタスク 及び crontab を開発中...
+
+  - set up
+    - secrets.yml の更新
+      - secrets.yml.org 参照のこと
+  - crontab 登録    
+    `$ whenever -s 'environment=development' --update-crontab`
+
+  - rake task の詳細
+    - `$ rake -vT` で一覧表示できる
+      - `$ rake JWNET:timer` でタイマー付きのJWNETへの送信処理を実行
+        - `$ rake JWNET:send_request` で「送信要求」処理のみ実行
+        - `$ rake JWNET:result_request` で「結果要求」処理のみ実行
+        
