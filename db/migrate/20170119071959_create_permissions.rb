@@ -11,9 +11,9 @@ class CreatePermissions < ActiveRecord::Migration
       t.string :permitted_municipality
       t.datetime :started_at
       t.datetime :limited_at
-      t.string :industrial_waste_paid_certification_category
+      t.string :industrial_waste_paid_certification_cetegory
       t.string :permit_pdf
-      
+
       t.timestamps null: false
     end
   end

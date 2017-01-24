@@ -1,0 +1,28 @@
+<table class="issue-table">
+	<thead>
+		<tr>
+			<th colspan="3" class="table-title">検索結果</th>
+		</tr>
+		<tr>
+			<th></th>
+			<th>許可番号</th>
+			<th>許可名称</th>
+		</tr>
+	</thead>
+	<tbody>
+		<% @permissions.each do |row| %>
+			<tr>
+				<td align="center"><input type="radio" name="con01" 
+				data-id="<%= row.id %>"
+				data-permit_number="<%= row.permit_number %>"
+				data-permit_name="<%= row.permit_name %>"
+				data-started_at="<%= row.started_at %>"
+				data-limited_at="<%= row.limited_at %>"
+				data-industrial_waste_paid_certification_cetegory="<%= row.industrial_waste_paid_certification_cetegory %>"
+				value="<%= row.id %>"></td>
+				<td><%= row.permit_number %></td>
+				<td><%= row.permit_name %></td>
+			</tr>
+		<% end %>
+	</tbody>
+</table>

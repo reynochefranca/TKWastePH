@@ -11,7 +11,7 @@ one:
   email: MyString
   division: MyString
   memo: MyString
-  industrial_waste_excellent_certification_type: MyString
+  industriaial_waste_excellent_certification_type: MyString
 
 two:
   code: MyString
@@ -24,4 +24,4 @@ two:
   email: MyString
   division: MyString
   memo: MyString
-  industrial_waste_excellent_certification_type: MyString
+  industriaial_waste_excellent_certification_type: MyString

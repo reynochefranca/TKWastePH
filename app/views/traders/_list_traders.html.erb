@@ -1,0 +1,22 @@
+<table class="issue-table">
+	<thead>
+		<tr>
+			<th colspan="3" class="table-title">検索結果</th>
+		</tr>
+		<tr>
+			<th></th>
+			<th>漢字</th>
+			<th>カナ</th>
+		</tr>
+	</thead>
+	<tbody>
+		<% @traders.each do |row| %>
+			<tr>
+				<td align="center"><input type="radio" name="con00" data-kanji="<%= row.name_kanji %>" data-kana="<%= row.name_kana %>" value="<%= row.id %>"></td>
+				<td><%= row.name_kanji %></td>
+				<td><%= row.name_kana %></td>
+			</tr>
+		<% end %>
+	</tbody>
+</table>
+
