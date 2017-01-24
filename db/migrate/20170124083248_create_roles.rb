@@ -2,8 +2,7 @@ class CreateRoles < ActiveRecord::Migration
   def change
     create_table :roles do |t|
       t.string :name
-      t.datetime :created_at
-      t.datetime :updated_at
+      t.belongs_to :trader_edi_user
 
       t.timestamps null: false
     end

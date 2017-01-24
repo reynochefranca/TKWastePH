@@ -9,10 +9,11 @@ class CreatePlaces < ActiveRecord::Migration
       t.string :prefecture
       t.string :city
       t.string :address
+      t.string :bill_name
       t.string :tel1
       t.string :tel2
-      t.datetime :created_at
-      t.datetime :updated_at
+      t.belongs_to :trapder_place
+      t.belongs_to :place_user
 
       t.timestamps null: false
     end

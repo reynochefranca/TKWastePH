@@ -12,6 +12,8 @@ class CreateTraders < ActiveRecord::Migration
       t.string :division
       t.string :memo
       t.string :industrial_waste_excellent_certification_type
+      t.belongs_to :trader_place
+      t.has_many :user
 
       t.timestamps null: false
     end

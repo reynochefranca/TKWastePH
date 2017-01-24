@@ -1,9 +1,9 @@
 class CreateCategories < ActiveRecord::Migration
   def change
     create_table :categories do |t|
-      t.integer :parent_id
       t.string :code
       t.string :name
+      t.belongs_to :category_permission
 
       t.timestamps null: false
     end

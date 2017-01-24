@@ -11,8 +11,6 @@ class CreateEdiUsers < ActiveRecord::Migration
       t.string :registration_user2_email
       t.string :registration_user3_name
       t.string :registration_user3_email
-      t.datetime :created_at
-      t.datetime :updated_at
 
       t.timestamps null: false
     end
