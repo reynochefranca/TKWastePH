@@ -1,6 +1,7 @@
 source 'https://rubygems.org'
 
-
+# Ransack enables the creation of both simple and advanced search forms for your Ruby on Rails application 
+gem 'ransack'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.5'
 # Use mysql as the database for Active Record
