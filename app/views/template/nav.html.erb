@@ -15,8 +15,9 @@
 				</ul>
 			</li>
 			<li class="navi-li"><a href="">マニフェスト</a>
+				<%# link_to 'マニフェスト', manifests_index_path %>
 				<ul class="child">
-					<li><%= link_to '廃棄物情報', waste_regs_index_path %></li>
+					<li><%= link_to '廃棄物情報', waste_registrations_index_path %></li>
 				</ul>
 			</li>
 			<li class="navi-li"><a href="">請求</a></li>
@@ -26,7 +27,6 @@
 						<ul class="child">
 							<li><%= link_to "廃棄物種類", categories_index_path %></li>
 							<li><%= link_to "廃棄物種別", waste_types_index_path %></li>
-							<li><%= link_to "許可証(マスタ)", permissions_index_path %></li>
 							<li><%= link_to "処分方法", disposal_methods_index_path %></li>
 							<li><%= link_to "有害物質", hazardous_substances_index_path %></li>
 							<li><%= link_to "荷姿", packages_index_path %></li>
@@ -40,7 +40,7 @@
 					</li>
 					<li><%= link_to "会社関連", company_registrations_index_path %></li>
 					<li><%= link_to "人物関連", person_registrations_index_path %></li>
-					<li><%= link_to "許可関連", permit_registrations_index_path %></li>
+					<li><%= link_to "許可関連", permissions_index_path %></li>
 				</ul>
 			</li>
 			<li class="navi-li"><a href="javascript:void(0)">ユーザー</a>

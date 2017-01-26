@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class PermitRegistrationsControllerTest < ActionController::TestCase
+class ManifestsControllerTest < ActionController::TestCase
   test "should get index" do
     get :index
     assert_response :success

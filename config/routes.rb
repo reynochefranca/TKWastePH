@@ -1,5 +1,11 @@
 Rails.application.routes.draw do
 
+  get 'manifests/index'
+
+  get 'permissions/index'
+
+  get 'waste_registrations/index'
+
   get 'waste_regs/index'
 
   get 'wastes/index'
@@ -71,7 +77,7 @@ Rails.application.routes.draw do
   # You can have the root of your site routed with "root"
   root 'home#index'
   
-
+  resources :waste_registrations, :manifests
   resources :categories, :waste_types, :disposal_methods, :roles, :cars, :units, :places, :shapes, :edi_users, :packages, :hazardous_substances, :traders, :trader_places, :place_users, :users, :permissions, :waste_regs
 
   # Example of regular route:

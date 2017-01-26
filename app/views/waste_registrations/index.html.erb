@@ -1,0 +1,256 @@
+<%= stylesheet_link_tag "company-reg.css" %>
+<%= stylesheet_link_tag "select2.css" %>
+<%= javascript_include_tag "select2.js" %>
+<%= javascript_include_tag "jquery-ui.min.js" %>
+<script>
+	  $(function(){
+         $('select').select2();
+      });
+</script>
+<script>
+//カレンダー
+$(function() {
+    $('.calendar').datepicker();
+	$.datepicker.setDefaults( $.datepicker.regional[ "ja" ] );
+});
+</script>
+<script>
+$(function(){
+	//btn_demoAがクリックされた時…
+	$('.calendar-tuika').click(function(){
+	//demoAの中のpにprependの処理をする
+	$('<input type="text" class="inp-text sum-text calendar"><br>').appendTo('.calendar-box');
+    $('.calendar').datepicker();
+	});
+});
+</script>
+<header>
+    <%= render template: 'template/nav' %>
+	<h1 class="title">Waste Manifest</h1>
+</header>
+<center><h3><%= notice %></h3></center>
+<div class="container">
+	
+		<%= form_for WasteRegistration.new do |f| %>
+		<table>
+			<tr>
+			<th>Select Date:</th> <td><input type="date"></td>
+			<th>Enter Time:</th> <td><input type="time"></td>
+			</tr>
+		</table>
+		<% end %>
+	<%= form_for WasteRegistration.new do |f| %>
+		<table class="issue-table">
+			<tr>
+				<th colspan="15" class="table-titlegreen">Transporter Information</th>
+			</tr>
+			<tr>
+				<th rowspan="2">Transporter<br><span class="required-text">必須</span></th>
+				<td>Kanji</td>
+				<td>
+					<div class="kensaku01 cf">
+						<%= f.collection_select(:trader_id,Trader.all,:id,:name_kanji, :include_blank => '---select name---') %>
+					</div>
+				</td>
+
+				<th rowspan="2">First Person in Charge</th>
+				<td>Kanji</td>
+				<td>
+					<div class="kensaku01 cf">
+						<%= f.collection_select(:trader_id,Trader.all,:id,:name_kanji, :include_blank => '---select name---') %>
+					</div>
+				</td>
+				<tr>
+					<td>Kana</td>
+				<td>
+				<div class="kensaku01 cf">
+						<%= f.collection_select(:trader_id,Trader.all,:id,:name_kana, :include_blank => '---select name---') %>
+					</div></td>
+				<td>Kana</td>
+				<td>
+					<div class="kensaku01 cf">
+						<%= f.collection_select(:trader_id,Trader.all,:id,:name_kana, :include_blank => '---select name---') %>
+					</div>
+				</td>
+				</tr>
+			</tr>
+			
+		</table>
+	<% end %>
+		
+	<%= form_for WasteRegistration.new do |f| %>
+		<table class="issue-table">
+			<tr>
+				<th colspan="15" class="table-titlered">Company Information</th>
+			</tr>
+			<tr>
+				<th rowspan="2">Business<br>Information<br><span class="required-text">必須</span></th>
+				<td>Kanji</td>
+				<td>
+					<div class="kensaku01 cf">
+						<%= f.collection_select(:trader_id,Trader.all,:id,:name_kanji, :include_blank => '---select name---') %>
+					</div>
+				</td>
+				<th rowspan="2">First Person in Charge</th>
+				<td>Kanji</td>
+				<td>
+					<div class="kensaku01 cf">
+						<%= f.collection_select(:trader_id,Trader.all,:id,:name_kanji, :include_blank => '---select name---') %>
+					</div>
+				</td>
+				<tr>
+					<td>Kana</td>
+				<td>
+					<div class="kensaku01 cf">
+						<%= f.collection_select(:trader_id,Trader.all,:id,:name_kana, :include_blank => '---select name---') %>
+					</div>
+				</td>
+				<td>Kana</td>
+				<td>
+					<div class="kensaku01 cf">
+						<%= f.collection_select(:trader_id,Trader.all,:id,:name_kana, :include_blank => '---select name---') %>
+					</div>
+				</td>
+				</tr>
+			</tr>
+		</table>
+	<% end %>	
+	<div class="container">
+		<table class="issue-table">
+
+		<%#table class="issue-table1" style="float: left" #%>
+			<tr>
+				<th colspan="10" class="table-title">廃棄リスト</th>
+			</tr>
+			<tr>
+				<th>Code</th>
+				<th>Name</th>
+				<th>Waste type</th>
+				<th>Quantity</th>
+				<th>Unit</th>
+				<th>Form</th>
+				<th>Packing</th>
+				<th></th>
+			</tr>
+			
+			<% @waste_registrations.each do |row| %>
+				<tr>
+					<td><%= row.code %></td>
+					<td><%= row.name %></td>
+					<td><%= row.waste_name %></td>
+					<td><%= row.quantity %></td>
+					<td><%= row.unit_name %></td>
+					<td><%= row.shape_name %></td>
+					<td><%= row.package_name %></td>
+					<td>
+						<%# link_to 'edit', edit_waste_registration_path(row) %>
+					    <%= link_to 'delete', row, method: :delete, data: { confirm: 'Are you sure?' } %>
+					    <%# link_to 'delete', waste_registration_path(@waste_registration_id,row.code,row.name,row.quantity), method: :delete %>
+					</td>
+				</tr>
+			<% end %>
+		</table>
+		<%#table class="issue-table2" style="float: left">
+			<tr>
+				<th colspan="3" class="table-title">Transporter table</th>
+			</tr>
+			<tr>
+				<th>Packing</th>
+				<th>Unit Count</th>
+				<th>Manifest Code</th>
+			</tr>
+			<tr>
+				<td>Container</td>
+				<td>5</td>
+				<td>Code 2321</td>
+			</tr>
+			<tr>
+				<td>Container</td>
+				<td>5</td>
+				<td>Code 2321</td>
+			</tr>
+			<tr>
+				<td>Container</td>
+				<td>5</td>
+				<td>Code 2321</td>
+			</tr>
+		</table #%>
+
+</div>
+
+		<center>
+			<a class="modal-open choicebtn1" data-target="con1">Add New Waste</a>
+		</center>
+			
+	<div class="modal-content con1">
+	<div class="batu-btn-box">
+		<a class="modal-close"><img src="img/batu.png" alt="×ボタン" class="batu-btn"></a>
+
+	</div>
+	<%= form_for WasteRegistration.new do |f| %>
+		<table class="issue-table">
+		<%# table class="reg-table" style="display: inline-block;" #%>
+			<tr>
+				<th colspan="7" class="table-title">廃棄物の登録</th>
+			</tr>
+			<tr>
+				<th colspan="3">Waste code</th>
+				<td colspan="4"><%= f.text_field :code, :required => 'required', class: 'inp-text sum-text'%></td>
+			</tr>
+			<tr>
+				<th colspan="3">Waste name</th>
+				<td colspan="4"><%= f.text_field :name, :required => 'required', class: 'inp-text sum-text'%></td>
+			</tr>
+			<tr>
+				<th colspan="3">Waste type</th>
+				<td>
+					<div class="kensaku01 cf">
+						<%= f.collection_select(:waste_type_id,WasteType.all,:id,:name, :include_blank => '---select waste type---') %>
+					</div>
+				</td>
+				<%#td colspan="1" align="center"><a class="modal-open choicebtn" data-target="con02">検索</a></td>
+				<%# link_to 'select',wastes_select_path, :class => 'modal-open choicebtn', date: {target: 'con2', remote: 'true' } %>
+			</tr>
+			
+			<tr>
+				<th colspan="3">Quantity</th>
+				<td colspan="4"><%= f.text_field :quantity, :required => 'required', class: 'inp-text sum-text'%></td>
+			</tr>
+			<tr>
+				<th colspan="3">Unit</th>
+				<td colspan="4">
+					<div class="kensaku01 cf">
+						<%= f.collection_select(:unit_id,Unit.all,:id,:name, :include_blank => '---select unit type---') %>
+					</td>
+				</div>
+				<%#td colspan="1" align="center"><a class="modal-open choicebtn" data-target="con03">検索</a></td #%>
+			</tr>
+			<tr>
+				<th colspan="3">Form</th>
+				<td colspan="4">
+					<div class="kensaku01 cf">
+						<%= f.collection_select(:shape_id,Shape.all,:id,:name, :include_blank => '---select form type---') %>
+					</div>
+				</td>
+				<%#td colspan="1" align="center"><a class="modal-open choicebtn" data-target="con04">検索</a></td #%>
+			</tr>
+			<tr>
+				<th colspan="3">Packing style</th>
+				<td colspan="4">
+					<div class="kensaku01 cf">
+						<%= f.collection_select(:package_id,Package.all,:id,:name, :include_blank => '---select packing style---') %>
+					</div>
+				</td>
+				<%# td colspan="1" align="center"><a class="modal-open choicebtn" data-target="con05">検索</a></td #%>
+			</tr>
+		</table>
+		<%= f.submit "Add Waste", :class => "con-btn" %>
+		</div>
+
+	
+	<% end %>
+</div>
+
+
+<%= render template: 'template/footer' %>
+
