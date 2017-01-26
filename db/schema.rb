@@ -11,7 +11,8 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170125035200) do
+
+ActiveRecord::Schema.define(version: 20170122015952) do
 
   create_table "cars", force: :cascade do |t|
     t.string   "car_type",   limit: 255
@@ -193,19 +194,19 @@ ActiveRecord::Schema.define(version: 20170125035200) do
   end
 
   create_table "traders", force: :cascade do |t|
-    t.string   "code",                                          limit: 255
-    t.string   "name_kanji",                                    limit: 255
-    t.string   "name_kana",                                     limit: 255
-    t.string   "tel_name",                                      limit: 255
-    t.integer  "tel",                                           limit: 4
-    t.string   "fax_name",                                      limit: 255
-    t.integer  "fax",                                           limit: 4
-    t.string   "email",                                         limit: 255
-    t.string   "division",                                      limit: 255
-    t.string   "memo",                                          limit: 255
-    t.string   "industrial_waste_excellent_certification_type", limit: 255
-    t.datetime "created_at",                                                null: false
-    t.datetime "updated_at",                                                null: false
+    t.string   "code",                                            limit: 255
+    t.string   "name_kanji",                                      limit: 255
+    t.string   "name_kana",                                       limit: 255
+    t.string   "tel_name",                                        limit: 255
+    t.integer  "tel",                                             limit: 4
+    t.string   "fax_name",                                        limit: 255
+    t.integer  "fax",                                             limit: 4
+    t.string   "email",                                           limit: 255
+    t.string   "division",                                        limit: 255
+    t.string   "memo",                                            limit: 255
+    t.string   "industriaial_waste_excellent_certification_type", limit: 255
+    t.datetime "created_at",                                                  null: false
+    t.datetime "updated_at",                                                  null: false
   end
 
   create_table "transports", force: :cascade do |t|

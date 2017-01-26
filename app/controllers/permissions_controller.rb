@@ -1,56 +1,30 @@
 class PermissionsController < ApplicationController
- def index
-   @permissions = Permission.all
-   @waste_types = WasteType.all.group(:id, :code, :name)
-   @roles = Role.all.group(:id, :name)
-   @categories = Category.all.group(:id, :code, :name)
-   @places = Place.all.group(:id, :city, :prefecture)
- end
- 
- def show 
-   @permission = Permission.find(params[:id])
- end
- 
- def new
-   @permission = Permission.new
- end
+  def index
+    # If no search params, default to empty search
+    if params[:q] && params[:q].reject { |k, v| v.blank? }.present?
+      @search = Permission.search(params[:q])
+      @permissions = @search.result  
+    else
+      @search = Permission.search
+      @permissions = [] 
+    end
+    
+    @waste_types = WasteType.all
+    @roles = Role.all
+    @categories = Category.all
+    @places = Place.all
+    # @waste_types = Permission.select("waste_types.id, waste_types.name AS permit_type, permissions.permit_name")
+    # .joins("INNER JOIN waste_types ON permissions.permit_type=waste_types.id")
+    
+    # @roles = Permission.select("roles.id, roles.name AS permission_type, permissions.permit_name")
+    # .joins("INNER JOIN roles ON permissions.permission_type=roles.id")
+    
+    # @categories = Permission.select("categories.id, categories.name AS permitted_waste_classification, permissions.permit_name")
+    # .joins("INNER JOIN categories ON permissions.permitted_waste_classification=categories.id")
+    
+    # @places = Permission.select("places.id, places.prefecture AS allowed_area, places.city AS permitted_municipality, permissions.permit_name")
+    # .joins("INNER JOIN places ON permissions.allowed_area=places.id")
+  end
+  
 
- def create
-   @permission = Permission.new(permission_params)
-   
-   if @permission.save
-     redirect_to action: "index"
-   else
-     redirect_to action: "index"
-   end
- end
- 
- def edit
-    @permission = Permission.find(params[:id])
-    @waste_types = WasteType.all.group(:id, :code, :name)
-    @roles = Role.all.group(:id, :name)
-    @categories = Category.all.group(:id, :code, :name)
-    @places = Place.all.group(:id, :city, :prefecture)
- end
- 
- def update
-   @permission = Permission.find(params[:id])
-
-   if @permission.update_attributes(permission_params)
-     redirect_to action: "index"
-   else
-     redirect_to action: "index"
-   end
- end
- 
- def destroy
-   @permission = Permission.find(params[:id])
-   @permission.destroy
-   redirect_to action: "index"
- end
- 
- private
-   def permission_params
-     params.require(:permission).permit(:permit_type, :permission_type, :permit_number, :permitted_waste_classification, :permit_name, :allowed_area, :permitted_municipality, :started_at, :limited_at, :industrial_waste_paid_certification_category, :permit_pdf)
-   end
 end

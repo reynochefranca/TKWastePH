@@ -11,145 +11,113 @@
 	<h1 class="title">許可証関連画面</h1>
 </header>
 
+<div class="head-kensaku-box cf">
+	<ul class="cf">
+		<li><a class="modal-open kensaku-btn" data-target="con01"><span class="btn-sum-text">登録済み情報を</span><br>検索</a></li>
+	</ul>
+</div>
+
 
 <div class="container">
-    <form action="" method="post">
-		<table class="reg-table">
-			<tr>
-				<th colspan="9" class="table-title">検索キーワード</th>
-			</tr>
-			<tr>
-				<th>許可番号</th>
-				<td><input type="text" name="" class="sum-text"></td>
-				<th>許可名称</th>
-				<td colspan="3"><input type="text" name="" class="inp-text"></td>
-			</tr>
-		</table>
-		<input type="submit" class="con-btn"  value="検索する">
+	<!-- 会社情報 -->
+	<table class="reg-table">
+		<tr>
+			<th colspan="2" class="table-title">許可証情報</th>
+		</tr>
 
-	</form>
-	<%= form_for Permission.new, :multipart => "true" do |f| %>
-		<!-- 会社情報 -->
-		<table class="reg-table">
-			<tr>
-				<th colspan="2" class="table-title">許可証情報</th>
-			</tr>
-			<tr>
-				<th>許可証種別</th>
-				<td>
-					<div class="kensaku01 cf">
-						<%= f.collection_select(:permit_type, WasteType.all, :name, :name, :required => 'required') %>
-					</div>
-				</td>
-			</tr>
-			<tr>
-				<th>許可区分</th>
-				<td>
-					<div class="kensaku01 cf">
-						<%= f.collection_select(:permission_type, Role.all, :name, :name, :required => 'required') %>
-					</div>
-				</td>
-			</tr>
-			<tr>
-				<th>許可番号</th>
-				<td><input type="text" name="" class="inp-text"></td>
-			</tr>
-			<tr>
-				<th>許可廃棄物分類</th>
-				<td>
-					<div class="kensaku01 cf">
-						<%= f.collection_select(:permitted_waste_classification, Category.all, :name, :name, :required => 'required') %>
-					</div>
-				</td>
-			</tr>
-			<tr>
-				<th>許可名称</th>
-				<td><input type="text" name="" class="inp-text"></td>
-			</tr>
-			<tr>
-				<th>許可地域</th>
-				<td>
-					<div class="kensaku01 cf">
-						<%= f.collection_select(:allowed_area, Place.all, :prefecture, :prefecture, :required => 'required') %>
-					</div>
-				</td>
-			</tr>
-			<tr>
-				<th>許可市町村</th>
-				<td>
-					<div class="kensaku01 cf">
-						<%= f.collection_select(:permitted_municipality, Place.all, :city, :city, :required => 'required') %>
-					</div>
-				</td>
-			</tr>
-			<tr>
-				<th>許可期間</th>
-				<td><input type="text" name="" class="inp-text sum-text calendar">&nbsp;〜&nbsp;<input type="text" name="" class="inp-text sum-text calendar"></td>
-			</tr>
-			<tr>
-				<th>産廃有料認定区分</th>
-				<td><input type="text" name="" class="inp-text"></td>
-			</tr>
-			<tr>
-				<th>許可証PDF</th>
-				<td><input type="file" name=""></td>
-			</tr>
-		</table>
+		<tr>
+			<th>許可証種別</th>
+			<td>
+				<div class="kensaku01 cf">
+					<select>
+						<% @waste_types.each do |row| %>
+							<option value="<%= row.id %>"><%= row.name %></option>
+						<% end %>
+					</select>
+				</div>
+			</td>
+		</tr>
+		<tr>
+			<th>許可区分</th>
+			<td>
+				<div class="kensaku01 cf">
+					<select>
+						<% @roles.each do |row| %>
+							<option value="<%= row.id %>"><%= row.name %></option>
+						<% end %>
+					</select>
+				</div>
+			</td>
+		</tr>
+		<tr>
+			<th>許可番号</th>
+			<td><input type="text" id="permit_number" class="inp-text" disabled="disabled"></td>
+		</tr>
+		<tr>
+			<th>許可廃棄物分類</th>
+			<td>
+				<div class="kensaku01 cf">
+					<select>
+						<% @categories.each do |row| %>
+							<option value="<%= row.id %>"><%= row.name %></option>
+						<% end %>
+					</select>
+				</div>
+			</td>
+		</tr> 
+		<tr>
+			<th>許可名称</th>
+			<td><input type="text" id="permit_name" class="inp-text" disabled="disabled"></td>
+		</tr>
+		<tr>
+			<th>許可地域</th>
+			<td>
+				<div class="kensaku01 cf">
+					<select>
+						<% @places.each do |row| %>
+							<option value="<%= row.id %>"><%= row.prefecture %></option>
+						<% end %>
+					</select>
+				</div>
+			</td>
+		</tr>
+		<tr>
+			<th>許可市町村</th>
+			<td>
+				<div class="kensaku01 cf">
+					<select>
+						<% @places.each do |row| %>
+							<option value="<%= row.id %>"><%= row.city %></option>
+						<% end %>
+					</select>
+				</div>
+			</td>
+		</tr>
+		<tr>
+			<th>許可期間</th>
+			<td><input type="text" id="started_at" class="sum-text" disabled="disabled">&nbsp;〜&nbsp;<input type="text" id="limited_at" class="sum-text" disabled="disabled"></td>
+		</tr>
+		<tr>
+			<th>産廃有料認定区分</th>
+			<td><input type="text" id="industrial_waste_paid_certification_cetegory" class="inp-text" disabled="disabled"></td>
+		</tr>
+		<tr>
+			<th>許可証PDF</th>
+			<td><p></p></td>
+		</tr>
+	</table>
 
 
-		<div class="con-btn-box cf">
-			<ul class="cf">
-				<li><a href="" class="sakuzyo-btn">削除</a></li>
-				<li><input type="submit" class="con-btn" value="登録修正"></li>
-			</ul>
-		</div>
-	<% end %>
+	<div class="con-btn-box cf">
+		<ul class="cf">
+			<li><a href="" class="sakuzyo-btn">削除</a></li>
+			<li><input type="submit" class="con-btn" value="登録修正"></li>
+		</ul>
+	</div>
+
 </div>
 
 
 
 <%= render template: 'template/footer' %>
-
-
-<!-- ポップアップ部分 -->
-<div class="modal-content con01">
-	<div class="batu-btn-box">
-		<a class="modal-close"><%= image_tag('batu.png', :alt => 'ボタン', :class => 'batu-btn') %></a>
-
-	</div>
-	<form action="" method="post">
-		<table class="mo-kensaku-table">
-			<tr>
-				<th colspan="7" class="table-title">検索キーワード</th>
-			</tr>
-			<tr>
-				<th>許可番号</th>
-				<td><input type="text" name="" class="sum-text"></td>
-				<th>許可名称</th>
-				<td colspan="3"><input type="text" name="" class="inp-text"></td>
-			</tr>
-		</table>
-		<input type="submit" value="検索する">
-
-			<table class="issue-table">
-				<tr>
-					<th colspan="3" class="table-title">排出事業場</th>
-				</tr>
-				<tr>
-					<th></th>
-					<th>許可番号</th>
-					<th>許可名称</th>
-				</tr>
-
-				<tr>
-					<td><input type="radio" name=""></td>
-					<td>
-						<p>0251</p>
-						<p>Gawad Kalinga</p>
-					</td>
-					<td>101-0065</td>
-				</tr>
-			</table>
-		<input type="submit" value="登録する">
-	</form>
-</div>
+<%= render 'search_permissions' %>

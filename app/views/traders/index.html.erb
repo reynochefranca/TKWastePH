@@ -1,36 +1,115 @@
-<%- model_class = Trader -%>
-<div class="page-header">
-  <h1><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %></h1>
-</div>
-<table class="table table-striped">
-  <thead>
-    <tr>
-      <th><%= model_class.human_attribute_name(:id) %></th>
-      <th><%= model_class.human_attribute_name(:name) %></th>
-      <th><%= model_class.human_attribute_name(:created_at) %></th>
-      <th><%=t '.actions', :default => t("helpers.actions") %></th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @traders.each do |trader| %>
-      <tr>
-        <td><%= link_to trader.id, trader_path(trader) %></td>
-        <td><%= trader.name %></td>
-        <td><%=l trader.created_at %></td>
-        <td>
-          <%= link_to t('.edit', :default => t("helpers.links.edit")),
-                      edit_trader_path(trader), :class => 'btn btn-default btn-xs' %>
-          <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
-                      trader_path(trader),
-                      :method => :delete,
-                      :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
-                      :class => 'btn btn-xs btn-danger' %>
-        </td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+<%= stylesheet_link_tag "company-reg.css" %>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<header>
+    <%= render template: 'template/nav' %>
+	<h1 class="title">会社関連画面</h1>
+</header>
 
-<%= link_to t('.new', :default => t("helpers.links.new")),
-            new_trader_path,
-            :class => 'btn btn-primary' %>
+<div class="container">
+	<form action="" method="post">
+		<div class="head-kensaku-box cf">
+			<ul class="cf">
+				<li><a class="modal-open kensaku-btn" data-target="con00"><span class="btn-sum-text">登録済み情報を</span><br>検索</a></li>
+			</ul>
+		</div>
+
+		<!-- 会社情報 -->
+		<table class="reg-table">
+			<tr>
+				<th colspan="8" class="table-title">会社情報</th>
+			</tr>
+			<tr>
+				<th rowspan="2">会社名<br><span class="required-text">必須</span></th>
+				<th colspan="3">漢字</th>
+				<td colspan="4"><input type="text" name="" id="name_kanji" class="inp-text"></td>
+			</tr>
+			<tr>
+				<th colspan="3">カナ</th>
+				<td colspan="4"><input type="text" name="" id="name_kana" class="inp-text"></td>
+			</tr>
+			<tr>
+				<th rowspan="4">住所<br><span class="required-text">必須</span></th>
+				<th colspan="3">住所名称</th>
+				<td colspan="3"><input type="text" name="" class="inp-text"></td>
+				<td rowspan="4"><a class="modal-open choicebtn" data-target="con01">検索</a></td>
+			</tr>
+			<tr>
+				<th colspan="3">郵便番号</th>
+				<td colspan="3"><input type="text" name="" class="inp-text sum-text"></td>
+			</tr>
+			<tr>
+				<th>都道府県</th>
+				<td><input type="text" name="" class="inp-text sum-text"></td>
+				<th>市区町村</th>
+				<td><input type="text" name="" class="inp-text sum-text"></td>
+				<th>番地</th>
+				<td><input type="text" name="" class="inp-text sum-text"></td>
+			</tr>
+			<tr>
+				<th colspan="3">ビル名</th>
+				<td colspan="3"><input type="text" name="" class="inp-text"></td>
+			</tr>
+			<tr>
+				<th rowspan="2">電話<br><span class="required-text">必須</span></th>
+				<th colspan="3">電話名称</th>
+				<td colspan="3"><input type="text" name="" class="inp-text"></td>
+				<td rowspan="5"><a class="modal-open choicebtn" data-target="con02">検索</a></td>
+			</tr>
+			<tr>
+				<th colspan="3">電話番号</th>
+				<td colspan="3"><input type="text" name="" class="inp-text"></td>
+			</tr>
+			<tr>
+				<th rowspan="2">FAX</th>
+				<th colspan="3">FAX名称</th>
+				<td colspan="3"><input type="text" name="" class="inp-text"></td>
+			</tr>
+			<tr>
+				<th colspan="3">FAX番号</th>
+				<td colspan="3"><input type="text" name="" class="inp-text"></td>
+			</tr>
+			<tr>
+				<th colspan="4">メールアドレス</th>
+				<td colspan="3"><input type="text" name="" class="inp-text"></td>
+			</tr>
+			<tr>
+				<th colspan="4">メモ</th>
+				<td colspan="3">
+					<textarea class="textarea-style"></textarea>
+				</td>
+				<td><a class="modal-open choicebtn" data-target="con03">検索</a></td>
+			</tr>
+			<tr>
+				<th rowspan="2">EDI<br><span class="required-text">必須</span></th>
+				<th colspan="3">接続登録番号</th>
+				<td colspan="4"><input type="text" name="" class="inp-text"></td>
+			</tr>
+			<tr>
+				<th colspan="3">接続パスワード</th>
+				<td colspan="4"><input type="text" name="" class="inp-text"></td>
+			</tr>
+			<tr>
+				<th colspan="4">役割</th>
+				<td colspan="3"><input type="text" name="" class="inp-text"></td>
+				<td><a class="modal-open choicebtn" data-target="con04">検索</a></td>
+			</tr>
+		</table>
+
+		<div class="con-btn-box cf">
+			<ul class="cf">
+				<li><a href="" class="sakuzyo-btn">削除</a></li>
+				<li><input type="submit" class="con-btn" value="登録修正"></li>
+			</ul>
+		</div>
+	</form>
+</div>
+
+
+<%= render template: 'template/footer' %>
+<%= render 'search_traders' %>
+<%= render 'search_places' %>
+<%= render 'search_tels' %>
+<%= render 'search_memos' %>
+<%= render 'search_roles' %>
+
+

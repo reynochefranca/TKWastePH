@@ -1,11 +1,27 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-# This model initially had no columns defined.  If you add columns to the
-# model remove the '{}' from the fixture names and add the columns immediately
-# below each fixture, per the syntax in the comments below
-#
-one: {}
-# column: value
-#
-two: {}
-#  column: value
+one:
+  permit_type: MyString
+  permission_type: MyString
+  permit_number: MyString
+  permitted_waste_classification: MyString
+  permit_name: MyString
+  allowed_area: MyString
+  permitted_municipality: MyString
+  started_at: 2017-01-19 07:19:59
+  limited_at: 2017-01-19 07:19:59
+  industrial_waste_paid_certification_cetegory: MyString
+  permit_pdf: MyString
+
+two:
+  permit_type: MyString
+  permission_type: MyString
+  permit_number: MyString
+  permitted_waste_classification: MyString
+  permit_name: MyString
+  allowed_area: MyString
+  permitted_municipality: MyString
+  started_at: 2017-01-19 07:19:59
+  limited_at: 2017-01-19 07:19:59
+  industrial_waste_paid_certification_cetegory: MyString
+  permit_pdf: MyString

@@ -1,18 +1,19 @@
 Rails.application.routes.draw do
 
+
   get 'manifests/index'
 
   get 'permissions/index'
 
   get 'waste_registrations/index'
+  
+  get 'traders/index'
 
   get 'waste_regs/index'
 
   get 'wastes/index'
 
   get 'person_registrations/index'
-
-  get 'permit_registrations/index'
 
   get 'new_emission_plant_registrations/index'
 
@@ -26,8 +27,6 @@ Rails.application.routes.draw do
 
   get 'home/index'
 
-  get 'permit_registrations/index'
-  
   get 'person_registrations/index'
   
   get 'company_registrations/index'
@@ -56,8 +55,6 @@ Rails.application.routes.draw do
   
   get 'disposal_methods/index'
   
-  get 'permissions/index'
-    
   get 'waste_types/index'
   
   get 'categories/index'
