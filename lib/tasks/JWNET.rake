@@ -28,7 +28,7 @@ namespace :JWNET do
     # secrets.yml からパラメータ展開
     jwnet_params_send_request = Rails.application.secrets.jwnet_params["send_request"]
 
-    will_send_request_history = RequestHistory.next_send_request
+    will_send_request_history = RequestHistory.next_send_request.first
 
     # パラメータファイルの書き出し
     File.open("public/csv/send/#{will_send_request_history.id}.txt", "w") do |file|
@@ -208,13 +208,13 @@ namespace :JWNET do
     will_send_request_history.result_status = 1
 
     will_send_request_history.request_history_details.each do |request_history_detail|
-      request_history_detail.send_request_flg = 1
+      request_history_detail.result_request_flg = 1
       request_history_detail.save
     end
     # else
     #    will_send_request_history.result_status = 2
     #    will_send_request_history.request_history_details.each do |request_history_detail|
-    #      request_history_detail.send_request_flg = 2
+    #      request_history_detail.result_request_flg = 2
     #      request_history_detail.save
     #    end
     # end
