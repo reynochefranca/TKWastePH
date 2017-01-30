@@ -11,6 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+
 ActiveRecord::Schema.define(version: 20170122015952) do
 
   create_table "cars", force: :cascade do |t|
@@ -26,6 +27,40 @@ ActiveRecord::Schema.define(version: 20170122015952) do
     t.string   "name",       limit: 255
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
+  end
+
+  create_table "category_permissions", force: :cascade do |t|
+    t.integer  "category_id",   limit: 4
+    t.integer  "permission_id", limit: 4
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
+  end
+
+  create_table "contract_manifests", force: :cascade do |t|
+    t.integer  "contract_id", limit: 4
+    t.integer  "manifest_id", limit: 4
+    t.datetime "created_at",            null: false
+    t.datetime "updated_at",            null: false
+  end
+
+  create_table "contracts", force: :cascade do |t|
+    t.integer  "contract_type",          limit: 4
+    t.integer  "first_party_id",         limit: 4
+    t.integer  "second_party_id",        limit: 4
+    t.integer  "waste_type_id",          limit: 4
+    t.integer  "category_id",            limit: 4
+    t.integer  "place_id",               limit: 4
+    t.float    "expected_amount",        limit: 24
+    t.string   "industrial_waste_name",  limit: 255
+    t.string   "pdf",                    limit: 255
+    t.integer  "unit_id",                limit: 4
+    t.integer  "shape_id",               limit: 4
+    t.integer  "package_id",             limit: 4
+    t.integer  "hazardous_substance_id", limit: 4
+    t.integer  "disposal_method_id",     limit: 4
+    t.integer  "status",                 limit: 4
+    t.datetime "created_at",                         null: false
+    t.datetime "updated_at",                         null: false
   end
 
   create_table "disposal_methods", force: :cascade do |t|
@@ -57,6 +92,32 @@ ActiveRecord::Schema.define(version: 20170122015952) do
     t.datetime "updated_at",             null: false
   end
 
+  create_table "manifests", force: :cascade do |t|
+    t.datetime "applied_at"
+    t.string   "applied_code",                   limit: 255
+    t.string   "referance_code",                 limit: 255
+    t.integer  "applied_commiter_id",            limit: 4
+    t.string   "pre_conference_code",            limit: 255
+    t.datetime "pre_conferenced_at"
+    t.integer  "category_id",                    limit: 4
+    t.float    "total_amount",                   limit: 24
+    t.integer  "unit_id",                        limit: 4
+    t.integer  "shape_id",                       limit: 4
+    t.integer  "package_id",                     limit: 4
+    t.integer  "hazardous_substance_id",         limit: 4
+    t.integer  "disposal_method_id",             limit: 4
+    t.integer  "collection_commit_trader_id",    limit: 4
+    t.integer  "collection_commit_user_id",      limit: 4
+    t.datetime "collection_finished_at"
+    t.integer  "disposal_commit_trader_id",      limit: 4
+    t.integer  "disposal_commit_user_id",        limit: 4
+    t.datetime "disposal_finished_at"
+    t.datetime "final_disposal_finished_at"
+    t.integer  "final_disposal_trader_plant_id", limit: 4
+    t.datetime "created_at",                                 null: false
+    t.datetime "updated_at",                                 null: false
+  end
+
   create_table "packages", force: :cascade do |t|
     t.string   "code",       limit: 255
     t.string   "name",       limit: 255
@@ -79,6 +140,13 @@ ActiveRecord::Schema.define(version: 20170122015952) do
     t.string   "permit_pdf",                                   limit: 255
     t.datetime "created_at",                                               null: false
     t.datetime "updated_at",                                               null: false
+  end
+
+  create_table "place_users", force: :cascade do |t|
+    t.integer  "place_id",   limit: 4
+    t.integer  "user_id",    limit: 4
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
   end
 
   create_table "places", force: :cascade do |t|
@@ -109,6 +177,22 @@ ActiveRecord::Schema.define(version: 20170122015952) do
     t.datetime "updated_at",             null: false
   end
 
+  create_table "trader_edi_users", force: :cascade do |t|
+    t.integer  "trader_id",   limit: 4
+    t.integer  "edi_user_id", limit: 4
+    t.integer  "role_id",     limit: 4
+    t.datetime "created_at",            null: false
+    t.datetime "updated_at",            null: false
+  end
+
+  create_table "trader_places", force: :cascade do |t|
+    t.integer  "trader_id",  limit: 4
+    t.integer  "place_id",   limit: 4
+    t.integer  "place_type", limit: 4
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
+  end
+
   create_table "traders", force: :cascade do |t|
     t.string   "code",                                            limit: 255
     t.string   "name_kanji",                                      limit: 255
@@ -123,6 +207,25 @@ ActiveRecord::Schema.define(version: 20170122015952) do
     t.string   "industriaial_waste_excellent_certification_type", limit: 255
     t.datetime "created_at",                                                  null: false
     t.datetime "updated_at",                                                  null: false
+  end
+
+  create_table "transports", force: :cascade do |t|
+    t.integer  "parent_id",                    limit: 4
+    t.integer  "manifest_id",                  limit: 4
+    t.integer  "collection_trader_id",         limit: 4
+    t.integer  "collection_trader_address_id", limit: 4
+    t.integer  "car_id",                       limit: 4
+    t.integer  "from_place_id",                limit: 4
+    t.integer  "to_place_id",                  limit: 4
+    t.string   "transport_method",             limit: 255
+    t.boolean  "transport_flg"
+    t.boolean  "transshipment_storage_flg"
+    t.integer  "valuable_flg",                 limit: 4
+    t.float    "valuable_amount",              limit: 24
+    t.integer  "valuable_amount_unit_id",      limit: 4
+    t.datetime "accepted_at"
+    t.datetime "created_at",                               null: false
+    t.datetime "updated_at",                               null: false
   end
 
   create_table "units", force: :cascade do |t|
@@ -150,6 +253,25 @@ ActiveRecord::Schema.define(version: 20170122015952) do
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
+  create_table "waste_registrations", force: :cascade do |t|
+    t.string   "code",          limit: 255
+    t.string   "name",          limit: 255
+    t.integer  "quantity",      limit: 4
+    t.integer  "unit_id",       limit: 4
+    t.integer  "waste_type_id", limit: 4
+    t.integer  "shape_id",      limit: 4
+    t.integer  "trader_id",     limit: 4
+    t.integer  "package_id",    limit: 4
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
+  end
+
+  add_index "waste_registrations", ["package_id"], name: "index_waste_registrations_on_package_id", using: :btree
+  add_index "waste_registrations", ["shape_id"], name: "index_waste_registrations_on_shape_id", using: :btree
+  add_index "waste_registrations", ["trader_id"], name: "index_waste_registrations_on_trader_id", using: :btree
+  add_index "waste_registrations", ["unit_id"], name: "index_waste_registrations_on_unit_id", using: :btree
+  add_index "waste_registrations", ["waste_type_id"], name: "index_waste_registrations_on_waste_type_id", using: :btree
+
   create_table "waste_regs", force: :cascade do |t|
     t.string   "code",       limit: 255
     t.string   "name",       limit: 255
@@ -169,4 +291,9 @@ ActiveRecord::Schema.define(version: 20170122015952) do
     t.datetime "updated_at",             null: false
   end
 
+  add_foreign_key "waste_registrations", "packages"
+  add_foreign_key "waste_registrations", "shapes"
+  add_foreign_key "waste_registrations", "traders"
+  add_foreign_key "waste_registrations", "units"
+  add_foreign_key "waste_registrations", "waste_types"
 end

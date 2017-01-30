@@ -1,0 +1,47 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  applied_at: 2017-01-24 03:49:44
+  applied_code: MyString
+  referance_code: MyString
+  applied_commiter_id: 1
+  pre_conference_code: MyString
+  pre_conferenced_at: 2017-01-24 03:49:44
+  category_id: 1
+  total_amount: 1.5
+  unit_id: 1
+  shape_id: 1
+  package_id: 1
+  hazardous_substance_id: 1
+  disposal_method_id: 1
+  collection_commit_trader_id: 1
+  collection_commit_user_id: 1
+  collection_finished_at: 2017-01-24 03:49:44
+  disposal_commit_trader_id: 1
+  disposal_commit_user_id: 1
+  disposal_finished_at: 2017-01-24 03:49:44
+  final_disposal_finished_at: 2017-01-24 03:49:44
+  final_disposal_trader_plant_id: 1
+
+two:
+  applied_at: 2017-01-24 03:49:44
+  applied_code: MyString
+  referance_code: MyString
+  applied_commiter_id: 1
+  pre_conference_code: MyString
+  pre_conferenced_at: 2017-01-24 03:49:44
+  category_id: 1
+  total_amount: 1.5
+  unit_id: 1
+  shape_id: 1
+  package_id: 1
+  hazardous_substance_id: 1
+  disposal_method_id: 1
+  collection_commit_trader_id: 1
+  collection_commit_user_id: 1
+  collection_finished_at: 2017-01-24 03:49:44
+  disposal_commit_trader_id: 1
+  disposal_commit_user_id: 1
+  disposal_finished_at: 2017-01-24 03:49:44
+  final_disposal_finished_at: 2017-01-24 03:49:44
+  final_disposal_trader_plant_id: 1

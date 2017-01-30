@@ -26,6 +26,7 @@ Rails.application.config.assets.precompile += %w( places-master.css )
 Rails.application.config.assets.precompile += %w( edi-users-master.css )
 Rails.application.config.assets.precompile += %w( company-reg.css )
 Rails.application.config.assets.precompile += %w( select2.css )
+Rails.application.config.assets.precompile += %w( manifests.css )
 
 # JS Global
 Rails.application.config.assets.precompile += %w( jquery.js )

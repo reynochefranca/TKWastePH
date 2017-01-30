@@ -41,12 +41,11 @@ header{
 
 .reg-table td{
 	border: 1px solid #e1e1e1;
-	padding: 15px 25px;
+	padding: 20px 40px;
 	background: #fff;
 	vertical-align: middle;
 	line-height: 1.5em;
 }
-
 
 
 /* 必須部分 */
@@ -75,6 +74,17 @@ header{
 	float: left;
 	margin-top: 3px;
 }
+
+
+.kensaku01 ul{
+	padding: 0;
+	margin: 0;
+}
+
+.kensaku01 li{
+	list-style: none;
+}
+
 
 /* テーブルタイトル */
 .table-title{
@@ -213,6 +223,59 @@ header{
 	width: 206px;
 }
 
+
+/*　[記入済み]排出事業場.排出依頼登録部分　*/
+
+/*　排出事業場　ます目　*/
+.place-com-table tbody th:nth-child(2),
+.place-com-table tbody th:nth-child(3){
+	width: 160px;
+}
+
+
+.place-com-table tbody th:last-child{
+	width: 30px;
+}
+
+.place-com-table tbody th,
+.place-com-table tbody td{
+	vertical-align: middle;
+}
+
+.place-com-table tbody td:last-child{
+	text-align: center;
+}
+
+.disposal-com-table tbody th:nth-child(2),
+.disposal-com-table tbody th:nth-child(3){
+	width: 200px;
+}
+
+.disposal-com-table tbody th:nth-child(4){
+	width: 56px;
+}
+
+.disposal-com-table tbody th:last-child{
+	width: 30px;
+}
+
+.disposal-com-table tbody td:nth-child(4){
+	text-align: center;
+}
+
+.disposal-com-table tbody th,
+.disposal-com-table tbody td{
+	vertical-align: middle;
+}
+
+.disposal-com-table tbody td:last-child{
+	text-align: center;
+}
+
+.edi-btn{
+	width: 20px;
+}
+
 .reg-table .table-title{
 	padding: 18px 0;
 	color: #fff;
@@ -222,33 +285,64 @@ header{
 	font-size: 16px;
 }
 
-/* 整理番号 */
-.reference-number{
+
+/*　==================================================== 
+
+　タブ設定
+
+　==================================================== */
+.tab-box{
 	width: 980px;
-	margin: 40px auto;
-	text-align: right;
+	margin: 0 auto;
 }
 
-.reference-number input{
-	margin-left: 5px;
+.tab-box table{
+	margin: 40px auto 0;
+	width: 100%;
 }
 
-
-.issue-table{
-	min-width: 980px;
+.tab-box table:first-child{
+	margin-top: 0;
 }
 
-.issue-table1{
-	max-width: 500px;
+.tab-box ul{
+	margin: 0;
+	padding: 0;
 }
 
-.issue-table2{
-	max-width: 280px;
+.tab-box .big-text{
+	width: 400px;
 }
 
-.issue-table td{
-	padding: 10px;
-    font-size: 12px;
+.tab{
+	overflow:hidden;
+}
+
+.tab li{
+	list-style: none;
+	background:#ccc; 
+	padding:5px 25px;
+	float:left;
+	margin-right:1px;
+	width: 145px;
+}
+
+.tab li:last-child{
+	margin-right: 0;
+	width: 146px;
+}
+
+.tab li.select{
+	background:#eee;
+}
+
+.content li{
+	list-style: none;
+	background:#eee;
+	padding:20px;
+}
+.hide {
+	display:none;
 }
 
 /*　==================================================== 
@@ -288,11 +382,6 @@ select{
 	margin: 0 auto;
 }
 
-/* 排出業者情報　住所/メールアドレス部分 */
-.address input{
-	width: 200px;
-}
-
 
 /*　==================================================== 
 
@@ -307,16 +396,6 @@ select{
 	margin-top: 5px;
 }
 
-.sum-text-box {
-	display: inline-block;
-	font-size: 12px;
-	margin-top: 10px;
-}
-
-.sum-text-box .required-text{
-	text-align: center;
-	width: 46px;
-}
 
 
 /*　==================================================== 
@@ -325,7 +404,14 @@ select{
 
 　==================================================== */
 .modal-content {
+	position:fixed;
+	display:none;
+	z-index:2;
 	width: 980px;
+	margin:0;
+	padding:10px 20px;
+	border:2px solid #aaa;
+	background:#fff;
 }
 
 .modal-content .reg-table{
@@ -334,6 +420,12 @@ select{
 
 .modal-title{
 	width: 884px;
+	border-left: 8px solid #003f96;
+	padding: 5px 0 5px 8px;
+	margin: 0 auto;
+	font-weight: bold;
+	font-size: 18px;
+
 }
 
 .modal-content p {
@@ -370,6 +462,20 @@ select{
 
 　==================================================== */
 
+/*　表示ボタン設定  排出事業場登録部分の「排出事業者情報と同じ」ボタン設定　*/
+.menu,
+.tuika-btn{
+	width: 180px;
+	padding: 15px 10px;
+	border: 1px solid #ccc;
+	/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#ffffff+40,e5e5e5+100 */
+	background: rgb(255,255,255); /* Old browsers */
+	background: -moz-linear-gradient(top,  rgba(255,255,255,1) 40%, rgba(229,229,229,1) 100%); /* FF3.6-15 */
+	background: -webkit-linear-gradient(top,  rgba(255,255,255,1) 40%,rgba(229,229,229,1) 100%); /* Chrome10-25,Safari5.1-6 */
+	background: linear-gradient(to bottom,  rgba(255,255,255,1) 40%,rgba(229,229,229,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#e5e5e5',GradientType=0 ); /* IE6-9 */
+	text-align: center;
+}
 
 .tuika-btn{
 	display: block;
@@ -388,23 +494,37 @@ select{
 	border: none;
 }
 
-.choicebtn{
-	margin-left: 0 !important;
-	width: 28px;
+
+.modal-content input[type="submit"]{
+	display: block;
+	width: 200px;
+	border: none;
+	margin: 0 auto 20px;
+	padding: 10px 5px;
+	background-color: #003f96;
+	color: #fff;
 }
 
-.choicebtn:hover{
-	margin-left: 0 !important;
+
+.batu-btn-box{
+	text-align: right;
 }
+
+.batu-btn{
+	width: 35px;
+}
+
+.perbtn{
+	margin: 0 0 4px !important;
+}
+.perbtn:hover{
+	margin: 4px 0 0 !important;
+}
+
 
 /* clearfix */
 .cf:after {
 	content:"";
 	display:block;
 	clear:both;
-}
-
-.ul {
-	float: left;
-	display: none;
 }

@@ -1,0 +1,33 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  parent_id: 1
+  manifest_id: 1
+  collection_trader_id: 1
+  collection_trader_address_id: 1
+  car_id: 1
+  from_place_id: 1
+  to_place_id: 1
+  transport_method: MyString
+  transport_flg: false
+  transshipment_storage_flg: false
+  valuable_flg: 1
+  valuable_amount: 1.5
+  valuable_amount_unit_id: 1
+  accepted_at: 2017-01-24 03:25:25
+
+two:
+  parent_id: 1
+  manifest_id: 1
+  collection_trader_id: 1
+  collection_trader_address_id: 1
+  car_id: 1
+  from_place_id: 1
+  to_place_id: 1
+  transport_method: MyString
+  transport_flg: false
+  transshipment_storage_flg: false
+  valuable_flg: 1
+  valuable_amount: 1.5
+  valuable_amount_unit_id: 1
+  accepted_at: 2017-01-24 03:25:25
