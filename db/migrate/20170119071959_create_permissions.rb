@@ -1,7 +1,7 @@
 class CreatePermissions < ActiveRecord::Migration
   def change
     create_table :permissions do |t|
-      t.integer :trader_id
+      t.belongs_to :trader, index: true
       t.string :permit_type
       t.string :permission_type
       t.string :permit_number

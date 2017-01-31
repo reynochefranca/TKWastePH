@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class WasteRegTest < ActiveSupport::TestCase
+class TransportTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end

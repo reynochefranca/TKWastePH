@@ -193,6 +193,24 @@ td{
 	font-size: 16px !important;
 }
 
+.table-titlered{
+	padding: 18px 0 !important;
+	color: #fff !important;
+	background-color: red !important;
+	border: 1px solid #003f96 !important;
+	text-align: center !important;
+	font-size: 16px !important;
+}
+
+.table-titlegreen{
+	padding: 18px 0 !important;
+	color: #fff !important;
+	background-color: green !important;
+	border: 1px solid #003f96 !important;
+	text-align: center !important;
+	font-size: 16px !important;
+}
+
 
 /* 検索とフォームで一行表示 */
 .kensaku01 {
@@ -485,6 +503,31 @@ a{
 
 
 .choicebtn:hover {
+	margin:4px 0 0 15px !important;
+	box-shadow:none !important;
+}
+
+.choicebtn1 {
+	background:none;
+	border: none !important;
+	display:inline-block;
+	padding:5px 20px;
+	border-radius: 6px !important;
+	-moz-border-radius:6px !important;
+	-webkit-border-radius:6px !important;
+	color: #fff;
+	font-size: 19px;
+	font-weight: bold;
+	text-decoration: none;
+}
+
+.choicebtn1{
+	margin:0 0 4px 15px !important;
+	background-color: #003f96;
+	box-shadow: 0 4px 0 rgba(0,38,90,1) !important;
+}
+
+.choicebtn1:hover {
 	margin:4px 0 0 15px !important;
 	box-shadow:none !important;
 }

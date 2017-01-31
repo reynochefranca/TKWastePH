@@ -2,17 +2,17 @@ $('#list_permissions').html("<%= j( render 'list_permissions' ) %>");
 
 $('input[name=con01]').on('click',function(){
     data = $(this).data('id');
-    $('#permission_id').val(data);
+    $('#permission_id').html(data);
     data = $(this).data('permit_number');
-    $('#permit_number').val(data);
+    $('#permit_number').html(data);
     data = $(this).data('permit_name');
-    $('#permit_name').val(data);
+    $('#permit_name').html(data);
     data = $(this).data('started_at');
-    $('#started_at').val(data);
+    $('#started_at').html(data);
     data = $(this).data('limited_at');
-    $('#limited_at').val(data);
+    $('#limited_at').html(data);
     data = $(this).data('industrial_waste_paid_certification_cetegory');
-    $('#industrial_waste_paid_certification_cetegory').val(data);
+    $('#industrial_waste_paid_certification_cetegory').html(data);
     
    
 });

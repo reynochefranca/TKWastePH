@@ -1,0 +1,29 @@
+$('#list_traders').html("<%= j( render 'list_traders' ) %>");
+$('input[name=id]').on('click',function(){
+    data = $(this).data('trader_kanji');
+    $('#trader_kanji').html(data);
+    data = $(this).data('trader_kana');
+    $('#trader_kana').html(data);
+    data = $(this).data('zipcode');
+    $('#zipcode').val(data);
+    data = $(this).data('prefecture_city');
+    $('#prefecture_city').val(data);
+    data = $(this).data('address');
+    $('#address').val(data);
+    data = $(this).data('tel1');
+    $('#tel1').val(data);
+    data = $(this).data('tel2');
+    $('#tel2').val(data);
+});
+$(window).load(function(){
+  var menu = $("div.js-menu");
+  menu.hide();
+  $("div.menu").on("click", {a: menu}, slide);
+  function slide(event) {
+	if (event.data.a.css("display") === "none") {
+	  event.data.a.slideDown(350);
+	} else {
+	  event.data.a.slideUp(350);
+	}W
+  }
+}); 
