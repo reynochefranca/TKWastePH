@@ -1,0 +1,42 @@
+<div class="modal-content con02">
+	<div class="batu-btn-box">
+		<a class="modal-close"><%= image_tag('batu.png', :alt => 'ボタン', :class => 'batu-btn') %></a>
+	</div>
+	<div class="cf">
+		<a class="tuika-btn ajax" href="company-reg.html">排出事業者追加</a>
+	</div>
+	<%= search_form_for @search, :remote => "true" do |f| %>
+		<table class="mo-kensaku-table">
+			<tr>
+				<th colspan="7" class="table-title">検索キーワード</th>
+			</tr>
+			<tr>
+				<th>排出事業者</th>
+				<td><%= f.text_field :trader_name_kanji_or_trader_name_kana_cont, :class => "sum-text", :autocomplete => "off" %></td>
+				<th>郵便番号</th>
+				<td><%= f.text_field :place_zipcode_cont, :class => "sum-text", :autocomplete => "off" %></td>
+				<th>都道府県</th>
+				<td><%= f.text_field :place_prefecture_cont, :class => "sum-text", :autocomplete => "off" %></td>
+			</tr>
+			<tr>
+				<th>市区町村</th>
+				<td><%= f.text_field :place_city_cont, :class => "sum-text", :autocomplete => "off" %></td>
+				<th>番地</th>
+				<td><%= f.text_field :place_address_cont, :class => "sum-text", :autocomplete => "off" %></td>
+				<th>電話番号</th>
+				<td><%= f.text_field :place_tel1_or_place_tel2_cont, :class => "sum-text", :autocomplete => "off" %></td>
+			</tr>
+			<tr>
+				<th>引渡し担当者</th>
+				<td><%= f.text_field :user_name_kanji_or_user_name_kana_cont, :class => "sum-text", :autocomplete => "off" %></td>
+				<th>メールアドレス</th>
+				<td colspan="3"><%= f.text_field :user_email_cont, :class => "sum-text", :autocomplete => "off" %></td>
+			</tr>
+		</table>
+		<%= f.submit "検索する", :class => "con-btn" %>
+	<% end %>
+	<div id="list_traders">
+        <%= render 'list_traders' %>
+    </div>
+	<input type="button" value="登録する" class="modal-close con-btn"  style="text-decoration:none; color:white;">
+</div>

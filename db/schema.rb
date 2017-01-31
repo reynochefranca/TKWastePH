@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170125035200) do
+ActiveRecord::Schema.define(version: 20170131110846) do
 
   create_table "cars", force: :cascade do |t|
     t.string   "car_type",   limit: 255
@@ -42,6 +42,9 @@ ActiveRecord::Schema.define(version: 20170125035200) do
     t.datetime "updated_at",            null: false
   end
 
+  add_index "contract_manifests", ["contract_id"], name: "index_contract_manifests_on_contract_id", using: :btree
+  add_index "contract_manifests", ["manifest_id"], name: "index_contract_manifests_on_manifest_id", using: :btree
+
   create_table "contracts", force: :cascade do |t|
     t.integer  "contract_type",          limit: 4
     t.integer  "first_party_id",         limit: 4
@@ -52,8 +55,8 @@ ActiveRecord::Schema.define(version: 20170125035200) do
     t.float    "expected_amount",        limit: 24
     t.string   "industrial_waste_name",  limit: 255
     t.string   "pdf",                    limit: 255
-    t.integer  "unit_id",                limit: 4
     t.integer  "shape_id",               limit: 4
+    t.integer  "unit_id",                limit: 4
     t.integer  "package_id",             limit: 4
     t.integer  "hazardous_substance_id", limit: 4
     t.integer  "disposal_method_id",     limit: 4
@@ -61,6 +64,15 @@ ActiveRecord::Schema.define(version: 20170125035200) do
     t.datetime "created_at",                         null: false
     t.datetime "updated_at",                         null: false
   end
+
+  add_index "contracts", ["category_id"], name: "index_contracts_on_category_id", using: :btree
+  add_index "contracts", ["disposal_method_id"], name: "index_contracts_on_disposal_method_id", using: :btree
+  add_index "contracts", ["hazardous_substance_id"], name: "index_contracts_on_hazardous_substance_id", using: :btree
+  add_index "contracts", ["package_id"], name: "index_contracts_on_package_id", using: :btree
+  add_index "contracts", ["place_id"], name: "index_contracts_on_place_id", using: :btree
+  add_index "contracts", ["shape_id"], name: "index_contracts_on_shape_id", using: :btree
+  add_index "contracts", ["unit_id"], name: "index_contracts_on_unit_id", using: :btree
+  add_index "contracts", ["waste_type_id"], name: "index_contracts_on_waste_type_id", using: :btree
 
   create_table "disposal_methods", force: :cascade do |t|
     t.string   "code",       limit: 255
@@ -94,7 +106,7 @@ ActiveRecord::Schema.define(version: 20170125035200) do
   create_table "manifests", force: :cascade do |t|
     t.datetime "applied_at"
     t.string   "applied_code",                   limit: 255
-    t.string   "referance_code",                 limit: 255
+    t.string   "reference_code",                 limit: 255
     t.integer  "applied_commiter_id",            limit: 4
     t.string   "pre_conference_code",            limit: 255
     t.datetime "pre_conferenced_at"
@@ -116,6 +128,13 @@ ActiveRecord::Schema.define(version: 20170125035200) do
     t.datetime "created_at",                                 null: false
     t.datetime "updated_at",                                 null: false
   end
+
+  add_index "manifests", ["category_id"], name: "index_manifests_on_category_id", using: :btree
+  add_index "manifests", ["disposal_method_id"], name: "index_manifests_on_disposal_method_id", using: :btree
+  add_index "manifests", ["hazardous_substance_id"], name: "index_manifests_on_hazardous_substance_id", using: :btree
+  add_index "manifests", ["package_id"], name: "index_manifests_on_package_id", using: :btree
+  add_index "manifests", ["shape_id"], name: "index_manifests_on_shape_id", using: :btree
+  add_index "manifests", ["unit_id"], name: "index_manifests_on_unit_id", using: :btree
 
   create_table "packages", force: :cascade do |t|
     t.string   "code",       limit: 255
@@ -141,12 +160,17 @@ ActiveRecord::Schema.define(version: 20170125035200) do
     t.datetime "updated_at",                                               null: false
   end
 
+  add_index "permissions", ["trader_id"], name: "index_permissions_on_trader_id", using: :btree
+
   create_table "place_users", force: :cascade do |t|
     t.integer  "place_id",   limit: 4
     t.integer  "user_id",    limit: 4
     t.datetime "created_at",           null: false
     t.datetime "updated_at",           null: false
   end
+
+  add_index "place_users", ["place_id"], name: "index_place_users_on_place_id", using: :btree
+  add_index "place_users", ["user_id"], name: "index_place_users_on_user_id", using: :btree
 
   create_table "places", force: :cascade do |t|
     t.string   "code",         limit: 255
@@ -184,6 +208,10 @@ ActiveRecord::Schema.define(version: 20170125035200) do
     t.datetime "updated_at",            null: false
   end
 
+  add_index "trader_edi_users", ["edi_user_id"], name: "index_trader_edi_users_on_edi_user_id", using: :btree
+  add_index "trader_edi_users", ["role_id"], name: "index_trader_edi_users_on_role_id", using: :btree
+  add_index "trader_edi_users", ["trader_id"], name: "index_trader_edi_users_on_trader_id", using: :btree
+
   create_table "trader_places", force: :cascade do |t|
     t.integer  "trader_id",  limit: 4
     t.integer  "place_id",   limit: 4
@@ -192,20 +220,23 @@ ActiveRecord::Schema.define(version: 20170125035200) do
     t.datetime "updated_at",           null: false
   end
 
+  add_index "trader_places", ["place_id"], name: "index_trader_places_on_place_id", using: :btree
+  add_index "trader_places", ["trader_id"], name: "index_trader_places_on_trader_id", using: :btree
+
   create_table "traders", force: :cascade do |t|
-    t.string   "code",                                            limit: 255
-    t.string   "name_kanji",                                      limit: 255
-    t.string   "name_kana",                                       limit: 255
-    t.string   "tel_name",                                        limit: 255
-    t.integer  "tel",                                             limit: 4
-    t.string   "fax_name",                                        limit: 255
-    t.integer  "fax",                                             limit: 4
-    t.string   "email",                                           limit: 255
-    t.string   "division",                                        limit: 255
-    t.string   "memo",                                            limit: 255
-    t.string   "industriaial_waste_excellent_certification_type", limit: 255
-    t.datetime "created_at",                                                  null: false
-    t.datetime "updated_at",                                                  null: false
+    t.string   "code",                                          limit: 255
+    t.string   "name_kanji",                                    limit: 255
+    t.string   "name_kana",                                     limit: 255
+    t.string   "tel_name",                                      limit: 255
+    t.integer  "tel",                                           limit: 4
+    t.string   "fax_name",                                      limit: 255
+    t.integer  "fax",                                           limit: 4
+    t.string   "email",                                         limit: 255
+    t.string   "division",                                      limit: 255
+    t.string   "memo",                                          limit: 255
+    t.string   "industrial_waste_excellent_certification_type", limit: 255
+    t.datetime "created_at",                                                null: false
+    t.datetime "updated_at",                                                null: false
   end
 
   create_table "transports", force: :cascade do |t|
@@ -219,13 +250,15 @@ ActiveRecord::Schema.define(version: 20170125035200) do
     t.string   "transport_method",             limit: 255
     t.boolean  "transport_flg"
     t.boolean  "transshipment_storage_flg"
-    t.integer  "valuable_flg",                 limit: 4
-    t.float    "valuable_amount",              limit: 24
+    t.float    "value_amount",                 limit: 24
     t.integer  "valuable_amount_unit_id",      limit: 4
     t.datetime "accepted_at"
     t.datetime "created_at",                               null: false
     t.datetime "updated_at",                               null: false
   end
+
+  add_index "transports", ["car_id"], name: "index_transports_on_car_id", using: :btree
+  add_index "transports", ["manifest_id"], name: "index_transports_on_manifest_id", using: :btree
 
   create_table "units", force: :cascade do |t|
     t.string   "code",       limit: 255
@@ -235,7 +268,15 @@ ActiveRecord::Schema.define(version: 20170125035200) do
   end
 
   create_table "users", force: :cascade do |t|
+    t.integer  "trader_id",              limit: 4
     t.string   "email",                  limit: 255, default: "", null: false
+    t.string   "name_kanji",             limit: 255
+    t.string   "name_kana",              limit: 255
+    t.string   "tel_name",               limit: 255
+    t.string   "tel",                    limit: 255
+    t.string   "position",               limit: 255
+    t.string   "memo",                   limit: 255
+    t.string   "login_id",               limit: 255
     t.string   "encrypted_password",     limit: 255, default: "", null: false
     t.string   "reset_password_token",   limit: 255
     t.datetime "reset_password_sent_at"
@@ -251,6 +292,7 @@ ActiveRecord::Schema.define(version: 20170125035200) do
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
+  add_index "users", ["trader_id"], name: "index_users_on_trader_id", using: :btree
 
   create_table "waste_registrations", force: :cascade do |t|
     t.string   "code",          limit: 255
@@ -271,18 +313,6 @@ ActiveRecord::Schema.define(version: 20170125035200) do
   add_index "waste_registrations", ["unit_id"], name: "index_waste_registrations_on_unit_id", using: :btree
   add_index "waste_registrations", ["waste_type_id"], name: "index_waste_registrations_on_waste_type_id", using: :btree
 
-  create_table "waste_regs", force: :cascade do |t|
-    t.string   "code",       limit: 255
-    t.string   "name",       limit: 255
-    t.string   "waste_type", limit: 255
-    t.string   "quantity",   limit: 255
-    t.string   "unit",       limit: 255
-    t.string   "form",       limit: 255
-    t.string   "packing",    limit: 255
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
-  end
-
   create_table "waste_types", force: :cascade do |t|
     t.string   "code",       limit: 255
     t.string   "name",       limit: 255
@@ -290,9 +320,4 @@ ActiveRecord::Schema.define(version: 20170125035200) do
     t.datetime "updated_at",             null: false
   end
 
-  add_foreign_key "waste_registrations", "packages"
-  add_foreign_key "waste_registrations", "shapes"
-  add_foreign_key "waste_registrations", "traders"
-  add_foreign_key "waste_registrations", "units"
-  add_foreign_key "waste_registrations", "waste_types"
 end

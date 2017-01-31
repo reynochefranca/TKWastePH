@@ -1,8 +1,18 @@
 class DeviseCreateUsers < ActiveRecord::Migration
   def change
     create_table :users do |t|
+      t.belongs_to :trader, index: true
       ## Database authenticatable
       t.string :email,              null: false, default: ""
+      ## Added info
+      t.string :name_kanji
+      t.string :name_kana
+      t.string :tel_name
+      t.string :tel
+      t.string :position
+      t.string :memo
+      t.string :login_id
+      
       t.string :encrypted_password, null: false, default: ""
 
       ## Recoverable

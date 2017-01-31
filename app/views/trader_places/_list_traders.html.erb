@@ -1,0 +1,57 @@
+<table class="issue-table">
+	<tr>
+		<th colspan="9" class="table-title">排出事業者</th>
+	</tr>
+	<tr>
+		<th></th>
+		<th>排出事業者</th>
+		<th>排出事業場郵便番号</th>
+		<th>都道府県</th>
+		<th>市区町村</th>
+		<th>番地</th>
+		<th>連絡先電話番号</th>
+		<th>引渡し担当者</th>
+		<th>メールアドレス</th>
+	</tr>
+	<% if @traders_places_users.blank? %>
+		<tr>
+			<td colspan="9" align="center">
+				<p><strong>NO RESULTS</strong><br>
+					Try different keywords
+				</p>
+			</td>
+		</tr>
+	<% else 
+		@traders_places_users.each do |row| %>
+		<tr>
+			<td>
+				<input type="radio" name="id" value="<%= row.trader_id %>" 
+				data-trader_kanji="<%= row.trader_kanji %>" data-trader_kana="<%= row.trader_kana %>"
+				data-zipcode="<%= row.zipcode %>" data-prefecture_city="<%= row.prefecture %>-<%= row.city %>" data-address="<%= row.address %>" data-tel1="<%= row.tel1 %>" data-tel2="<%= row.tel2 %>"
+				data-connection_registration_number="<%# row.connection_registration_number %>" 
+				data-password="<%# row.password %>" 
+				data-registration_user1_name="<%# row.registration_user1_name %>"
+				data-registration_user1_email="<%# row.registration_user1_email %>"
+				data-registration_user2_name="<%# row.registration_user2_name %>"
+				data-registration_user2_email="<%# row.registration_user2_email %>"
+				data-registration_user3_name="<%# row.registration_user3_name %>"
+				data-registration_user3_email="<%# row.registration_user3_email %>">
+			</td>
+			<td>
+				<p><%= row.trader_kanji %></p>
+				<p><%= row.trader_kana %></p>
+			</td>
+			<td><%= row.zipcode %></td>
+			<td><%= row.prefecture %></td>
+			<td><%= row.city %></td>
+			<td><%= row.address %></td>
+			<td><%= row.tel1 %></td>
+			<td>
+				<p><%= row.user_kanji %></p>
+				<p><%= row.user_kana %></p>
+			</td>
+			<td><%= row.email %></td>
+		</tr>
+	<% end
+	end %>
+</table>

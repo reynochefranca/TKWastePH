@@ -1,10 +1,10 @@
 class CreateTraderEdiUsers < ActiveRecord::Migration
   def change
     create_table :trader_edi_users do |t|
-      t.integer :trader_id
-      t.integer :edi_user_id, null: true
-      t.integer :role_id
-
+      t.belongs_to :trader, index: true
+      t.belongs_to :edi_user, index: true
+      t.belongs_to :role, index: true
+      
       t.timestamps null: false
     end
   end

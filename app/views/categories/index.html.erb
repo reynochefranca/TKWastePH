@@ -25,14 +25,14 @@
 					</tr>
 				<% else 
 					@categories.each do |row| %>
-					<tr>
+					<tr id="category_<%= row.id %>">
 						<td><%= row.code %></td>
 						<td><%= row.name %></td>
 						<td>
 							<div class="btn-box cf">
 								<ul class="cf">
 									<li><%= link_to '編集', edit_category_path(row), :class => 'modal-open choicebtn', data: { target: 'con1', remote: 'true' } %></li>
-									<li><%= link_to '削除', row, method: :delete, :class => 'sakuzyobtn', data: { confirm: 'Are you sure?' } %></li>
+									<li><%= link_to '削除', row, method: :delete, :class => 'sakuzyobtn', data: { confirm: 'Are you sure?', remote: 'true' } %></li>
 								</ul>
 							</div>
 						</td>

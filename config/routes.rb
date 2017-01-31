@@ -1,72 +1,42 @@
 Rails.application.routes.draw do
 
-
-  get 'manifests/index'
-
-  get 'permissions/index'
-
-  get 'waste_registrations/index'
-  
-  get 'traders/index'
-
-  get 'waste_regs/index'
-
-  get 'wastes/index'
-
-  get 'person_registrations/index'
-
-  get 'new_emission_plant_registrations/index'
-
-  get 'new_discharge_business_registrations/index'
-
-  get 'company_registrations/index'
-
-  get 'categories/index'
-
-  get 'cars/index'
-
+  devise_for :users
+  # Home
   get 'home/index'
-
-  get 'person_registrations/index'
   
-  get 'company_registrations/index'
+  # Waste Company
+  get 'trader_places/index'
+  get 'trader_places/:id/selected' => 'trader_places#selected', :as => :trader_places_selected
+  get 'new_emission_plant_registrations/index'
   
-  get 'collect_transporter_jwnet_inputs/index'
-  
+  # Agreement
   get 'individual_contracts/index'
-  
   get 'emission_operator_contracts/index'
   
-  get 'places/index'
+  # Manifest
+  get 'waste_registrations/index'
   
-  get 'cars/index'
+  # Master
+  get 'traders/index'
+  get 'person_registrations/index'
+  get 'permissions/index'
   
-  get 'roles/index'
-  
-  get 'edi_users/index'
-  
-  get 'units/index'
-  
-  get 'shapes/index'
-  
-  get 'packages/index'
-  
-  get 'hazardous_substances/index'
-  
-  get 'disposal_methods/index'
-  
-  get 'waste_types/index'
-  
+  # Sub Master
   get 'categories/index'
-  
-  get 'new_discharge_business_registrations/index'
-  
-  get 'new_emission_plant_registrations/index'
-  
-  
+  get 'waste_types/index'
+  get 'disposal_methods/index'
+  get 'hazardous_substances/index'
+  get 'packages/index'
+  get 'shapes/index'
+  get 'units/index'
+  get 'edi_users/index'
+  get 'cars/index'
+  get 'roles/index'
+  get 'cars/index'
+  get 'places/index'
+ 
   # devise_for :users
 
-  devise_for :users
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
@@ -74,8 +44,8 @@ Rails.application.routes.draw do
   # You can have the root of your site routed with "root"
   root 'home#index'
   
-  resources :waste_registrations, :manifests
-  resources :categories, :waste_types, :disposal_methods, :roles, :cars, :units, :places, :shapes, :edi_users, :packages, :hazardous_substances, :traders, :trader_places, :place_users, :users, :permissions, :waste_regs
+
+  resources :users, :place_users, :traders, :trader_places, :place_users, :permissions, :edi_users, :trader_edi_users, :roles, :category_permissions, :categories, :waste_types, :contracts, :transports, :contract_manifests, :manifests, :units, :packages, :hazardous_substances, :disposal_methods, :shapes, :cars, :waste_registrations
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
@@ -83,6 +53,7 @@ Rails.application.routes.draw do
   # Example of named route that can be invoked with purchase_url(id: product.id)
   #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase
   # get 'categories/:id/blahblah' => 'categories#blahblah', :as => :blahblah
+  
 
   # Example resource route (maps HTTP verbs to controller actions automatically):
 
