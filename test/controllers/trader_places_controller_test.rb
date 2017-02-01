@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class ManifestsControllerTest < ActionController::TestCase
+class TraderPlacesControllerTest < ActionController::TestCase
   test "should get index" do
     get :index
     assert_response :success
