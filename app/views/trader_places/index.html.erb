@@ -97,49 +97,14 @@ $(window).load(function(){
     			</table>
     		</div>
     	</div>
-    
-    	<table class="place-table">
-    		<thead>
-    			<tr>
-    				<th colspan="8">
-    					<a class="modal-open" data-target="con1">事業場所追加</a>
-    				</th>
-    			</tr>
-    			<tr>
-    				<th class="table-title" colspan="8">排出事業場登録</th>
-    			</tr>
-    		</thead>
-    		<tbody>
-    			<tr>
-    				<th>排出事業場名漢字</th>
-    				<th>排出事業場名(カナ)</th>
-    				<th>排出事業場名郵便番号</th>
-    				<th>都道府県市区町村</th>
-    				<th>町名 番地以下</th>
-    				<th>電話番号</th>
-    				<th>引き渡し担当者</th>
-    				<th>引き渡し担当者メールアドレス</th>
-    				<th></th>
-    			</tr>
-    			<tr>
-    				<td>モスバーガー水道橋西通り店</td>
-    				<td>モスバーガースイドウバシニシドオリテン</td>
-    				<td>101-0065</td>
-    				<td>東京都千代田区</td>
-    				<td>西神田２丁目５-８</td>
-    				<td>03-0000-0000</td>
-    				<td>城戸 陽介</td>
-    				<td>kido_yousuke@example.com</td>
-    				<td class="about-box"><a class="choicebtn" href="/new_emission_plant_registrations/index?locale=ja">詳しく見る</a></td>
-    			</tr>
-    		</tbody>
-    	</table>
-    
+        <div id="list_places">
+            <%= render 'selected_list_places' %>
+        </div>
     	<div class="con-btn-box">
-    		<input type="submit" class="con-btn" value="修正登録">
+    		<input type="button" class="con-btn" value="修正登録">
     	</div>
     </form>
 </div>
-<div id="selected"></div>
+
 <%= render template: 'template/footer' %>
 <%= render 'search_traders' %>

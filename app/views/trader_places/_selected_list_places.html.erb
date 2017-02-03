@@ -1,0 +1,28 @@
+<% @url = request.fullpath.split("?")[0] %>
+<% @trader_id = @url[15] %>
+<table class="place-table">
+	<thead>
+		<tr>
+			<th colspan="8">
+				<a class="modal-open" data-target="con1">事業場所追加</a>
+			</th>
+		</tr>
+		<tr>
+			<th class="table-title" colspan="8">排出事業場登録</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<th>排出事業場名漢字</th>
+			<th>排出事業場名(カナ)</th>
+			<th>排出事業場名郵便番号</th>
+			<th>都道府県市区町村</th>
+			<th>町名 番地以下</th>
+			<th>電話番号</th>
+			<th>引き渡し担当者</th>
+			<th>引き渡し担当者メールアドレス</th>
+			<th></th>
+		</tr>
+		<%= render 'list_places' %>
+	</tbody>
+</table>

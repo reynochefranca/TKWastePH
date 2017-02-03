@@ -12,6 +12,18 @@ body{
 	margin-bottom: 60px !important;
 }
 
+.table_row:hover, .table_row.selected {
+    background-color: #f7f7f7;
+    color:#000;
+}
+
+
+input[type=date]::-webkit-inner-spin-button, 
+input[type=date]::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+  margin: 0; 
+}
+
 header{
 	border-top: solid 15px #003f96;
 	border-bottom: 1px solid #ededed;
@@ -193,19 +205,19 @@ td{
 	font-size: 16px !important;
 }
 
-.table-titlered{
+.table-titlegreen{
 	padding: 18px 0 !important;
 	color: #fff !important;
-	background-color: red !important;
+	background-color: green !important;
 	border: 1px solid #003f96 !important;
 	text-align: center !important;
 	font-size: 16px !important;
 }
 
-.table-titlegreen{
+.table-titlered{
 	padding: 18px 0 !important;
 	color: #fff !important;
-	background-color: green !important;
+	background-color: red !important;
 	border: 1px solid #003f96 !important;
 	text-align: center !important;
 	font-size: 16px !important;

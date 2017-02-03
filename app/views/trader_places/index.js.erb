@@ -1,9 +1,11 @@
 $('#list_traders').html("<%= j( render 'list_traders' ) %>");
-$('input[name=id]').on('click',function(){
+$('a.choicebtn').on('click',function(){
+    /* trader */
     data = $(this).data('trader_kanji');
     $('#trader_kanji').html(data);
     data = $(this).data('trader_kana');
     $('#trader_kana').html(data);
+    /* place */
     data = $(this).data('zipcode');
     $('#zipcode').val(data);
     data = $(this).data('prefecture_city');
@@ -14,16 +16,25 @@ $('input[name=id]').on('click',function(){
     $('#tel1').val(data);
     data = $(this).data('tel2');
     $('#tel2').val(data);
+    /* edi user */
+    data = $(this).data('connection_registration_number');
+    $('#connection_registration_number').val(data);
+    data = $(this).data('password');
+    $('#password').val(data);
+    data = $(this).data('registration_user1_name');
+    $('#registration_user1_name').val(data);
+    data = $(this).data('registration_user1_email');
+    $('#registration_user1_email').val(data);
+    data = $(this).data('registration_user2_name');
+    $('#registration_user2_name').val(data);
+    data = $(this).data('registration_user2_email');
+    $('#registration_user2_email').val(data);
+    data = $(this).data('registration_user3_name');
+    $('#registration_user3_name').val(data);
+    data = $(this).data('registration_user3_email');
+    $('#registration_user3_email').val(data);
 });
-$(window).load(function(){
-  var menu = $("div.js-menu");
-  menu.hide();
-  $("div.menu").on("click", {a: menu}, slide);
-  function slide(event) {
-	if (event.data.a.css("display") === "none") {
-	  event.data.a.slideDown(350);
-	} else {
-	  event.data.a.slideUp(350);
-	}W
-  }
-}); 
+
+$(".table_row").click(function(){
+     $(this).addClass("selected").siblings().removeClass("selected");
+});

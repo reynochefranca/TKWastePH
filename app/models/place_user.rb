@@ -1,7 +1,6 @@
 class PlaceUser < ActiveRecord::Base
-    # emission business registration
-    # belongs_to :place
-    # belongs_to :user
-    
-    
+    # Query Interface: PlaceUser.joins(:user, :place)
+    # place_user belongs to place and belongs to user
+    belongs_to :place
+    belongs_to :user
 end

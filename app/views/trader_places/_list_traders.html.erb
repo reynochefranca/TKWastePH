@@ -13,7 +13,7 @@
 		<th>引渡し担当者</th>
 		<th>メールアドレス</th>
 	</tr>
-	<% if @traders_places_users.blank? %>
+	<% if @trader_places.blank? %>
 		<tr>
 			<td colspan="9" align="center">
 				<p><strong>NO RESULTS</strong><br>
@@ -22,36 +22,39 @@
 			</td>
 		</tr>
 	<% else 
-		@traders_places_users.each do |row| %>
-		<tr>
-			<td>
-				<input type="radio" name="id" value="<%= row.trader_id %>" 
-				data-trader_kanji="<%= row.trader_kanji %>" data-trader_kana="<%= row.trader_kana %>"
-				data-zipcode="<%= row.zipcode %>" data-prefecture_city="<%= row.prefecture %>-<%= row.city %>" data-address="<%= row.address %>" data-tel1="<%= row.tel1 %>" data-tel2="<%= row.tel2 %>"
-				data-connection_registration_number="<%# row.connection_registration_number %>" 
-				data-password="<%# row.password %>" 
-				data-registration_user1_name="<%# row.registration_user1_name %>"
-				data-registration_user1_email="<%# row.registration_user1_email %>"
-				data-registration_user2_name="<%# row.registration_user2_name %>"
-				data-registration_user2_email="<%# row.registration_user2_email %>"
-				data-registration_user3_name="<%# row.registration_user3_name %>"
-				data-registration_user3_email="<%# row.registration_user3_email %>">
-			</td>
-			<td>
-				<p><%= row.trader_kanji %></p>
-				<p><%= row.trader_kana %></p>
-			</td>
-			<td><%= row.zipcode %></td>
-			<td><%= row.prefecture %></td>
-			<td><%= row.city %></td>
-			<td><%= row.address %></td>
-			<td><%= row.tel1 %></td>
-			<td>
-				<p><%= row.user_kanji %></p>
-				<p><%= row.user_kana %></p>
-			</td>
-			<td><%= row.email %></td>
-		</tr>
-	<% end
+		@trader_places.each do |row| %>
+			<tr class="table_row">
+	
+				<td>
+					<a href="<%= selected_trader_place_path(row.trader_id) %>" class="choicebtn" style="text-decoration:none; color:#fff;"
+					data-remote="true"
+					data-trader_kanji="<%= row.trader_kanji %>" data-trader_kana="<%= row.trader_kana %>"
+					data-zipcode="<%= row.zipcode %>" data-prefecture_city="<%= row.prefecture %>-<%= row.city %>" data-address="<%= row.address %>" data-tel1="<%= row.tel1 %>" data-tel2="<%= row.tel2 %>"
+					data-connection_registration_number="<%= row.connection_registration_number %>" 
+					data-password="<%= row.password %>" 
+					data-registration_user1_name="<%= row.registration_user1_name %>"
+					data-registration_user1_email="<%= row.registration_user1_email %>"
+					data-registration_user2_name="<%= row.registration_user2_name %>"
+					data-registration_user2_email="<%= row.registration_user2_email %>"
+					data-registration_user3_name="<%= row.registration_user3_name %>"
+					data-registration_user3_email="<%= row.registration_user3_email %>"
+					>o</a>
+				</td>
+				<td>
+					<p><%= row.trader_kanji %></p>
+					<p><%= row.trader_kana %></p>
+				</td>
+				<td><%= row.zipcode %></td>
+				<td><%= row.prefecture %></td>
+				<td><%= row.city %></td>
+				<td><%= row.address %></td>
+				<td><%= row.tel1 %></td>
+				<td>
+					<p><%= row.user_kanji %></p>
+					<p><%= row.user_kana %></p>
+				</td>
+				<td><%= row.email %></td>
+			</tr>
+		<% end
 	end %>
 </table>

@@ -1,0 +1,19 @@
+<%
+@place_users = PlaceUser
+                    .select("places.id AS place_id, places.code, places.name_kanji AS place_kanji, places.name_kana AS place_kana, places.zipcode, places.prefecture, places.city, places.address, places.tel1, places.tel2, users.name_kanji AS user_kanji, users.name_kana AS user_kana, users.email, users.trader_id")
+                    .joins(:place, :user)
+                    .where("users.trader_id = ?", @trader_id)
+%>
+<% @place_users.each do |data| %>
+<tr>
+	<td><%= data.place_kanji %></td>
+	<td><%= data.place_kana %></td>
+	<td><%= data.zipcode %></td>
+	<td><%= data.prefecture %>, <%= data.city %></td>
+	<td><%= data.address %></td>
+	<td><%= data.tel1 %>~<%= data.tel2 %></td>
+	<td><%= data.user_kanji %></td>
+	<td><%= data.email %></td>
+	<td class="about-box"><a class="choicebtn" href="/new_emission_plant_registrations/index?locale=ja">詳しく見る</a></td>
+</tr>
+<% end %>

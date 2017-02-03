@@ -313,18 +313,6 @@ ActiveRecord::Schema.define(version: 20170126101058) do
   add_index "waste_registrations", ["unit_id"], name: "index_waste_registrations_on_unit_id", using: :btree
   add_index "waste_registrations", ["waste_type_id"], name: "index_waste_registrations_on_waste_type_id", using: :btree
 
-  create_table "waste_regs", force: :cascade do |t|
-    t.string   "code",       limit: 255
-    t.string   "name",       limit: 255
-    t.string   "waste_type", limit: 255
-    t.string   "quantity",   limit: 255
-    t.string   "unit",       limit: 255
-    t.string   "form",       limit: 255
-    t.string   "packing",    limit: 255
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
-  end
-
   create_table "waste_types", force: :cascade do |t|
     t.string   "code",       limit: 255
     t.string   "name",       limit: 255

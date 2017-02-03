@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   
   # Waste Company
   get 'trader_places/index'
-  get 'trader_places/:id/selected' => 'trader_places#selected', :as => :trader_places_selected
+  get 'trader_places/:id/selected' => 'trader_places#selected', :as => :selected_trader_place
   get 'new_emission_plant_registrations/index'
   
   # Agreement
