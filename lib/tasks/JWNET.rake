@@ -2,49 +2,27 @@ require "open3"
 
 namespace :JWNET do
 
-  desc "timer to JWNET"
-  task :timer => :environment do
-
-    if File.new(__FILE__).flock(File::LOCK_EX | File::LOCK_NB) == false
-      puts '他のプロセスが実行中です'
-      exit 1
-    end
-
-    Rake::Task["JWNET:send_request"].execute
-    sleep(360)
-    Rake::Task["JWNET:result_request"].execute
-  end
-
-  desc "send 'send_request' to JWNET"
-  task :send_request => :environment do
-
-    # 送信要求 csv 作成処理 ......
-    # request_history_details から 送信候補のレコードを取得。
-    # request_history_detail に紐付いている manifest を参照し、
-    # csv ファイル書き出し & 書き出したcsvファイルの内容をrequest_history_detailsに同期。
-    # request_history 作成かつ、上記制限を持った request_history_details と 紐付ける。
-    # 上記までした前提
+  desc "send 'send_request' to JWNET with csv file path"
+  task :send_request, ['csv_file_path'] => :environment do |task, args|
 
     # secrets.yml からパラメータ展開
     jwnet_params_send_request = Rails.application.secrets.jwnet_params["send_request"]
 
-    will_send_request_history = RequestHistory.next_send_request.first
+    # 現在時刻取得
+    date_time_now = DateTime.now.strftime('%Y-%m-%d_%H:%M:%S')
 
     # パラメータファイルの書き出し
-    File.open("public/csv/send/#{will_send_request_history.id}.txt", "w") do |file|
+    File.open("#{Rails.root}/public/csv/send/#{date_time_now}_send_prm.txt", "w") do |file|
       jwnet_params_send_request.each{|key, value|
         if key == 'LOCAL_FILE'
-          file.print("#{key}=#{will_send_request_history.csv_file_path}\n")
+          file.print("#{key}=#{args.csv_file_path}\n")
         else
           file.print("#{key}=#{value}\n")
         end
       }
     end
 
-    will_send_request_history.prmfile_path = "#{Rails.root}/public/csv/send/#{will_send_request_history.id}.txt"
-    will_send_request_history.save
-
-    Open3.popen3('/usr/local/zhostd/zclient.sh',"public/csv/send/#{will_send_request_history.id}.txt") do |stdin, stdout, stderr, wait_thr|
+    Open3.popen3('/usr/local/zhostd/zclient',"#{Rails.root}/public/csv/send/#{date_time_now}_send_prm.txt") do |stdin, stdout, stderr, wait_thr|
 
       stdin.close
 
@@ -61,23 +39,6 @@ namespace :JWNET do
       p wait_thr.value
 
     end
-
-    # if zclientステータス上エラーなし
-    will_send_request_history.result_status = 1
-
-    will_send_request_history.request_history_details.each do |request_history_detail|
-      request_history_detail.send_request_flg = 1
-      request_history_detail.save
-    end
-    # else
-    #    will_send_request_history.result_status = 2
-    #    will_send_request_history.request_history_details.each do |request_history_detail|
-    #      request_history_detail.send_request_flg = 2
-    #      request_history_detail.save
-    #    end
-    # end
-
-    will_send_request_history.save
 
     # zclient エラーコード 一覧
       # “001” パラメータファイル無し
@@ -157,36 +118,27 @@ namespace :JWNET do
 
   end
 
-  desc "send 'result_request' to JWNET"
-  task :result_request => :environment do
-
-    # 結果要求 csv 作成処理 ......
-    # request_history_details から 送信候補のレコードを取得。
-    # request_history_detail に紐付いている manifest を参照し、
-    # csv ファイル書き出し & 書き出したcsvファイルの内容をrequest_history_detailsに同期。
-    # request_history 作成かつ、上記制限を持った request_history_details と 紐付ける。
-    # 上記までした前提
+  desc "send 'result_request' to JWNET with csv file path"
+  task :result_request, ['csv_file_path'] => :environment do |task, args|
 
     # secrets.yml からパラメータ展開
     jwnet_params_send_request = Rails.application.secrets.jwnet_params["result_request"]
 
-    will_send_request_history = RequestHistory.next_result_request
+    # 現在時刻取得
+    date_time_now = DateTime.now.strftime('%Y-%m-%d_%H:%M:%S')
 
     # パラメータファイルの書き出し
-    File.open("public/csv/result/#{will_send_request_history.id}.txt", "w") do |file|
+    File.open("#{Rails.root}/public/csv/result/#{date_time_now}_result_prm.txt", "w") do |file|
       jwnet_params_send_request.each{|key, value|
         if key == 'LOCAL_FILE'
-          file.print("#{key}=#{will_send_request_history.csv_file_path}\n")
+          file.print("#{key}=#{args.csv_file_path}\n")
         else
           file.print("#{key}=#{value}\n")
         end
       }
     end
 
-    will_send_request_history.prmfile_path = "#{Rails.root}/public/csv/result/#{will_send_request_history.id}.txt"
-    will_send_request_history.save
-
-    Open3.popen3('/usr/local/zhostd/zclient.sh',"public/csv/send/#{will_send_request_history.id}.txt") do |stdin, stdout, stderr, wait_thr|
+    Open3.popen3('/usr/local/zhostd/zclient',"#{Rails.root}/public/csv/result/#{date_time_now}_result_prm.txt") do |stdin, stdout, stderr, wait_thr|
 
       stdin.close
 
@@ -203,23 +155,6 @@ namespace :JWNET do
       p wait_thr.value
 
     end
-
-    # if zclientステータス上エラーなし
-    will_send_request_history.result_status = 1
-
-    will_send_request_history.request_history_details.each do |request_history_detail|
-      request_history_detail.result_request_flg = 1
-      request_history_detail.save
-    end
-    # else
-    #    will_send_request_history.result_status = 2
-    #    will_send_request_history.request_history_details.each do |request_history_detail|
-    #      request_history_detail.result_request_flg = 2
-    #      request_history_detail.save
-    #    end
-    # end
-
-    will_send_request_history.save
 
     # zclient エラーコード 一覧
       # “001” パラメータファイル無し
