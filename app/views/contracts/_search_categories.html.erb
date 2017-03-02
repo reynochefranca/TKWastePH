@@ -1,0 +1,32 @@
+<script>
+	$(function() {
+	 $("input[name=category_id]").on("change", function() {
+	    $("#category_id").html($(this).val());
+	    data = $(this).data('id');
+    	$('#category_val').val(data);
+	 });
+	});
+</script>
+<div class="modal-content con01">
+	<div class="batu-btn-box">
+		<a class="modal-close"><%= image_tag('batu.png', :alt => 'ボタン', :class => 'batu-btn') %></a>
+
+	</div>
+
+	<table class="place-table disposal-table mo-table">
+		<thead>
+			<tr>
+				<th colspan="2" class="table-title">契約期間 産業廃棄物の種類一覧</th>
+			</tr>
+		</thead>
+		<tbody>
+		    <% @categories.each do |cat| %>
+				<tr class="table-row">
+					<td><input type="radio" name="category_id" data-id="<%= cat.id %>" value="<%= cat.code %> / <%= cat.name %>"></td>
+					<td><%= cat.code %>&nbsp;/&nbsp;<%= cat.name %></td>
+				</tr>
+			<% end %>
+		</tbody>
+	</table>
+	<input type="button" value="登録する" class="modal-close con-btn"  style="text-decoration:none; color:white;">
+</div>

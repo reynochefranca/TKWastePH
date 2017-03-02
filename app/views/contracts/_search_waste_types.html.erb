@@ -1,0 +1,35 @@
+<script>
+	$(function() {
+	 $("input[name=waste_type_id]").on("change", function() {
+	    $("#waste_type_id").html($(this).val());
+	    data = $(this).data('id');
+    	$('#waste_type_val').val(data);
+	 });
+	});
+</script>
+<div class="modal-content con00">
+	<div class="batu-btn-box">
+		<a class="modal-close"><%= image_tag('batu.png', :alt => 'ボタン', :class => 'batu-btn') %></a>
+
+	</div>
+	<table class="place-table disposal-table mo-table">
+		<thead>
+			<tr>
+				<th colspan="2" class="table-title">廃棄物種別一覧</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<th></th>
+				<th>コード/単位</th>
+			</tr>
+			<% @waste_types.each do |wt| %>
+			<tr>
+				<td><input type="radio" name="waste_type_id" data-id="<%= wt.id %>" value="<%= wt.code %> / <%= wt.name %>"></td>
+    			<td><%= wt.code %>&nbsp;/&nbsp;<%= wt.name %></td>
+			</tr>
+		    <% end %>
+		</tbody>
+	</table>
+	<input type="button" value="登録する" class="modal-close con-btn"  style="text-decoration:none; color:white;">
+</div>

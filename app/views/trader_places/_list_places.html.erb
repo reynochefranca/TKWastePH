@@ -1,0 +1,50 @@
+<table class="issue-table">
+	<thead>
+		<tr>
+			<th class="table-title" colspan="9">排出事業場</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<th></th>
+			<th>排出事業場名漢字</th>
+			<th>排出事業場名(カナ)</th>
+			<th>排出事業場名郵便番号</th>
+			<th>都道府県市区町村</th>
+			<th>町名 番地以下</th>
+			<th>電話番号</th>
+			<th>引き渡し担当者</th>
+			<th>引き渡し担当者メールアドレス</th>
+		</tr>
+		<% if @places.blank? %>
+    		<tr>
+    			<td colspan="9" align="center">
+    				<p><strong>NO RESULTS</strong><br>
+    					Try different keywords
+    				</p>
+    			</td>
+    		</tr>
+    	<% else %>
+			<% @places.each do |data| %>
+				<tr class="table_row">
+			        <td><input type="radio" name="place_id" value="<%= data.id %>" data-place_id="<%= data.place_id %>" data-place_kanji="<%= data.place_kanji %>" data-place_kana="<%= data.place_kana %>" data-zipcode="<%= data.zipcode %>" data-prefecture_city="<%= data.prefecture %> - <%= data.city %>" data-address="<%= data.address %>" data-tel1="<%= data.tel1 %>" data-tel2="<%= data.tel2 %>" data-user_kanji="<%= data.user_kanji %>" data-user_kana="<%= data.user_kana %>" data-email="<%= data.email %>"></td>
+					<td>
+						<p><%= data.place_kanji %></p>
+				        <p><%= data.place_kana %></p>
+					</td>
+					<td><%= data.zipcode %></td>
+					<td><%= data.prefecture %></td>
+					<td><%= data.city %></td>
+					<td><%= data.address %></td>
+					<td><p><%= data.tel1 %></p>
+				        <p><%= data.tel2 %></p></td>
+					<td>
+						<p><%= data.user_kanji %></p>
+						<p><%= data.user_kana %></p>
+					</td>
+					<td><%= data.email %></td>
+				</tr>
+			<% end %>
+    	<% end %>
+	</tbody>
+</table>

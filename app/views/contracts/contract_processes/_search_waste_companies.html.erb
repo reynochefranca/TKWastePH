@@ -1,0 +1,49 @@
+<script>
+$(function() {
+	$("input[name=waste_cmpny_id]").on("change", function() {
+	    $("#waste_cmpny_id").html($(this).val());
+	    $("#waste_cmpny_id1").html($(this).val());
+	    data = $(this).data('id');
+    	$('#waste_cmpny_val').val(data);
+	});
+});
+</script>
+<div class="modal-content con00">
+	<div class="batu-btn-box">
+		<a class="modal-close"><%= image_tag('batu.png', :alt => 'ボタン', :class => 'batu-btn') %></a>
+
+	</div>
+	<table id="search_filter">
+		<thead>
+			<tr>
+				<th colspan="2" class="table-title">検索キーワード</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<th>
+					サーチ 浪費会社
+				</th>
+				<td>
+					<input type="text" id="filter" class="inp-text">
+				</td>
+			</tr>
+		</tbody>
+	</table>
+	<table class="place-table disposal-table mo-table">
+		<thead>
+			<tr>
+				<th colspan="2" class="table-title">浪費会社覧</th>
+			</tr>
+		</thead>
+		<tbody>
+		    <% @waste_companies.each do |tr| %>
+				<tr class="table-rows">
+					<td><input type="radio" name="waste_cmpny_id" data-id="<%= tr.id %>" value="<%= tr.name_kanji %>"></td>
+					<td><%= tr.name_kanji %></td>
+				</tr>
+			<% end %>
+		</tbody>
+	</table>
+	<input type="button" value="登録する" class="modal-close con-btn"  style="text-decoration:none; color:white;">
+</div>

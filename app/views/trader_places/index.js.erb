@@ -1,9 +1,13 @@
 $('#list_traders').html("<%= j( render 'list_traders' ) %>");
-$('input[name=id]').on('click',function(){
+$('input[name=trader_id]').on('click',function(){
+    /* trader */
+    data = $(this).data('trader_id');
+    $('#trader_id').val(data);
     data = $(this).data('trader_kanji');
     $('#trader_kanji').html(data);
     data = $(this).data('trader_kana');
     $('#trader_kana').html(data);
+    /* place */
     data = $(this).data('zipcode');
     $('#zipcode').val(data);
     data = $(this).data('prefecture_city');
@@ -14,4 +18,58 @@ $('input[name=id]').on('click',function(){
     $('#tel1').val(data);
     data = $(this).data('tel2');
     $('#tel2').val(data);
+    /* edi user */
+    data = $(this).data('connection_registration_number');
+    $('#connection_registration_number').val(data);
+    data = $(this).data('password');
+    $('#password').val(data);
+    data = $(this).data('registration_user1_name');
+    $('#registration_user1_name').val(data);
+    data = $(this).data('registration_user1_email');
+    $('#registration_user1_email').val(data);
+    data = $(this).data('registration_user2_name');
+    $('#registration_user2_name').val(data);
+    data = $(this).data('registration_user2_email');
+    $('#registration_user2_email').val(data);
+    data = $(this).data('registration_user3_name');
+    $('#registration_user3_name').val(data);
+    data = $(this).data('registration_user3_email');
+    $('#registration_user3_email').val(data);
+});
+/* EMISSION COMPANY BRANCHES */
+$('#list_places').html("<%= j( render 'list_places' ) %>");
+$('input[name=place_id]').on('click',function(){
+   
+    data = $(this).data('place_kanji');
+    $('#place_kanji').html(data);
+    data = $(this).data('place_kana');
+    $('#place_kana').html(data);
+
+    data = $(this).data('zipcode');
+    $('#place_zipcode').html(data);
+    data = $(this).data('prefecture_city');
+    $('#place_prefecture_city').html(data);
+    data = $(this).data('address');
+    $('#place_address').html(data);
+    data = $(this).data('tel1');
+    $('#place_tel1').html(data);
+    data = $(this).data('tel2');
+    $('#place_tel2').html(data);
+    
+    data = $(this).data('user_kanji');
+    $('#place_user_kanji').html(data);
+    
+    data = $(this).data('user_kana');
+    $('#place_user_kana').html(data);
+    
+    data = $(this).data('email');
+    $('#place_email').html(data);
+    
+    
+    var data1 = $(this).data('place_id');
+    $('#place_id').attr("href","/contracts/" + data1 + "/places");
+}); 
+
+$(".table_row").click(function(){
+     $(this).addClass("selected").siblings().removeClass("selected");
 });

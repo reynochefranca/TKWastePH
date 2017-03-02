@@ -1,0 +1,45 @@
+<script>
+	$(function() {
+	 $("input[name=category_id]").on("change", function() {
+	    $("#category_id").html($(this).val());
+	    data = $(this).data('id');
+    	$('#category_val').val(data);
+	 });
+	});
+</script>
+<div class="modal-content con01" id="search_category">
+	<div class="batu-btn-box">
+		<a class="modal-close"><%= image_tag('batu.png', :alt => 'ボタン', :class => 'batu-btn') %></a>
+
+	</div>
+	<%= search_form_for @search, url: {controller: "manifests/categories", action: "index"}, :remote => "true" do |f| %>
+    	<table>
+    		<thead>
+    			<tr>
+    				<th colspan="4" class="table-title">検索キーワード</th>
+    			</tr>
+    		</thead>
+    		<tbody>
+    			<tr>
+    				<th>
+    					コード
+    				</th>
+    				<td class="filter">
+    					<div><%= f.text_field :code_cont, :class => "sum-text", :autocomplete => "off", :placeholder => "コード" %></div>
+    				</td>
+    				<th>
+    					名
+    				</th>
+    				<td class="filter">
+    				    <div><%= f.text_field :name_cont, :class => "sum-text", :autocomplete => "off", :placeholder => "種別名" %></div>
+    				</td>
+    			</tr>
+    		</tbody>
+    	</table>
+    	<%= f.submit "検索する", :class => "con-btn" %>
+	<% end %>
+	<div id="list_categories">
+           <%= render 'manifests/categories/list_categories' %>
+    </div>
+	<input type="button" value="登録する" class="modal-close con-btn"  style="text-decoration:none; color:white;">
+</div>

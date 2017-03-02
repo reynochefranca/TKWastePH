@@ -1,0 +1,35 @@
+<script>
+	$(function() {
+	 $("input[name=unit_id]").on("change", function() {
+	    $("#unit_id").html($(this).val());
+	    data = $(this).data('id');
+    	$('#unit_val').val(data);
+	 });
+	});
+</script>
+<div class="modal-content con04">
+	<div class="batu-btn-box">
+		<a class="modal-close"><%= image_tag('batu.png', :alt => 'ボタン', :class => 'batu-btn') %></a>
+
+	</div>
+	<table class="place-table disposal-table mo-table">
+		<thead>
+			<tr>
+				<th colspan="2" class="table-title">単位一覧</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<th></th>
+				<th>コード/単位</th>
+			</tr>
+			<% @units.each do |un| %>
+			<tr>
+				<td><input type="radio" name="unit_id" data-id="<%= un.id %>" value="<%= un.code %> / <%= un.name %>"></td>
+    			<td><%= un.code %>&nbsp;/&nbsp;<%= un.name %></td>
+			</tr>
+		    <% end %>
+		</tbody>
+	</table>
+	<input type="button" value="登録する" class="modal-close con-btn"  style="text-decoration:none; color:white;">
+</div>

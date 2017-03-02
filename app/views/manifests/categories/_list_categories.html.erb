@@ -1,0 +1,25 @@
+<table>
+	<thead>
+		<tr>
+			<th colspan="2" class="table-title">契約期間 産業廃棄物の種類一覧</th>
+		</tr>
+	</thead>
+	<tbody>
+	    <% if @categories.blank? %>
+	        <tr>
+    			<td colspan="2" align="center">
+    				<p><strong>NO RESULTS</strong><br>
+    					Try different keywords
+    				</p>
+    			</td>
+    		</tr>
+	    <% else %>
+    	    <% @categories.each do |cat| %>
+    			<tr class="table-rows">
+    				<td class="search_content" width="481px"><input type="radio" name="category_id" data-id="<%= cat.id %>" value="<%= cat.code %> / <%= cat.name %>"> <%= cat.code %> <% cat.name %></td>
+    				<td class="search_content" width="481px"><%= cat.name %></td>
+    			</tr>
+    		<% end %>
+    	<% end %>
+	</tbody>
+</table>

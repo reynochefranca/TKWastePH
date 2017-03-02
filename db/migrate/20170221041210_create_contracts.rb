@@ -3,7 +3,6 @@ class CreateContracts < ActiveRecord::Migration
     create_table :contracts do |t|
       t.integer :contract_type
       t.integer :first_party_id
-      t.integer :second_party_id
       t.belongs_to :waste_type, index: true
       t.belongs_to :category, index: true
       t.belongs_to :place, index: true

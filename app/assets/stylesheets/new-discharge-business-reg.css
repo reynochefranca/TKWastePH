@@ -12,7 +12,7 @@ header{
 }
 
 .container{
-	width: 1100px;
+	width: 1300px;
 	margin: 0 auto 40px;
 }
 
@@ -186,7 +186,7 @@ header{
 .gomi-table {
 	width: 100%;
 	overflow: auto;
-	margin: 0 auto 0;
+	margin: 0 auto ;
 }
 
 .gomi-table tbody th:nth-child(1){

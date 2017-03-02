@@ -1,0 +1,2 @@
+module Manifests::CategoriesHelper
+end

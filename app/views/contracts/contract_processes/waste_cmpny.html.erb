@@ -1,0 +1,122 @@
+<%= stylesheet_link_tag "new-discharge-business-reg.css" %>
+<script>
+$(function() {
+ $("#division_process").on("change", function() {
+    $("#division_process_id").html($("#division_process").val());
+    $("#division_process_val").val($("#division_process").val());
+ });
+});
+</script>
+<header>
+	<%= render template: 'template/nav' %>
+	<h1 class="title">Transporter Selection Screen</h1>
+</header>
+
+<div class="container">
+	<table class="reg-table">
+		<tr>
+			<th colspan="2" class="table-title">Information</th>
+		</tr>
+		<% @contracts.each do |row| %>
+    		<tr>
+    			<th>場所の名前</th>
+    			<td>
+    				<div class="kensaku01 cf">
+    					<div>
+    						<p><%= row.place_kanji %></p>
+    					</div>
+    				</div>
+    			</td>
+    		</tr>
+    		<tr>
+    			<th>会社名</th>
+    			<td><%= row.trader_kanji %></td>
+    		</tr>
+    		<tr>
+    			<th>廃棄物種別</th>
+    			<td><%= row.wt_name %></td>
+    		</tr>
+    		<tr>
+    			<th>廃棄物種類</th>
+    			<td><%= row.ct_name %></td>
+    		</tr>
+    		<tr>
+    		    <th>形状</th>
+    		    <td><%= row.sh_name %></td>
+    		</tr>
+    		<tr>
+    		    <th>荷姿</th>
+    		    <td><%= row.pk_name %></td>
+    		</tr>
+    		<tr>
+    		    <th>単位</th>
+    		    <td><%= row.un_name %></td>
+    		</tr>
+    		<tr>
+    		    <th>有害物質名</th>
+    		    <td><%= row.hs_name %></td>
+    		</tr>
+    		<tr>
+    		    <th>処分方法</th>
+    		    <td><%= row.dm_name %></td>
+    		</tr>
+		<% end %>
+	</table>
+    <div class="row clearfix">
+		<div class="col-md-12 column">
+			<table class="reg-table" id="tab_logic">
+				<thead>
+					<tr >
+						<th class="table-title">
+							#
+						</th>
+						<th class="table-title">
+							浪費会社
+						</th>
+						<th class="table-title">
+							分割
+						</th>
+						<th class="table-title"></th>
+					</tr>
+				</thead>
+			    <tbody>
+			    	<!-- Testing process sequence -->
+			    	<% @inc = 0 %>
+                    <tr>
+                        <td>
+                        	<center><span><%= @process_no = @inc += 1 %></span></center>
+                        </td>
+                        <td>
+                        	<div class="kensaku01 cf">
+	                        	<center><span id="waste_cmpny_id"></span><a class="modal-open choicebtn" data-target="con00">選択</a></center>
+                        	</div>
+                        </td>
+                        <td>
+                        	<div class="kensaku01 cf">
+	                        	<center>
+	                        		<select class="inp-text sum-text" id="division_process">
+	                        			<option value selected>Please select</option>
+	                        			<option value="Transporter">Transporter</option>
+	                        			<option value="Storage">Storage</option>
+	                        			<option value="Disposer">Disposer</option>
+	                        		</select>
+	                        	</center>
+                        	</div>
+                        </td>
+                        <td>
+                            <div class="kensaku01 cf">
+								<center><a class="modal-open combtn" data-target="con01">詳細</a></center>
+							</div>
+                        </td>
+                    </tr>
+                </tbody>
+			</table>
+		</div>
+	</div>
+
+</div>
+<%= render template: 'template/footer' %>
+<%= render 'search_waste_companies' %>
+
+
+<%= render 'details_waste_contracts' %>

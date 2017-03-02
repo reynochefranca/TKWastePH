@@ -6,8 +6,18 @@ Rails.application.routes.draw do
   
   # Waste Company
   get 'trader_places/index'
-  get 'trader_places/:id/selected' => 'trader_places#selected', :as => :trader_places_selected
-  get 'new_emission_plant_registrations/index'
+  get 'contracts/:place_id/places' => 'contracts#index'
+  resources :contracts, only: [:create]
+
+  namespace :contracts do
+    get 'contract_processes/:contract_id/waste_company' => 'contract_processes#index', :as => :waste_cmpny
+    post 'contract_processes/:contract_id/waste_company' => 'contract_processes#create' 
+    resources :contract_processes, only: [:destroy]
+    namespace :contract_processes do
+      resources :traders, only: [:index]
+    end
+  end
+
   
   # Agreement
   get 'individual_contracts/index'
@@ -15,6 +25,12 @@ Rails.application.routes.draw do
   
   # Manifest
   get 'waste_registrations/index'
+  get 'manifests/index'
+  get 'manifests/temporary'
+  
+  namespace :manifests do
+    resources :categories, only: [:index]
+  end
   
   # Master
   get 'traders/index'
@@ -45,7 +61,7 @@ Rails.application.routes.draw do
   root 'home#index'
   
 
-  resources :users, :place_users, :traders, :trader_places, :place_users, :permissions, :edi_users, :trader_edi_users, :roles, :category_permissions, :categories, :waste_types, :contracts, :transports, :contract_manifests, :manifests, :units, :packages, :hazardous_substances, :disposal_methods, :shapes, :cars, :waste_registrations
+  resources :users, :places, :traders, :trader_places, :permissions, :edi_users, :trader_edi_users, :roles, :category_permissions, :categories, :waste_types, :transports, :contract_manifests, :manifests, :units, :packages, :hazardous_substances, :disposal_methods, :shapes, :cars, :waste_registrations
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

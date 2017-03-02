@@ -1,0 +1,23 @@
+<%= stylesheet_link_tag "manifest.css" %>
+<%= stylesheet_link_tag "select2.css" %>
+<%= javascript_include_tag "select2.js" %>
+<%= javascript_include_tag "jquery-ui.min.js" %>
+
+<%= form_for @temp do |f| %>	    
+	<table style="display: inline-block;" class="fixed_width">
+		<thead>
+			<tr>
+				<th colspan="7" class="table-title" ><center>Actual</center></th>
+			</tr>
+			<tr>
+				<th style="border-left-color:#cccccc;">Code</th>
+				<th>Waste Category</th>
+				<%#th>Hazardous Name</th #%>
+				<th>Qty</th>
+				<th style="max-width: 120px;">Unit</th>
+				<th>Form</th>
+				<th>Packing</th>
+			</tr>
+		</thead>
+		
+<% end %>

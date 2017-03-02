@@ -12,6 +12,12 @@ body{
 	margin-bottom: 60px !important;
 }
 
+.table_row:hover, .table_row.selected {
+    background-color: #f7f7f7;
+    color:#000;
+}
+
+
 input[type=date]::-webkit-inner-spin-button, 
 input[type=date]::-webkit-outer-spin-button { 
   -webkit-appearance: none; 

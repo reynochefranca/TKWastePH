@@ -1,11 +1,11 @@
-<div class="modal-content con02">
+<div class="modal-content con01">
 	<div class="batu-btn-box">
 		<a class="modal-close"><%= image_tag('batu.png', :alt => 'ボタン', :class => 'batu-btn') %></a>
 	</div>
 	<div class="cf">
-		<a class="tuika-btn ajax" href="company-reg.html">排出事業者追加</a>
+		<%= link_to "排出事業者追加", traders_index_path, :class => "tuika-btn ajax" %>
 	</div>
-	<%= search_form_for @search, :remote => "true" do |f| %>
+	<%= search_form_for @search, url: {controller: "trader_places", action: "index" }, :remote => "true" do |f| %>
 		<table class="mo-kensaku-table">
 			<tr>
 				<th colspan="7" class="table-title">検索キーワード</th>

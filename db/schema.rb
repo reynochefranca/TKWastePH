@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170131110846) do
+ActiveRecord::Schema.define(version: 20170221041210) do
 
   create_table "cars", force: :cascade do |t|
     t.string   "car_type",   limit: 255
@@ -45,10 +45,20 @@ ActiveRecord::Schema.define(version: 20170131110846) do
   add_index "contract_manifests", ["contract_id"], name: "index_contract_manifests_on_contract_id", using: :btree
   add_index "contract_manifests", ["manifest_id"], name: "index_contract_manifests_on_manifest_id", using: :btree
 
+  create_table "contract_processes", force: :cascade do |t|
+    t.integer  "contract_id",      limit: 4
+    t.integer  "second_party_id",  limit: 4
+    t.integer  "process_seq_id",   limit: 4
+    t.string   "division_process", limit: 255
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
+  end
+
+  add_index "contract_processes", ["contract_id"], name: "index_contract_processes_on_contract_id", using: :btree
+
   create_table "contracts", force: :cascade do |t|
     t.integer  "contract_type",          limit: 4
     t.integer  "first_party_id",         limit: 4
-    t.integer  "second_party_id",        limit: 4
     t.integer  "waste_type_id",          limit: 4
     t.integer  "category_id",            limit: 4
     t.integer  "place_id",               limit: 4

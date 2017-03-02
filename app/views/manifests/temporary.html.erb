@@ -1,0 +1,21 @@
+<%= stylesheet_link_tag "manifest.css" %>
+<%= stylesheet_link_tag "select2.css" %>
+<%= javascript_include_tag "select2.js" %>
+<%= javascript_include_tag "jquery-ui.min.js" %>
+<center><h1>Temporary Contract</h1>
+
+<% @manifests.each do |row| %>
+    <table>
+    	<tr>
+    		<td style="border-left-color:#cccccc;"><%= row.code %></td>
+    		<td><%= row.category_name %></td>
+    		<%#td><%= row.hazardous_name %><%#/td #%>
+    		<td><%= row.total_amount %></td>
+    		<td style="max-width: 120px;"><%= row.unit_name %></td>
+    		<td><%= row.shape_name %></td>
+    		<td><%= row.package_name %></td>
+    	</tr>
+    </table>
+<% end %>
+
+</center>

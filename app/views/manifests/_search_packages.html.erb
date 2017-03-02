@@ -1,0 +1,35 @@
+<script>
+	$(function() {
+	 $("input[name=package_id]").on("change", function() {
+	    $("#package_id").html($(this).val());
+	    data = $(this).data('id');
+    	$('#package_val').val(data);
+	 });
+	});
+</script>
+<div class="modal-content con04">
+	<div class="batu-btn-box">
+		<a class="modal-close"><%= image_tag('batu.png', :alt => 'ボタン', :class => 'batu-btn') %></a>
+
+	</div>
+	<table class="place-table disposal-table mo-table">
+		<thead>
+			<tr>
+				<th colspan="2" class="table-title">荷姿一覧</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<th></th>
+				<th>コード/荷姿</th>
+			</tr>
+			<% @packages.each do |pk| %>
+    			<tr>
+    				<td><input type="radio" name="package_id" data-id="<%= pk.id %>" value="<%= pk.code %> / <%= pk.name %>"></td>
+    				<td><%= pk.code %>&nbsp;/&nbsp;<%= pk.name %></td>
+    			</tr>
+    		<% end %>
+		</tbody>
+	</table>
+	<input type="button" value="登録する" class="modal-close con-btn"  style="text-decoration:none; color:white;">
+</div>

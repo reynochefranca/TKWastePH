@@ -1,0 +1,247 @@
+<%= stylesheet_link_tag "new-discharge-business-reg.css" %>
+
+
+<header>
+	<%= render template: 'template/nav' %>
+	<h1 class="title">新規排出事業場登録画面</h1>
+</header>
+
+<div class="container">
+	<%= form_for @contract do |f| %>
+		<!-- ①上部情報 -->
+		<table class="reg-table">
+			<tr>
+				<th colspan="2" class="table-title">排出事業場情報</th>
+			</tr>
+			<% @places.each do |data| %>
+				<tr>
+					<th>排出事業場</th>
+					<td>
+						<div class="kensaku01 cf">
+							<div>
+								<p><%= data.place_kanji %></p>
+								<p><%= data.place_kana %></p>
+							</div>
+						</div>
+					</td>
+				</tr>
+	
+				<tr>
+					<th>排出事業場郵便番号</th>
+					<td><%= data.zipcode %></td>
+				</tr>
+				<tr>
+					<th>都道府県市区町村</th>
+					<td><%= data.prefecture %>, <%= data.city %></td>
+				</tr>
+				<tr>
+					<th>町名 番地以下</th>
+					<td><%= data.address %>-８</td>
+				</tr>
+				<tr>
+					<th>連絡先電話番号1</th>
+					<td><%= data.tel1 %></td>
+				</tr>
+				<tr>
+					<th>引き渡し担当者</th>
+					<td><%= data.user_kanji %></td>
+				</tr>
+				<tr>
+					<th>メールアドレス</th>
+					<td><%= data.email %></td>
+				</tr>
+			<% end %>
+		</table>
+
+		<div class="about">
+			<table class="gomi-table">
+				<thead>
+					<tr>
+						<th class="table-title" colspan="9">廃棄物登録</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<th>廃棄物種別</th>
+						<th>廃棄物種類</th>
+						<th>形状</th>
+						<th>荷姿</th>
+						<th>予定量</th>
+						<th>単位</th>
+						<th>有害物質名</th>
+						<th>処分方法</th>
+						<th></th>
+					</tr>
+					<% @contracts.each do |list| %>
+						<tr>
+							<td>
+								<div class="kensaku01 cf">
+									<div>
+										<p><%= list.wt_name %></p>
+									</div>
+								</div>
+							</td>
+							<td>
+								<div class="kensaku01 cf">
+									<div>
+										<p><%= list.ct_name %></p>
+									</div>
+								</div>
+							</td>
+							<td>
+								<div class="kensaku01 cf">
+									<div>
+										<p><%= list.sh_name %></p>
+									</div>
+								</div>
+							</td>
+							<td>
+								<div class="kensaku01 cf">
+									<div>
+										<p><%= list.pk_name %></p>
+									</div>
+								</div>
+							</td>
+							<td>
+								<div class="kensaku01 cf">
+									<div>
+										<p><%= list.expected_amount %></p>
+									</div>
+								</div>
+							</td>
+							<td>
+								<div class="kensaku01 cf">
+									<div>
+										<p><%= list.un_name %></p>
+									</div>
+								</div>
+							</td>
+							<td>
+								<div class="kensaku01 cf">
+									<div>
+										<p><%= list.hs_name %></p>
+									</div>
+								</div>
+							</td>
+							<td>
+								<div class="kensaku01 cf">
+									<div>
+										<p><%= list.dm_name %></p>
+									</div>
+								</div>
+							</td>
+							<td>
+								<div class="kensaku01 cf">
+									<div>
+										<%= link_to "詳細", contracts_waste_cmpny_path(list), :class => "combtn" %>
+									</div>
+								</div>
+							</td>
+						</tr>
+					<% end %>
+					<tr>
+						<td>
+							<div class="kensaku01 cf">
+								<div>
+									<%= f.hidden_field :waste_type_id, :id => "waste_type_val" %>
+									<p id="waste_type_id"></p>
+									<center><a class="modal-open choicebtn" data-target="con00">選択</a></center>
+								</div>
+							</div>
+						</td>
+						<td>
+							<div class="kensaku01 cf">
+								<div>
+									<% @places.each do |tr| %><%= f.hidden_field :first_party_id, :value => tr.trader_id %><%= f.hidden_field :place_id, :value => tr.place_id  %><% end %>
+									
+									<%= f.hidden_field :category_id, :id => "category_val" %>
+									<p id="category_id"></p>
+									<a class="modal-open choicebtn h-btn02" data-target="con01">選択</a></center>
+								</div>
+							</div>
+						</td>
+						<td>
+							<div class="kensaku01 cf">
+								<div>
+									<%= f.hidden_field :shape_id, :id => "shape_val" %>
+									<p id="shape_id"></p>
+									<center><a class="modal-open choicebtn" data-target="con02">選択</a></center>
+								</div>
+							</div>
+						</td>
+						<td>
+							<div class="kensaku01 cf">
+								<div>
+									<%= f.hidden_field :package_id, :id => "package_val" %>
+									<p id="package_id"></p>
+									<center><a class="modal-open choicebtn" data-target="con03">選択</a></center>
+								</div>
+							</div>
+						</td>
+						<td>
+							<%= f.text_field :expected_amount, :class => "inp-text sum-text", :placeholder => "予定量" %>
+						</td>
+						<td>
+							<div class="kensaku01 cf">
+								<div>
+									<%= f.hidden_field :unit_id, :id => "unit_val" %>
+									<p id="unit_id"></p>
+									<center><a class="modal-open choicebtn" data-target="con04">選択</a></center>
+								</div>
+							</div>
+						</td>
+						<td>
+							<div class="kensaku01 cf">
+								<div>
+									<%= f.hidden_field :hazardous_substance_id, :id => "hazardous_substance_val" %>
+									<p id="hazardous_substance_id"></p>
+									<center><a class="modal-open choicebtn" data-target="con05">選択</a></center>
+								</div>
+							</div>
+						</td>
+						<td>
+							<div class="kensaku01 cf">
+								<div>
+									<%= f.hidden_field :disposal_method_id, :id => "disposal_method_val" %>
+									<p id="disposal_method_id"></p>
+									<center><a class="modal-open choicebtn" data-target="con06">選択</a></center>
+								</div>
+							</div>
+						</td>
+						<td>
+							<div class="kensaku01 cf">
+								<center><%= f.submit "追加", :class => "choicebtn" %></center>
+							</div>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+
+
+		<div class="con-btn-box">
+			<input type="button" class="con-btn" value="修正登録">
+		</div>
+	<% end %>
+</div>
+
+<%= render template: 'template/footer' %>
+
+<%= render 'search_waste_types' %>
+<%= render 'search_categories' %>
+<%= render 'search_shapes' %>
+<%= render 'search_packages' %>
+<%= render 'search_units' %>
+<%= render 'search_hazardous_substances' %>
+<%= render 'search_disposal_methods' %>
+
+<script>
+$('#new_contract').submit(function() {
+    if ($.trim($("#waste_type_val").val()) === "" || $.trim($("#category_val").val()) === "" || $.trim($("#shape_val").val()) === "" || 
+        $.trim($("#package_val").val()) === "" || $.trim($("#unit_val").val()) === "" || $.trim($("#hazardous_substance_val").val()) === "" ||
+        $.trim($("#disposal_method_val").val()) === "" || $.trim($("#contract_expected_amount").val()) === "") {
+        alert('You did not fill out one of the fields');
+        return false;
+    }
+});
+</script>

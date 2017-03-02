@@ -1,0 +1,28 @@
+<div class="modal-content con02">
+	<div class="batu-btn-box">
+		<a class="modal-close"><%= image_tag('batu.png', :alt => 'ボタン', :class => 'batu-btn') %></a>
+	</div>
+	<table class="mo-kensaku-table">
+		<tr>
+			<th colspan="16" class="table-title">Details</th>
+		</tr>
+
+    		<tr>
+    			<th>場所の名前</th>
+    			<td><%= row.place_kanji %></td>
+    			
+    			<th>会社名</th>
+    			<td><%= row.trader_kanji %></td>
+    		</tr>
+    		<tr>
+    			<th>廃棄物種別</th>
+    			<td><%= row.wt_name %></td>
+    			
+    			<th>有害物質名</th>
+		    	<td><%= row.hs_name %></td>
+    		</tr>
+
+
+	</table>
+    <input type="button" value="登録する" class="modal-close con-btn"  style="text-decoration:none; color:white;">
+</div>

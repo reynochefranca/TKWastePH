@@ -1,0 +1,36 @@
+<script>
+	$(function() {
+	 $("input[name=shape_id]").on("change", function() {
+	    $("#shape_id").html($(this).val());
+	    data = $(this).data('id');
+    	$('#shape_val').val(data);
+	 });
+	});
+</script>
+<div class="modal-content con03">
+	<div class="batu-btn-box">
+		<a class="modal-close"><%= image_tag('batu.png', :alt => 'ボタン', :class => 'batu-btn') %></a>
+	</div>
+
+	<table class="place-table disposal-table mo-table">
+		<thead>
+			<tr>
+				<th colspan="2" class="table-title">形状一覧</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<th></th>
+				<th>コード/形状</th>
+			</tr>
+			<% @shapes.each do |sh| %>
+			<tr>
+				<td><input type="radio" name="shape_id" data-id="<%= sh.id %>" value="<%= sh.code %> / <%= sh.name %>"></td>
+				<td><%= sh.code %>&nbsp;/&nbsp;<%= sh.name %></td>
+			</tr>
+			<% end %>
+		</tbody>
+	</table>
+	<input type="button" value="登録する" class="modal-close con-btn"  style="text-decoration:none; color:white;">
+
+</div>

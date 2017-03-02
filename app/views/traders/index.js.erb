@@ -1,9 +1,0 @@
-$('#list_traders').html("<%= j( render 'list_traders' ) %>");
-
-$('input[name=con00]').on('click',function(){
-    data = $(this).data('kanji');
-    $('#name_kanji').val(data);
-    data = $(this).data('kana');
-    $('#name_kana').val(data);
-});
-
