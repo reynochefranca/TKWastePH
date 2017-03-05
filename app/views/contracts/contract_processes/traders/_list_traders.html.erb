@@ -1,0 +1,25 @@
+<table class="place-table disposal-table mo-table">
+	<thead>
+		<tr>
+			<th colspan="2" class="table-title">浪費会社覧</th>
+		</tr>
+	</thead>
+	<tbody>
+	    <% if @traders.blank? %>
+    		<tr>
+    			<td colspan="2" align="center">
+    				<span><strong>NO RESULTS</strong><br>
+    					Try different keywords
+    				</span>
+    			</td>
+    		</tr>
+    	<% else %>
+    	    <% @traders.each do |tr| %>
+    			<tr class="table-rows">
+    				<td><input type="radio" name="waste_cmpny_id" data-id="<%= tr.id %>" value="<%= tr.name_kanji %>/<%= tr.name_kana %>"></td>
+    				<td style="width:100%;"><%= tr.name_kanji %>/<%= tr.name_kana %></td>
+    			</tr>
+    		<% end %>
+		<% end %>
+	</tbody>
+</table>

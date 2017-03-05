@@ -5,9 +5,9 @@ class Contracts::ContractProcessesController < ApplicationController
                     .joins("INNER JOIN traders ON contracts.first_party_id = traders.id", :place, :waste_type, :category, :shape, :unit, :package, :hazardous_substance, :disposal_method)
                     .where("contracts.id = ?", params[:contract_id])
       
-      @waste_companies = Trader
-                          .select("traders.id, traders.name_kanji")
-                          .where("traders.division is not null")
+      #@waste_companies = Trader
+      #                    .select("traders.id, traders.name_kanji")
+      #                    .where("traders.division is not null")
                           
       @contract_processes = ContractProcess
                               .select("contract_processes.id, traders.name_kanji AS trader_kanji, contract_processes.process_seq_id, contract_processes.division_process")

@@ -1,2 +1,45 @@
-<h1>Contracts::ContractProcesses::Traders#index</h1>
-<p>Find me in app/views/contracts/contract_processes/traders/index.html.erb</p>
+<%= stylesheet_link_tag "new-discharge-business-reg.css" %>
+
+<div class="modal-content con00">
+	<div class="batu-btn-box">
+		<a class="modal-close"><%= image_tag('batu.png', :alt => 'ボタン', :class => 'batu-btn') %></a>
+
+	</div>
+    <%= form_tag(contracts_contract_processes_traders_path, :method => "get", :remote => "true") do %>
+    	<table>
+    		<tr>
+    			<th colspan="3" class="table-title">検索キーワード</th>
+    		</tr>
+    		<tr>
+    			<th>
+    				サーチ 浪費会社
+    			</th>
+    			<td>
+    				<td><%= text_field_tag :search, params[:search], :class => "inp-text", :autocomplete => "off" %></td>
+    			</td>
+    		</tr>
+    	</table>
+        <%= submit_tag "検索する", :name => nil, :class => "con-btn" %>
+    <% end %>
+	<div id="list_traders">
+       <table class="place-table disposal-table mo-table">
+        	<thead>
+        		<tr>
+        			<th class="table-title">浪費会社覧</th>
+        		</tr>
+        	</thead>
+        	<tbody>
+        	    <% if @traders.blank? %>
+            		<tr class="table-rows">
+            			<td align="center"  style="width: 980px !important;">
+            				<center><span><strong>NO RESULTS</strong><br>
+            					Try different keywords
+            				</span></center>
+            			</td>
+            		</tr>
+        		<% end %>
+        	</tbody>
+        </table>
+    </div>
+	<input type="button" value="登録する" class="modal-close con-btn"  style="text-decoration:none; color:white;">
+</div>

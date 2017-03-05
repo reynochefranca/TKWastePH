@@ -7,5 +7,7 @@ class Trader < ActiveRecord::Base
    # trader has one trader_edi_user
    has_one :trader_edi_user
    
- 
+   def self.search(query)
+      where("traders.name_kanji like ? or traders.name_kana like ?", "%#{query}%", "%#{query}%") 
+   end
 end

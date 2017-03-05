@@ -1,0 +1,10 @@
+$('#list_traders').html("<%= j( render 'list_traders' ) %>");
+
+$(function() {
+	$("input[name=waste_cmpny_id]").on("change", function() {
+	    $("#waste_cmpny_id").html($(this).val());
+	    $("#waste_cmpny_id1").html($(this).val());
+	    data = $(this).data('id');
+    	$('#waste_cmpny_val').val(data);
+	});
+});
