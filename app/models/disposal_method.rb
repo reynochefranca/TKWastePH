@@ -1,3 +1,3 @@
 class DisposalMethod < ActiveRecord::Base
-    has_one :contact
+    has_one :contract
 end

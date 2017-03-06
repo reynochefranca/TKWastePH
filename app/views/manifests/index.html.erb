@@ -11,7 +11,7 @@
 
 <header>
     <%= render template: 'template/nav' %>
-	<h1 class="title">Waste Manifest</h1>
+	<h1 class="title">廃棄物マニフェスト</h1>
 </header>
 <center><h3><%= notice %></h3></center>
 <div class="container">
@@ -19,42 +19,42 @@
 		<%# form_for Manifest.new do |f| %>
 		<table>
 			<tr>
-			<th>Select Date:</th> <td><input type="date"></td>
-			<th>Enter Time:</th> <td><input type="time"></td>
+			<th>日付を選択：</th> <td><input type="date"></td>
+			<th>時間を入力：</th> <td><input type="time"></td>
 			</tr>
 		</table>
 		<%# end %>
 	<%= form_for Manifest.new do |f| %>
 		<table class="issue-table">
 			<tr>
-				<th colspan="15" class="table-titlegreen">Transporter Information</th>
+				<th colspan="15" class="table-titlegreen">トランスポーター情報</th>
 			</tr>
 			<tr>
-				<th rowspan="2">Transporter<br><span class="required-text">必須</span></th>
-				<td>Kanji</td>
+				<th rowspan="2" width="18%">トランスポーター<br><span class="required-text">必須</span></th>
+				<td>漢字</td>
 				<td>
 					<div class="kensaku01 cf">
-						<%= f.collection_select(:collection_commit_trader_id ,Trader.all,:id,:name_kanji, :include_blank => '---select name---') %>
+						<%= f.collection_select(:collection_commit_trader_id ,Trader.all,:id,:name_kanji, :include_blank => '----選択する----') %>
 					</div>
 				</td>
 
-				<th rowspan="2">First Person in Charge</th>
-				<td>Kanji</td>
+				<th rowspan="2">最初の担当者</th>
+				<td>漢字</td>
 				<td>
 					<div class="kensaku01 cf">
-						<%= f.collection_select(:collection_commit_user_id ,Trader.all,:id,:name_kanji, :include_blank => '---select name---') %>
+						<%= f.collection_select(:collection_commit_user_id ,Trader.all,:id,:name_kanji, :include_blank => '----選択する----') %>
 					</div>
 				</td>
 				<tr>
-					<td>Kana</td>
+					<td>仮名</td>
 				<td>
 				<div class="kensaku01 cf">
-						<%= f.collection_select(:disposal_commit_trader_id,Trader.all,:id,:name_kana, :include_blank => '---select name---') %>
+						<%= f.collection_select(:disposal_commit_trader_id,Trader.all,:id,:name_kana, :include_blank => '----選択する----') %>
 					</div></td>
-				<td>Kana</td>
+				<td>仮名</td>
 				<td>
 					<div class="kensaku01 cf">
-						<%= f.collection_select(:disposal_commit_user_id,Trader.all,:id,:name_kana, :include_blank => '---select name---') %>
+						<%= f.collection_select(:disposal_commit_user_id,Trader.all,:id,:name_kana, :include_blank => '----選択する----') %>
 					</div>
 				</td>
 				</tr>
@@ -66,34 +66,34 @@
 
 		<table class="issue-table">
 			<tr>
-				<th colspan="15" class="table-titlered">Company Information</th>
+				<th colspan="15" class="table-titlered">企業情報</th>
 			</tr>
 			<tr>
-				<th rowspan="2">Business<br>Information<br><span class="required-text">必須</span></th>
-				<td>Kanji</td>
+				<th rowspan="2" width="18%">ビジネス情報<br><span class="required-text">必須</span></th>
+				<td>漢字</td>
 				<td>
 					<div class="kensaku01 cf">
-						<%= f.collection_select(:collection_commit_trader_id,Trader.all,:id,:name_kanji, :include_blank => '---select name---') %>
+						<%= f.collection_select(:collection_commit_trader_id,Trader.all,:id,:name_kanji, :include_blank => '----選択する----') %>
 					</div>
 				</td>
-				<th rowspan="2">First Person in Charge</th>
-				<td>Kanji</td>
+				<th rowspan="2">最初の担当者</th>
+				<td>漢字</td>
 				<td>
 					<div class="kensaku01 cf">
-						<%= f.collection_select(:collection_commit_user_id,Trader.all,:id,:name_kanji, :include_blank => '---select name---') %>
+						<%= f.collection_select(:collection_commit_user_id,Trader.all,:id,:name_kanji, :include_blank => '----選択する----') %>
 					</div>
 				</td>
 				<tr>
-					<td>Kana</td>
+					<td>仮名</td>
 				<td>
 					<div class="kensaku01 cf">
-						<%= f.collection_select(:disposal_commit_trader_id ,Trader.all,:id,:name_kana, :include_blank => '---select name---') %>
+						<%= f.collection_select(:disposal_commit_trader_id ,Trader.all,:id,:name_kana, :include_blank => '----選択する----') %>
 					</div>
 				</td>
-				<td>Kana</td>
+				<td>仮名</td>
 				<td>
 					<div class="kensaku01 cf">
-						<%= f.collection_select(:disposal_commit_user_id,Trader.all,:id,:name_kana, :include_blank => '---select name---') %>
+						<%= f.collection_select(:disposal_commit_user_id,Trader.all,:id,:name_kana, :include_blank => '----選択する----') %>
 					</div>
 				</td>
 				</tr>
@@ -106,7 +106,7 @@
 	<table style="float:left;table-layout:fixed;width:90%;font-size:14px; margin-left:9%">
 		<thead>
 			<tr>
-				<th colspan="6" class="table-title"><center>Planned Quantity</center></th>
+				<th colspan="6" class="table-title"><center>計画数量</center></th>
 			</tr>
 			<tr>
 				<th>Code</th>
@@ -120,8 +120,8 @@
 		</thead>
 		<tbody>
 			<tr>
-				<td>1</td>
-				<td>Plastic</td>
+				<td>0600000</td>
+				<td>Waste plastic</td>
 				<%#td>Waste type</td#%>
 				<td>12</td>
 				<td>kg</td>
@@ -136,7 +136,7 @@
 	<table style="float:left; table-layout:fixed;width:90%;font-size:14px;">
 		<thead>
 			<tr>
-				<th colspan="6" class="table-title" ><center>Actual</center></th>
+				<th colspan="6" class="table-title" ><center>実際の</center></th>
 			</tr>
 			<tr>
 				<th style="border-left-color:#cccccc;">Code</th>
@@ -201,7 +201,7 @@
 	</div>
 	<table class="issue-table">
 		<tr>
-			<th colspan="6" class="table-title" ><center>Temporary</center></th>
+			<th colspan="6" class="table-title" ><center>一時的</center></th>
 		</tr>
 		<tr>
 			<th>Code</th>
@@ -211,6 +211,51 @@
 			<th>Form</th>
 			<th>Packing</th>
 		</tr>
+		<tbody>
+			<% @manifests.each do |row| %>
+				<tr>
+					<td style="border-left-color:#cccccc;"><%= row.code %></td>
+					<td><%= row.category_name %></td>
+					<%#td><%= row.hazardous_name %><%#/td #%>
+					<td><%= row.total_amount %></td>
+					<td style="max-width: 120px;"><%= row.unit_name %></td>
+					<td><%= row.shape_name %></td>
+					<td><%= row.package_name %></td>
+				</tr>
+			<% end %>
+			
+			<tr>
+				<td colspan="2">
+				    <div class="kensaku01 cf">
+				        <%= f.hidden_field :category_id, :id => "category_val" %>
+				        <p id="category_id"></p>
+				        <center><a class="modal-open custom-btn2" data-target="con01">選択</a></center>
+				    </div>
+				</td>
+				<td><center><%= f.text_field :total_amount,:size=>"3" %></td>
+				<td>
+				     <div class="kensaku01 cf">
+				         <%= f.hidden_field :unit_id, :id => "unit_val" %>
+				         <p id="unit_id"></p>
+				         <center><a class="modal-open custom-btn2" data-target="con02">選択</a></center>
+				     </div>
+				</td>
+				<td>
+				     <div class="kensaku01 cf">
+				         <%= f.hidden_field :shape_id, :id => "shape_val" %>
+				         <p id="shape_id"></p>
+				         <center><a class="modal-open custom-btn2" data-target="con03">選択</a></center>
+				     </div>
+				</td>
+				<td>
+				     <div class="kensaku01 cf">
+				         <%= f.hidden_field :package_id, :id => "package_val" %>
+				         <p id="package_id"></p>
+				         <center><a class="modal-open custom-btn2" data-target="con04">選択</a></center>
+				     </div>
+				</td>
+			</tr>
+		</tbody>
 	</table>
 	<center><%= f.submit :class => "custom-btnreg" %></center>
 	<% end %>

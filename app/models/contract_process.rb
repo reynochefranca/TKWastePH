@@ -1,5 +1,5 @@
 class ContractProcess < ActiveRecord::Base
-    has_one :contract
+    belongs_to :contract
     
     Division = ['Transporter', 'Storage', 'Disposer']
 end

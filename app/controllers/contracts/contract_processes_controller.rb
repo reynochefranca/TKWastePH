@@ -5,12 +5,9 @@ class Contracts::ContractProcessesController < ApplicationController
                     .joins("INNER JOIN traders ON contracts.first_party_id = traders.id", :place, :waste_type, :category, :shape, :unit, :package, :hazardous_substance, :disposal_method)
                     .where("contracts.id = ?", params[:contract_id])
       
-      #@waste_companies = Trader
-      #                    .select("traders.id, traders.name_kanji")
-      #                    .where("traders.division is not null")
-                          
+              
       @contract_processes = ContractProcess
-                              .select("contract_processes.id, traders.name_kanji AS trader_kanji, contract_processes.process_seq_id, contract_processes.division_process")
+                              .select("contract_processes.id, traders.name_kanji AS trader_kanji, traders.name_kana AS trader_kana, contract_processes.process_seq_id, contract_processes.division_process")
                               .joins("INNER JOIN traders ON contract_processes.second_party_id = traders.id")
                               .where("traders.division IS NOT NULL AND contract_processes.contract_id = ?", params[:contract_id])
                           
@@ -31,6 +28,6 @@ class Contracts::ContractProcessesController < ApplicationController
   
   private
     def contract_process_params
-      params.require(:contract_process).permit(:contract_id, :process_seq_id, :second_party_id, :division_process)
+      params.require(:contract_process).permit(:contract_id, :second_party_id, :process_seq_id, :division_process)
     end
 end

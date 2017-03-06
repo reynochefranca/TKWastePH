@@ -91,7 +91,7 @@ $(function() {
 			    	   @contract_processes.each do |data| %>
     			    	<tr>
     			    	    <td><center><% @inc = data.process_seq_id %><%= data.process_seq_id %></center></td>
-    			    	    <td><center><%= data.trader_kanji %></center></td>
+    			    	    <td><center><%= data.trader_kanji %>/ <%= data.trader_kana %></center></td>
     			    	    <td><center><%= data.division_process %></center></td>
     			    	    <td style="height:80px;">
     						    <center><%= link_to "削除", contracts_contract_process_path(data), method: :delete, data: { confirm: "Are you sure you want to delete this #{data.trader_kanji} => #{data.division_process}"}, :class => "sakuzyobtn" %>
@@ -142,5 +142,4 @@ $(function() {
 </div>
 <%= render template: 'template/footer' %>
 <%= render template: 'contracts/contract_processes/traders/index' %>
-<%# render 'search_waste_companies' %>
 <%= render 'details_waste_contracts' %>

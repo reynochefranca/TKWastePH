@@ -1,4 +1,4 @@
-<table class="place-table disposal-table mo-table">
+<table class="place-table disposal-table mo-table" id="tableSelect">
 	<thead>
 		<tr>
 			<th colspan="2" class="table-title">浪費会社覧</th>
@@ -17,7 +17,8 @@
     	    <% @traders.each do |tr| %>
     			<tr class="table-rows">
     				<td><input type="radio" name="waste_cmpny_id" data-id="<%= tr.id %>" value="<%= tr.name_kanji %>/<%= tr.name_kana %>"></td>
-    				<td style="width:100%;"><%= tr.name_kanji %>/<%= tr.name_kana %></td>
+    				<td style="width:100%;">
+    					<%= tr.name_kanji %>/<%= tr.name_kana %></td>
     			</tr>
     		<% end %>
 		<% end %>

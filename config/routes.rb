@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+
+
   devise_for :users
   # Home
   get 'home/index'
@@ -7,7 +9,7 @@ Rails.application.routes.draw do
   # Waste Company
   get 'trader_places/index'
   get 'contracts/:place_id/places' => 'contracts#index'
-  resources :contracts, only: [:create]
+  resources :contracts, only: [:create, :update]
 
   namespace :contracts do
     get 'contract_processes/:contract_id/waste_company' => 'contract_processes#index', :as => :waste_cmpny

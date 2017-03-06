@@ -6,7 +6,6 @@ class CreateContractProcesses < ActiveRecord::Migration
       t.integer :process_seq_id
       t.string :division_process
       
-
       t.timestamps null: false
     end
   end

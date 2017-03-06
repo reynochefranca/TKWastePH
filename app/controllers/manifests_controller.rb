@@ -38,6 +38,7 @@ class ManifestsController < ApplicationController
     @units = Unit.all
     @packages = Package.all
     @shapes = Shape.all
+    @categories = Category.all
   end
   
   def new

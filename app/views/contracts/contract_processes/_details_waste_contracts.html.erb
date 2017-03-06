@@ -57,9 +57,9 @@
 		</tr>
 	</table>
  	<%= form_for @contract_process, url: {controller: "contracts/contract_processes"} do |f| %>
+	    <%= f.hidden_field :second_party_id, :id => "waste_cmpny_val" %>
 	    <%= f.hidden_field :contract_id, :value => params[:contract_id] %>
 	    <%= f.hidden_field :process_seq_id, :value => @process_no %>
-	    <%= f.hidden_field :second_party_id, :id => "waste_cmpny_val" %>
 	    <%= f.hidden_field :division_process, :id => "division_process_val" %>
 	    
 		<%= f.submit "Register", :style => "cursor:pointer!important;"  %>

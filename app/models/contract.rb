@@ -10,5 +10,7 @@ class Contract < ActiveRecord::Base
     belongs_to :disposal_method
     
     has_one :contract_manifest
+    has_many :contract_processes
+    
     
 end

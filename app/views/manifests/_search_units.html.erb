@@ -25,8 +25,8 @@
 			</tr>
 			<% @units.each do |un| %>
 			<tr>
-				<td><input type="radio" name="unit_id" data-id="<%= un.id %>" value="<%= un.code %> / <%= un.name %>"></td>
-    			<td><%= un.code %>&nbsp;/&nbsp;<%= un.name %></td>
+				<td><input type="radio" name="unit_id" data-id="<%= un.id %>" value="<% un.code %><%= un.name %>"></td>
+    			<td><% un.code %>&nbsp;&nbsp;<%= un.name %></td>
 			</tr>
 		    <% end %>
 		</tbody>

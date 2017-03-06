@@ -1,1 +1,8 @@
 $('#list_categories').html("<%= j( render 'list_categories' ) %>");
+$(function() {
+ $("input[name=category_id]").on("change", function() {
+    $("#category_id").html($(this).val());
+    data = $(this).data('id');
+	$('#category_val').val(data);
+ });
+});

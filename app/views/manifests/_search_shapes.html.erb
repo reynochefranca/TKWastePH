@@ -25,8 +25,8 @@
 			</tr>
 			<% @shapes.each do |sh| %>
 			<tr>
-				<td><input type="radio" name="shape_id" data-id="<%= sh.id %>" value="<%= sh.code %> / <%= sh.name %>"></td>
-				<td><%= sh.code %>&nbsp;/&nbsp;<%= sh.name %></td>
+				<td><input type="radio" name="shape_id" data-id="<%= sh.id %>" value="<% sh.code %>  <%= sh.name %>"></td>
+				<td><% sh.code %>&nbsp;&nbsp;<%= sh.name %></td>
 			</tr>
 			<% end %>
 		</tbody>

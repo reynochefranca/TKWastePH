@@ -25,8 +25,8 @@
 			</tr>
 			<% @packages.each do |pk| %>
     			<tr>
-    				<td><input type="radio" name="package_id" data-id="<%= pk.id %>" value="<%= pk.code %> / <%= pk.name %>"></td>
-    				<td><%= pk.code %>&nbsp;/&nbsp;<%= pk.name %></td>
+    				<td><input type="radio" name="package_id" data-id="<% pk.id %>" value="<% pk.code %>  <%= pk.name %>"></td>
+    				<td><% pk.code %>&nbsp;&nbsp;<%= pk.name %></td>
     			</tr>
     		<% end %>
 		</tbody>
